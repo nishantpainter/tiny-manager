@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  title: { flexGrow: 1, fontWeight: "bold" },
+  title: { flexGrow: 1 },
 });
 
 function Topbar() {
