@@ -24,7 +24,7 @@ function Topbar() {
           color="primary"
           variant="outlined"
           component={Link}
-          to="/project"
+          to="/projects"
         >
           Projects
         </Button>

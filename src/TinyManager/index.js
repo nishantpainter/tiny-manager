@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Topbar from "TinyManager/containers/Topbar";
 import Home from "TinyManager/containers/Home";
-import Project from "TinyManager/containers/Project";
+import Projects from "TinyManager/containers/Projects";
 import ThemeProvider from "TinyManager/services/ThemeProvider";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +25,7 @@ function Content() {
       <div className={classes.topbar} />
       <main className={classes.main}>
         <Switch>
-          <Route path="/project" component={Project} />
+          <Route path="/projects" component={Projects} />
           <Route path="/" component={Home} />
         </Switch>
       </main>
