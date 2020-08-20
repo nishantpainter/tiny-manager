@@ -12,6 +12,18 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: "'Fira Sans', sans-serif",
   },
+  props: {
+    MuiAppBar: {
+      elevation: 8,
+    },
+  },
+  overrides: {
+    MuiAppBar: {
+      colorDefault: {
+        backgroundColor: "white",
+      },
+    },
+  },
 });
 
 function ThemeProvider(props) {
