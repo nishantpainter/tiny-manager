@@ -16,16 +16,11 @@ function Topbar() {
     <AppBar color="default">
       <Toolbar variant="dense">
         <Typography className={classes.title}>Tiny Manager</Typography>
-        <Button color="primary" variant="outlined" component={Link} to="/">
+        <Button color="primary" component={Link} to="/">
           Home
         </Button>
         &nbsp;
-        <Button
-          color="primary"
-          variant="outlined"
-          component={Link}
-          to="/projects"
-        >
+        <Button color="primary" component={Link} to="/projects">
           Projects
         </Button>
       </Toolbar>
