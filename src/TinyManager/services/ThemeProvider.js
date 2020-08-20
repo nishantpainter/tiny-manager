@@ -9,6 +9,9 @@ const theme = createMuiTheme({
     primary: indigo,
     secondary: orange,
   },
+  typography: {
+    fontFamily: "'Fira Sans', sans-serif",
+  },
 });
 
 function ThemeProvider(props) {
