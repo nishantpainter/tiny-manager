@@ -18,6 +18,7 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiButton: { root: { textTransform: "none" } },
     MuiAppBar: {
       colorDefault: {
         backgroundColor: "white",
