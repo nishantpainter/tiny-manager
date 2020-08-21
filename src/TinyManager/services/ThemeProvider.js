@@ -3,6 +3,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import indigo from "@material-ui/core/colors/indigo";
 import orange from "@material-ui/core/colors/orange";
+import grey from "@material-ui/core/colors/grey";
 
 const ThemeContext = React.createContext();
 
@@ -18,8 +19,8 @@ function ThemeProvider(props) {
   const theme = createMuiTheme({
     palette: {
       type: darkMode ? "dark" : "light",
-      primary: indigo,
-      secondary: orange,
+      primary: darkMode ? orange : indigo,
+      secondary: grey,
     },
     typography: {
       fontFamily: "'Fira Sans', sans-serif",
