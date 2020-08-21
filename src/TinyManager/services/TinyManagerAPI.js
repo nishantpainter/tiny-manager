@@ -1,3 +1,16 @@
+async function fetch(data, rejectPromise = false, errorMessage = "") {
+  return new Promise((reject, resolve) => {
+    const handler = () => {
+      if (rejectPromise) {
+        reject(errorMessage);
+      } else {
+        resolve(data);
+      }
+    };
+    setTimeout(handler, 1000); // Stimulate fetch
+  });
+}
+
 function fetchProjects() {}
 
 function fetchProject(projectId) {}
