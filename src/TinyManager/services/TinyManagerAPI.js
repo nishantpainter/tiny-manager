@@ -1,5 +1,7 @@
+import MockService from "TinyManager/services/MockService";
+
 async function fetch(data, rejectPromise = false, errorMessage = "") {
-  return new Promise((reject, resolve) => {
+  return new Promise((resolve, reject) => {
     const handler = () => {
       if (rejectPromise) {
         reject(errorMessage);
@@ -11,7 +13,9 @@ async function fetch(data, rejectPromise = false, errorMessage = "") {
   });
 }
 
-function fetchProjects() {}
+function fetchProjects() {
+  return fetch(MockService.getProjects());
+}
 
 function fetchProject(projectId) {}
 
