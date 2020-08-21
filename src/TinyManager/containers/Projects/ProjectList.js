@@ -18,11 +18,14 @@ function ProjectList() {
       </Typography>
       <br />
       {projects && projects.length ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {projects.map((project) => (
-            <Grid key={project.id} item xs={12} sm={6}>
-              <ProjectCard project={project} />
-            </Grid>
+            <React.Fragment key={project.id}>
+              <Grid item xs={12} sm={6}>
+                <ProjectCard project={project} />
+              </Grid>
+              <Grid item xs={12} sm={6}></Grid>
+            </React.Fragment>
           ))}
         </Grid>
       ) : (
