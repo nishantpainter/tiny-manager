@@ -4,12 +4,18 @@ import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import Grid from "@material-ui/core/Grid";
 
-function ProjectList() {
+function ProjectList(props) {
+  const { onProjectClick } = props;
+
   const [projects, setProjects] = React.useState([]);
 
   React.useEffect(() => {
     TinyManagerAPI.fetchProjects().then(setProjects);
   }, []);
+
+  const handleProjectClick = (e, project) => {
+    onProjectClick(project.id);
+  };
 
   return (
     <>
@@ -22,7 +28,7 @@ function ProjectList() {
           {projects.map((project) => (
             <React.Fragment key={project.id}>
               <Grid item xs={12} sm={6}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} onClick={handleProjectClick} />
               </Grid>
               <Grid item xs={12} sm={6}></Grid>
             </React.Fragment>
