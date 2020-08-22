@@ -11,10 +11,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 function ProjectCard(props) {
-  const { project } = props;
+  const { project, onClick } = props;
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} onClick={(e) => onClick(e, project)}>
       <Typography variant="h4" color="primary" noWrap>
         {project.name}
       </Typography>
@@ -27,6 +27,7 @@ function ProjectCard(props) {
 
 ProjectCard.defaultProps = {
   project: {},
+  onClick: () => {},
 };
 
 export default ProjectCard;
