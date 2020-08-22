@@ -5,13 +5,23 @@ import ProjectView from "TinyManager/containers/Projects/ProjectView";
 import ProjectList from "TinyManager/containers/Projects/ProjectList";
 
 function Projects(props) {
-  const { match } = props;
-  const { path } = match;
+  const { match, history } = props;
+  const { path, url } = match;
+
+  const redirectToProjectView = (projectId) => {
+    history.push(url + `/${projectId}`);
+  };
+
   return (
     <>
       <Switch>
         <Route path={path + "/:projectId"} component={ProjectView} />
-        <Route path={path} component={ProjectList} />
+        <Route
+          path={path}
+          render={(props) => (
+            <ProjectList {...props} onProjectClick={redirectToProjectView} />
+          )}
+        />
       </Switch>
     </>
   );
