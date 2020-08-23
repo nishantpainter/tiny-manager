@@ -17,7 +17,9 @@ function fetchProjects() {
   return fetch(MockService.getProjects());
 }
 
-function fetchProject(projectId) {}
+function fetchProject(projectId) {
+  return fetch(MockService.getProject(projectId));
+}
 
 function fetchTasks(projectId) {}
 
