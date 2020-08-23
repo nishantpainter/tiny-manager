@@ -12,10 +12,22 @@ function Projects(props) {
     history.push(url + `/${projectId}`);
   };
 
+  const redirectToProjectList = () => {
+    history.push(url);
+  };
+
   return (
     <>
       <Switch>
-        <Route path={path + "/:projectId"} component={ProjectView} />
+        <Route
+          path={path + "/:projectId"}
+          render={(props) => (
+            <ProjectView
+              {...props}
+              redirectToProjectList={redirectToProjectList}
+            />
+          )}
+        />
         <Route
           path={path}
           render={(props) => (
