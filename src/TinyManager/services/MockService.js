@@ -13,7 +13,13 @@ function getProjects() {
   }));
 }
 
-function getProject(projectId) {}
+function getProject(projectId) {
+  return {
+    id: projectId,
+    name: faker.lorem.word(),
+    description: faker.lorem.sentence(),
+  };
+}
 
 function getTasks(projectId) {}
 
@@ -21,4 +27,5 @@ function getTask(taskId) {}
 
 export default {
   getProjects,
+  getProject,
 };
