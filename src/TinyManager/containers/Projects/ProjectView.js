@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
@@ -33,7 +34,11 @@ function ProjectView(props) {
   return (
     <>
       <Typography variant="h1">Project View</Typography>
-      <ProjectCard project={project} />
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <ProjectCard project={project} />
+        </Grid>
+      </Grid>
     </>
   );
 }
