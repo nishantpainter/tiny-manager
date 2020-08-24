@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
@@ -22,6 +23,10 @@ function ProjectList(props) {
       <Typography variant="h1" gutterBottom>
         Project List
       </Typography>
+      <Button color="primary" variant="outlined">
+        Add New
+      </Button>
+      <br />
       <br />
       {projects && projects.length ? (
         <Grid container spacing={2}>
