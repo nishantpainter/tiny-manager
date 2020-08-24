@@ -15,12 +15,10 @@ function ProjectCard(props) {
   const classes = useStyles();
   return (
     <Paper className={classes.paper} onClick={(e) => onClick(e, project)}>
-      <Typography variant="h4" color="primary" noWrap>
+      <Typography variant="h4" color="primary">
         {project.name}
       </Typography>
-      <Typography variant="subtitle1" noWrap>
-        {project.description}
-      </Typography>
+      <Typography variant="subtitle1">{project.description}</Typography>
     </Paper>
   );
 }
