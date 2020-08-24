@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 
 function Home() {
   return (
-    <Typography variant="h1">
+    <Typography variant="h5">
       Home
     </Typography>
   );

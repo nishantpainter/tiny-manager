@@ -33,7 +33,7 @@ function ProjectView(props) {
 
   return (
     <>
-      <Typography variant="h1">Project View</Typography>
+      <Typography variant="h5">Project View</Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <ProjectCard project={project} />

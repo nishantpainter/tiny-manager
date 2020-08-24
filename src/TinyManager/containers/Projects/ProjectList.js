@@ -20,7 +20,7 @@ function ProjectList(props) {
 
   return (
     <>
-      <Typography variant="h1" gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Project List
       </Typography>
       <Button color="primary" variant="outlined">
