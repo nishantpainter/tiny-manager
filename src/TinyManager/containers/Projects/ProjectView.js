@@ -33,9 +33,12 @@ function ProjectView(props) {
 
   return (
     <>
-      <Typography variant="h5">Project View</Typography>
+      <Typography variant="h5" gutterBottom>
+        Project View
+      </Typography>
+      <br />
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <ProjectCard project={project} />
         </Grid>
       </Grid>
