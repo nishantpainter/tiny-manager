@@ -32,10 +32,9 @@ function ProjectList(props) {
         <Grid container spacing={2}>
           {projects.map((project) => (
             <React.Fragment key={project.id}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <ProjectCard project={project} onClick={handleProjectClick} />
               </Grid>
-              <Grid item xs={12} sm={6}></Grid>
             </React.Fragment>
           ))}
         </Grid>
