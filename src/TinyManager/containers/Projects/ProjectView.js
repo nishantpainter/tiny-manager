@@ -25,7 +25,7 @@ function ProjectView(props) {
       setLoading(false);
       redirectToProjectList();
     }
-  }, [projectId]);
+  }, [projectId, redirectToProjectList]);
 
   if (loading) {
     return <Typography>Loading...</Typography>;
