@@ -25,7 +25,11 @@ function ThemeProvider(props) {
     typography: {
       fontFamily: "'Fira Sans', sans-serif",
     },
-    props: {},
+    props: {
+      MuiTextField: {
+        variant: "outlined",
+      },
+    },
     overrides: {
       MuiButton: { root: { textTransform: "none" } },
     },
