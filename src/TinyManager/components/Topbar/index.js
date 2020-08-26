@@ -15,7 +15,7 @@ const AppBar = withStyles((theme) => ({
 }))(MuiAppBar);
 
 const useStyles = makeStyles({
-  title: { flexGrow: 1 },
+  title: { flexGrow: 1, cursor: "pointer" },
 });
 
 function Topbar(props) {
@@ -24,7 +24,9 @@ function Topbar(props) {
   return (
     <AppBar color="default">
       <Toolbar variant="dense">
-        <Typography className={classes.title}>Tiny Manager</Typography>
+        <Typography className={classes.title} component={Link} to="/">
+          Tiny Manager
+        </Typography>
         <Button color="primary" size="large" component={Link} to="/">
           Home
         </Button>
