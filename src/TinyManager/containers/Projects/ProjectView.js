@@ -1,8 +1,10 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+import Loader from "TinyManager/components/Loader";
 
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
@@ -28,7 +30,7 @@ function ProjectView(props) {
   }, [projectId, redirectToProjectList]);
 
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <Loader />;
   }
 
   return (
