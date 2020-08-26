@@ -1,7 +1,5 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import { Grid, Button, Typography, Fade } from "@material-ui/core";
 
 import ProjectCard from "TinyManager/components/ProjectCard";
 import Loader from "TinyManager/components/Loader";
@@ -33,29 +31,31 @@ function ProjectList(props) {
   }
 
   return (
-    <>
-      <Typography variant="h5" gutterBottom>
-        Project List
-      </Typography>
-      <Button color="primary" variant="outlined">
-        Add New
-      </Button>
-      <br />
-      <br />
-      {projects && projects.length ? (
-        <Grid container spacing={2}>
-          {projects.map((project) => (
-            <React.Fragment key={project.id}>
-              <Grid item xs={12} zeroMinWidth>
-                <ProjectCard project={project} onClick={handleProjectClick} />
-              </Grid>
-            </React.Fragment>
-          ))}
-        </Grid>
-      ) : (
-        <Typography variant="body1">No available projects.</Typography>
-      )}
-    </>
+    <Fade in={true}>
+      <div>
+        <Typography variant="h5" gutterBottom>
+          Project List
+        </Typography>
+        <Button color="primary" variant="outlined">
+          Add New
+        </Button>
+        <br />
+        <br />
+        {projects && projects.length ? (
+          <Grid container spacing={2}>
+            {projects.map((project) => (
+              <React.Fragment key={project.id}>
+                <Grid item xs={12} zeroMinWidth>
+                  <ProjectCard project={project} onClick={handleProjectClick} />
+                </Grid>
+              </React.Fragment>
+            ))}
+          </Grid>
+        ) : (
+          <Typography variant="body1">No available projects.</Typography>
+        )}
+      </div>
+    </Fade>
   );
 }
 
