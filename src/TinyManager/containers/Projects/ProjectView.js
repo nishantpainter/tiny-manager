@@ -1,6 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import { Typography, Grid, Fade } from "@material-ui/core";
 
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
@@ -34,17 +33,19 @@ function ProjectView(props) {
   }
 
   return (
-    <>
-      <Typography variant="h5" gutterBottom>
-        Project View
-      </Typography>
-      <br />
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <ProjectCard project={project} />
+    <Fade in={true}>
+      <div>
+        <Typography variant="h5" gutterBottom>
+          Project View
+        </Typography>
+        <br />
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <ProjectCard project={project} />
+          </Grid>
         </Grid>
-      </Grid>
-    </>
+      </div>
+    </Fade>
   );
 }
 
