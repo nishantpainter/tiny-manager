@@ -38,4 +38,27 @@ describe("MockService", () => {
       expect(project.description).toBeDefined();
     });
   });
+
+  describe("getTasks", () => {
+    const { getTasks } = MockService;
+
+    it("must be defined", () => {
+      expect(getTasks).toBeDefined();
+    });
+
+    it("must return tasks", () => {
+      const projectId = 1;
+      const tasks = getTasks(projectId);
+
+      expect(tasks).toBeDefined();
+      expect(Array.isArray(tasks)).toBeTruthy();
+
+      const [task] = tasks;
+
+      expect(task.id).toBeDefined();
+      expect(task.projectId).toBe(projectId);
+      expect(task.title).toBeDefined();
+      expect(task.description).toBeDefined();
+    });
+  });
 });
