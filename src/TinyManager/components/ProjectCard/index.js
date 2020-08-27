@@ -1,7 +1,9 @@
 import React from "react";
-import Paper from "../Paper";
+import clsx from "clsx";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+
+import Paper from "../Paper";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -11,10 +13,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 function ProjectCard(props) {
-  const { project, onClick } = props;
+  const { project, onClick, className } = props;
+
   const classes = useStyles();
   return (
-    <Paper className={classes.paper} onClick={(e) => onClick(e, project)}>
+    <Paper
+      className={clsx(classes.paper, className)}
+      onClick={(e) => onClick(e, project)}
+    >
       <Typography variant="h4" color="primary">
         {project.name}
       </Typography>
