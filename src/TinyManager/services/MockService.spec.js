@@ -61,4 +61,23 @@ describe("MockService", () => {
       expect(task.description).toBeDefined();
     });
   });
+
+  describe("getTask", () => {
+    const { getTask } = MockService;
+
+    it("must be defined", () => {
+      expect(getTask).toBeDefined();
+    });
+
+    it("must return a tasks", () => {
+      const taskId = 1;
+      const task = getTask(taskId);
+
+      expect(task).toBeDefined();
+      expect(task.id).toBeDefined();
+      expect(task.id).toBe(taskId);
+      expect(task.title).toBeDefined();
+      expect(task.description).toBeDefined();
+    });
+  });
 });
