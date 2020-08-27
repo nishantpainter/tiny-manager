@@ -21,11 +21,26 @@ function getProject(projectId) {
   };
 }
 
-function getTasks(projectId) {}
+function getTasks(projectId) {
+  return new Array(10).fill(0).map(() => ({
+    id: getId(),
+    projectId,
+    title: faker.lorem.word(),
+    description: faker.lorem.sentence(),
+  }));
+}
 
-function getTask(taskId) {}
+function getTask(taskId) {
+  return {
+    id: taskId,
+    title: faker.lorem.word(),
+    description: faker.lorem.sentence(),
+  };
+}
 
 export default {
   getProjects,
   getProject,
+  getTasks,
+  getTask,
 };
