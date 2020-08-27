@@ -20,4 +20,22 @@ describe("MockService", () => {
       expect(project.description).toBeDefined();
     });
   });
+
+  describe("getProject", () => {
+    const { getProject } = MockService;
+
+    it("must be defined", () => {
+      expect(getProject).toBeDefined();
+    });
+
+    it("must return a project", () => {
+      const projectId = 1;
+      const project = getProject(projectId);
+
+      expect(project.id).toBeDefined();
+      expect(project.id).toBe(1);
+      expect(project.name).toBeDefined();
+      expect(project.description).toBeDefined();
+    });
+  });
 });
