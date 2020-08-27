@@ -1,12 +1,21 @@
 import React from "react";
-import { Grid, Button, Typography, Fade } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Button, Typography, Fade } from "@material-ui/core";
 
-import ProjectCard from "TinyManager/components/ProjectCard";
 import Loader from "TinyManager/components/Loader";
+import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+
+const useStyles = makeStyles((theme) => ({
+  projectCard: {
+    marginBottom: theme.spacing(2),
+  },
+}));
 
 function ProjectList(props) {
   const { onProjectClick } = props;
+
+  const classes = useStyles();
 
   const [loadingProjects, setLoadingProjects] = React.useState(true);
   const [projects, setProjects] = React.useState([]);
@@ -42,15 +51,15 @@ function ProjectList(props) {
         <br />
         <br />
         {projects && projects.length ? (
-          <Grid container spacing={2}>
-            {projects.map((project) => (
-              <React.Fragment key={project.id}>
-                <Grid item xs={12} zeroMinWidth>
-                  <ProjectCard project={project} onClick={handleProjectClick} />
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid>
+          projects.map((project) => (
+            <React.Fragment key={project.id}>
+              <ProjectCard
+                project={project}
+                className={classes.projectCard}
+                onClick={handleProjectClick}
+              />
+            </React.Fragment>
+          ))
         ) : (
           <Typography variant="body1">No available projects.</Typography>
         )}
