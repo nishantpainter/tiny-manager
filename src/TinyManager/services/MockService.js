@@ -6,11 +6,7 @@ function getId() {
 }
 
 function getProjects() {
-  return new Array(10).fill(0).map(() => ({
-    id: getId(),
-    name: faker.lorem.word(),
-    description: faker.lorem.sentence(),
-  }));
+  return new Array(10).fill(0).map(() => getProject(getId()));
 }
 
 function getProject(projectId) {
