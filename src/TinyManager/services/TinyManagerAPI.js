@@ -37,6 +37,14 @@ function removeProject(projectId) {}
 
 function removeTask(taskId) {}
 
+function fetchTodos() {}
+
+function addTodo() {}
+
+function updateTodo() {}
+
+function removeTodo() {}
+
 export default {
   fetchProjects,
   fetchProject,
