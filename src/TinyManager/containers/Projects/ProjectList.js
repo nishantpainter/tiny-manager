@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ProjectList(props) {
-  const { onProjectClick } = props;
+  const { onProjectClick, onNewProject } = props;
 
   const classes = useStyles();
 
@@ -35,6 +35,10 @@ function ProjectList(props) {
     onProjectClick(project.id);
   };
 
+  const handleNewProject = React.useCallback(() => {
+    onNewProject();
+  }, [onNewProject]);
+
   if (loadingProjects) {
     return <Loader />;
   }
@@ -45,7 +49,7 @@ function ProjectList(props) {
         <Typography variant="h5" gutterBottom>
           Project List
         </Typography>
-        <Button color="primary" variant="outlined">
+        <Button color="primary" variant="outlined" onClick={handleNewProject}>
           Add New
         </Button>
         <br />
