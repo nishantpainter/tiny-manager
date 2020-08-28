@@ -4,6 +4,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import indigo from "@material-ui/core/colors/indigo";
 import orange from "@material-ui/core/colors/orange";
 import grey from "@material-ui/core/colors/grey";
+import red from "@material-ui/core/colors/red";
+import deepOrange from "@material-ui/core/colors/deepOrange";
 
 const ThemeContext = React.createContext();
 
@@ -21,6 +23,7 @@ function ThemeProvider(props) {
       type: darkMode ? "dark" : "light",
       primary: darkMode ? orange : indigo,
       secondary: grey,
+      error: darkMode ? deepOrange : red,
     },
     typography: {
       fontFamily: "'Fira Sans', sans-serif",
