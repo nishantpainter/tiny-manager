@@ -71,7 +71,7 @@ function ProjectForm(props) {
             />
           </Grid>
           <Grid item xs={12} align="right">
-            <Button variant="outlined" disabled={disabled} onCancel={onCancel}>
+            <Button variant="outlined" disabled={disabled} onClick={onCancel}>
               Cancel
             </Button>
             &nbsp;
