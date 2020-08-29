@@ -14,5 +14,5 @@ const Template = (args) => (
   </ThemeProvider>
 );
 
-export const Normal = Template.bind({});
-Normal.args = {};
+export const Default = Template.bind({});
+Default.args = {};
