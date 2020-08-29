@@ -1,6 +1,6 @@
 import React from "react";
 
-import Paper from "TinyManager/components/Paper";
+import Paper from "./Paper";
 import ThemeProvider from "TinyManager/services/ThemeProvider";
 
 export default {
