@@ -1,6 +1,6 @@
 import React from "react";
 
-import Loader from "TinyManager/components/Loader";
+import Loader from "./Loader";
 
 export default {
   title: "Example/Loader",
