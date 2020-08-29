@@ -1,6 +1,6 @@
 import React from "react";
 
-import Loader from "./index";
+import Loader from "TinyManager/components/Loader";
 
 export default {
   title: "Example/Loader",
@@ -9,5 +9,5 @@ export default {
 
 const Template = (args) => <Loader {...args} />;
 
-export const Loading = Template.bind({});
-Loading.args = {};
+export const Default = Template.bind({});
+Default.args = {};
