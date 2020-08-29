@@ -1,7 +1,8 @@
-import Paper from "@material-ui/core/Paper";
+import PropTypes from "prop-types";
+import MuiPaper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 
-export default withStyles((theme) => ({
+const Paper = withStyles((theme) => ({
   root: {
     display: "flex",
     alignItems: "center",
@@ -12,4 +13,12 @@ export default withStyles((theme) => ({
     padding: theme.spacing(),
     height: theme.spacing(15),
   },
-}))(Paper);
+}))(MuiPaper);
+
+Paper.displayName = "Paper";
+
+Paper.propTypes = {
+  className: PropTypes.string,
+};
+
+export default Paper;
