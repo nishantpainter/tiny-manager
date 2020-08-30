@@ -25,7 +25,7 @@ function Topbar(props) {
     <AppBar color="default">
       <Toolbar variant="dense">
         <Typography className={classes.title} component={Link} to="/">
-          Tiny Manager
+          <b>Tiny Manager</b>
         </Typography>
         <Button color="primary" size="large" component={Link} to="/">
           Home
