@@ -10,9 +10,9 @@ import deepOrange from "@material-ui/core/colors/deepOrange";
 const ThemeContext = React.createContext();
 
 function ThemeProvider(props) {
-  const { children } = props;
+  const { children, darkMode: darkModeProp = false } = props;
 
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(darkModeProp);
 
   const toggleDarkMode = React.useCallback(() => {
     setDarkMode((darkMode) => !darkMode);
