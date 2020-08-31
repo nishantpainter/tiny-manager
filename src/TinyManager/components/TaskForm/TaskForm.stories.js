@@ -8,11 +8,14 @@ export default {
   component: TaskForm,
 };
 
-const Template = (args) => (
-  <ThemeProvider>
-    <TaskForm {...args} />
-  </ThemeProvider>
-);
+const Template = (args) => {
+  const { darkMode, ...rest } = args;
+  return (
+    <ThemeProvider darkMode={darkMode}>
+      <TaskForm {...rest} />
+    </ThemeProvider>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {};
@@ -20,4 +23,9 @@ Default.args = {};
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
+};
+
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  darkMode: true,
 };
