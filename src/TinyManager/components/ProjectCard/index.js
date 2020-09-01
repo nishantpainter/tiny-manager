@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "flex-start",
   },
-  progress: {
+  fullWidth: {
     width: "100%",
   },
 }));
@@ -28,14 +28,20 @@ function ProjectCard(props) {
       <Typography variant="h4" color="primary">
         {project.name}
       </Typography>
-      <Typography variant="subtitle1" gutterBottom>
+      <Typography
+        variant="subtitle1"
+        title={project.description}
+        className={classes.fullWidth}
+        gutterBottom
+        noWrap
+      >
         {project.description}
       </Typography>
       <LinearProgress
         variant="determinate"
         title={`${Math.round(progress)}%`}
         value={progress}
-        className={classes.progress}
+        className={classes.fullWidth}
       />
     </Paper>
   );
