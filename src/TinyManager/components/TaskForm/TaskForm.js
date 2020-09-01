@@ -29,6 +29,10 @@ const PRIORITIES = [
   },
 ];
 
+const PERCENTAGES = new Array(10)
+  .fill(0)
+  .map((_, i) => ({ value: i * 10, label: `${i * 10}%` }));
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
@@ -110,6 +114,28 @@ function TaskForm(props) {
               multiline
             />
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormControl
+              variant="outlined"
+              margin="dense"
+              disabled={disabled}
+              fullWidth
+            >
+              <InputLabel>Completed</InputLabel>
+              <Select
+                label="Percentage"
+                margin="dense"
+                defaultValue={PERCENTAGES[0].value}
+              >
+                {PERCENTAGES.map((percentage) => (
+                  <MenuItem key={percentage.value} value={percentage.value}>
+                    {percentage.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6}></Grid>
           <Grid item xs={12} align="right">
             <Button variant="outlined" disabled={disabled} onClick={onCancel}>
               Cancel
