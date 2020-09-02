@@ -3,9 +3,34 @@ import React from "react";
 import Todo from "./Todo";
 import ThemeProvider from "TinyManager/services/ThemeProvider";
 
+const argTypes = {
+  title: {
+    name: "title",
+    description: "Todo title",
+    type: {
+      name: "string",
+      required: true,
+    },
+    control: {
+      type: "text",
+    },
+  },
+  isCompleted: {
+    name: "isCompleted",
+    description: "Completion status of todo",
+    type: {
+      name: "boolean",
+    },
+    control: {
+      type: "boolean",
+    },
+  },
+};
+
 export default {
   title: "Example/Todo",
   component: Todo,
+  argTypes,
 };
 
 const Template = (args) => {
