@@ -1,5 +1,5 @@
 module.exports = {
   rootDir: "src",
-  moduleFileExtensions: ["js"],
+  moduleFileExtensions: ["js", "json"],
   moduleDirectories: ["node_modules", "<rootDir>"],
 };

@@ -17,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watch",
+    "test": "jest",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -38,17 +38,20 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "@storybook/addon-actions": "^6.0.20",
     "@storybook/addon-essentials": "^6.0.20",
     "@storybook/addon-links": "^6.0.20",
+    "@storybook/addon-storyshots": "^6.0.21",
     "@storybook/node-logger": "^6.0.20",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.20",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "faker": "^4.1.0",
     "react-is": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "uuid": "^8.3.0"
   }
 }
