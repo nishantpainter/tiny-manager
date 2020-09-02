@@ -18,6 +18,7 @@ const argTypes = {
   isCompleted: {
     name: "isCompleted",
     description: "Completion status of todo",
+    defaultValue: false,
     type: {
       name: "boolean",
     },
