@@ -1,7 +1,6 @@
 import React from "react";
 
 import Todo from "./Todo";
-import ThemeProvider from "TinyManager/services/ThemeProvider";
 
 const argTypes = {
   title: {
@@ -57,21 +56,3 @@ Completed.args = {
   ...Default.args,
   isCompleted: true,
 };
-
-const WithDarkTheme = (Story) => (
-  <ThemeProvider darkMode={true}>
-    <Story />
-  </ThemeProvider>
-);
-
-export const DarkModeDefault = Template.bind({});
-DarkModeDefault.args = {
-  ...Default.args,
-};
-DarkModeDefault.decorators = [WithDarkTheme];
-
-export const DarkModeCompleted = Template.bind({});
-DarkModeCompleted.args = {
-  ...Completed.args,
-};
-DarkModeCompleted.decorators = [WithDarkTheme];

@@ -1,7 +1,6 @@
 import React from "react";
 
 import TodoList from "./TodoList";
-import ThemeProvider from "TinyManager/services/ThemeProvider";
 
 const argTypes = {
   todos: {
@@ -46,22 +45,4 @@ Default.args = {
 export const Empty = Template.bind({});
 Empty.args = {
   todos: [],
-};
-
-const DarkTemplate = (args) => {
-  return (
-    <ThemeProvider darkMode={true}>
-      <TodoList {...args} />
-    </ThemeProvider>
-  );
-};
-
-export const DarkModeDefault = DarkTemplate.bind({});
-DarkModeDefault.args = {
-  ...Default.args,
-};
-
-export const DarkModeEmpty = DarkTemplate.bind({});
-DarkModeEmpty.args = {
-  ...Empty.args,
 };
