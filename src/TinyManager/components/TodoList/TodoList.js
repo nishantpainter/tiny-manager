@@ -30,7 +30,13 @@ TodoList.prototype = {
 };
 
 TodoList.defaultProps = {
-  todos: [],
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      isComplete: PropTypes.bool,
+    })
+  ),
   onTodoClick: () => {},
 };
 
