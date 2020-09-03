@@ -2,9 +2,33 @@ import React from "react";
 
 import TodoList from "./TodoList";
 
+const argTypes = {
+  todos: {
+    name: "todos",
+    description: "List of todo",
+    type: {
+      name: "array",
+    },
+    control: {
+      type: null,
+    },
+  },
+  onTodoClick: {
+    name: "onTodoClick",
+    description: "Todo click handler",
+    type: {
+      name: "function",
+    },
+    control: {
+      type: null,
+    },
+  },
+};
+
 export default {
   title: "Example/TodoList",
   component: TodoList,
+  argTypes,
 };
 
 const Template = (args) => {
