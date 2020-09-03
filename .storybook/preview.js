@@ -11,10 +11,9 @@ export const globalTypes = {
     description: "Dark mode view for component",
     defaultValue: false,
     toolbar: {
-      icon: "circlehollow",
       items: [
-        { value: true, title: "Dark" },
-        { value: false, title: "Light" },
+        { icon: "circle", value: true, title: "Dark" },
+        { icon: "circlehollow", value: false, title: "Light" },
       ],
     },
   },
