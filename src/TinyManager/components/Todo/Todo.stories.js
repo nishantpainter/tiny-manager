@@ -26,6 +26,15 @@ const argTypes = {
       type: "boolean",
     },
   },
+  divider: {
+    name: "divider",
+    description: "Divider beneath todo",
+    defaultValue: true,
+    type: "boolean",
+    control: {
+      type: "boolean",
+    },
+  },
 };
 
 export default {
