@@ -58,20 +58,20 @@ Completed.args = {
   isCompleted: true,
 };
 
-const DarkTemplate = (args) => {
-  return (
-    <ThemeProvider darkMode={true}>
-      <Todo {...args} />
-    </ThemeProvider>
-  );
-};
+const WithDarkTheme = (Story) => (
+  <ThemeProvider darkMode={true}>
+    <Story />
+  </ThemeProvider>
+);
 
-export const DarkModeDefault = DarkTemplate.bind({});
+export const DarkModeDefault = Template.bind({});
 DarkModeDefault.args = {
   ...Default.args,
 };
+DarkModeDefault.decorators = [WithDarkTheme];
 
-export const DarkModeCompleted = DarkTemplate.bind({});
+export const DarkModeCompleted = Template.bind({});
 DarkModeCompleted.args = {
   ...Completed.args,
 };
+DarkModeCompleted.decorators = [WithDarkTheme];
