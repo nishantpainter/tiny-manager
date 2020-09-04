@@ -1,9 +1,11 @@
 import React from "react";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 import { LinearProgress, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
+import Types from "TinyManager/types";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -46,6 +48,13 @@ function ProjectCard(props) {
     </Paper>
   );
 }
+
+ProjectCard.propTypes = {
+  className: PropTypes.string,
+  project: PropTypes.shape(Types.project),
+  progress: PropTypes.number,
+  onClick: PropTypes.func,
+};
 
 ProjectCard.defaultProps = {
   project: {},
