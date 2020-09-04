@@ -806,7 +806,7 @@ exports[`Storyshots Example/Todo Completed 1`] = `
 
 exports[`Storyshots Example/Todo Default 1`] = `
 <li
-  className="MuiListItem-container makeStyles-listItemContainer-45"
+  className="MuiListItem-container makeStyles-listItemContainer-1"
 >
   <div
     aria-disabled={false}
@@ -830,7 +830,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-46 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-2 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
         onBlur={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
@@ -848,8 +848,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
           className="MuiIconButton-label"
         >
           <input
-            checked={false}
-            className="PrivateSwitchBase-input-49"
+            className="PrivateSwitchBase-input-5"
             data-indeterminate={false}
             onChange={[Function]}
             type="checkbox"
