@@ -12,7 +12,14 @@ const Task = {
   note: PropTypes.string,
 };
 
+const Todo = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  isCompleted: PropTypes.bool,
+};
+
 export default {
   Project,
   Task,
+  Todo,
 };
