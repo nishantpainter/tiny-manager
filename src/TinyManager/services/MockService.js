@@ -34,9 +34,18 @@ function getTask(taskId) {
   };
 }
 
+function getTodos() {
+  return new Array(10).fill(0).map(() => ({
+    id: getId(),
+    title: faker.commerce.department(),
+    isCompleted: false,
+  }));
+}
+
 export default {
   getProjects,
   getProject,
   getTasks,
   getTask,
+  getTodos,
 };

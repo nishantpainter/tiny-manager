@@ -80,4 +80,25 @@ describe("MockService", () => {
       expect(task.description).toBeDefined();
     });
   });
+
+  describe("getTodos", () => {
+    const { getTodos } = MockService;
+
+    it("must be defined", () => {
+      expect(getTodos).toBeDefined();
+    });
+
+    it("must return todos", () => {
+      const todos = getTodos();
+
+      expect(todos).toBeDefined();
+      expect(Array.isArray(todos)).toBeTruthy();
+
+      const [todo] = todos;
+
+      expect(todo.id).toBeDefined();
+      expect(todo.title).toBeDefined();
+      expect(todo.isCompleted).toBeDefined();
+    });
+  });
 });
