@@ -10,9 +10,11 @@ import {
   InputLabel,
   MenuItem,
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
+import Types from "TinyManager/types";
 
 const PRIORITIES = [
   {
@@ -155,6 +157,16 @@ function TaskForm(props) {
     </form>
   );
 }
+
+TaskForm.propTypes = {
+  title: PropTypes.string,
+  disabled: PropTypes.bool,
+  values: PropTypes.shape(Types.task),
+  errors: PropTypes.shape(Types.task),
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
+};
 
 TaskForm.defaultProps = {
   values: {},
