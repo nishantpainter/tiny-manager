@@ -1,5 +1,6 @@
 import React from "react";
 import { Divider } from "@material-ui/core";
+import PropTypes from "prop-types";
 
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
@@ -32,5 +33,9 @@ function Todos(props) {
     </div>
   );
 }
+
+Todos.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Todos;
