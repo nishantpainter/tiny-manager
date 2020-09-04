@@ -161,8 +161,8 @@ function TaskForm(props) {
 TaskForm.propTypes = {
   title: PropTypes.string,
   disabled: PropTypes.bool,
-  values: PropTypes.shape(Types.task),
-  errors: PropTypes.shape(Types.task),
+  values: PropTypes.shape(Types.Task),
+  errors: PropTypes.shape(Types.Task),
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
