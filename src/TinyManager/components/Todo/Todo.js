@@ -52,9 +52,9 @@ function Todo(props) {
   );
 }
 
-Todo.propType = {
+Todo.propTypes = {
   title: PropTypes.string.isRequired,
-  isComplete: PropTypes.bool,
+  isCompleted: PropTypes.bool,
   divider: PropTypes.bool,
   onCheck: PropTypes.func,
 };
