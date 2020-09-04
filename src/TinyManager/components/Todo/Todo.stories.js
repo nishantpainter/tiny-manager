@@ -3,26 +3,15 @@ import React from "react";
 import Todo from "./Todo";
 
 const argTypes = {
-  title: {
-    name: "title",
-    description: "Todo title",
+  todo: {
+    name: "todo",
+    description: "Todo",
     type: {
-      name: "string",
+      name: "object",
       required: true,
     },
     control: {
-      type: "text",
-    },
-  },
-  isCompleted: {
-    name: "isCompleted",
-    description: "Completion status of todo",
-    defaultValue: false,
-    type: {
-      name: "boolean",
-    },
-    control: {
-      type: "boolean",
+      type: null,
     },
   },
   divider: {
@@ -48,11 +37,10 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Todo task",
+  todo: { title: "Todo task" },
 };
 
 export const Completed = Template.bind({});
 Completed.args = {
-  ...Default.args,
-  isCompleted: true,
+  todo: { ...Default.args.todo, isCompleted: true },
 };
