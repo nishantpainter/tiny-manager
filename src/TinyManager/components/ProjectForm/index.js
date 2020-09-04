@@ -94,8 +94,8 @@ function ProjectForm(props) {
 
 ProjectForm.propTypes = {
   title: PropTypes.string,
-  values: PropTypes.shape(Types.Project),
-  errors: PropTypes.shape(Types.Project),
+  values: Types.Project,
+  errors: Types.Project,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
