@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
-import Types from "TinyManager/types";
+import { ProjectType } from "TinyManager/types";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -94,8 +94,8 @@ function ProjectForm(props) {
 
 ProjectForm.propTypes = {
   title: PropTypes.string,
-  values: Types.Project,
-  errors: Types.Project,
+  values: ProjectType,
+  errors: ProjectType,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,

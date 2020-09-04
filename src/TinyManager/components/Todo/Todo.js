@@ -11,7 +11,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Delete as DeleteIcon } from "@material-ui/icons";
 
-import Types from "TinyManager/types";
+import { TodoType } from "TinyManager/types";
 
 const useStyles = makeStyles({
   listItemContainer: {
@@ -56,7 +56,7 @@ function Todo(props) {
 }
 
 Todo.propTypes = {
-  todo: Types.Todo,
+  todo: TodoType,
   divider: PropTypes.bool,
   onCheck: PropTypes.func,
 };

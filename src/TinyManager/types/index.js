@@ -1,25 +1,25 @@
 import PropTypes from "prop-types";
 
-const Project = PropTypes.shape({
+export const ProjectType = PropTypes.shape({
   id: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
 });
 
-const Task = PropTypes.shape({
+export const TaskType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
   note: PropTypes.string,
 });
 
-const Todo = PropTypes.shape({
+export const TodoType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
   isCompleted: PropTypes.bool,
 });
 
 export default {
-  Project,
-  Task,
-  Todo,
+  ProjectType,
+  TaskType,
+  TodoType,
 };

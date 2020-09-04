@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
-import Types from "TinyManager/types";
+import { TaskType } from "TinyManager/types";
 
 const PRIORITIES = [
   {
@@ -161,8 +161,8 @@ function TaskForm(props) {
 TaskForm.propTypes = {
   title: PropTypes.string,
   disabled: PropTypes.bool,
-  values: Types.Task,
-  errors: Types.Task,
+  values: TaskType,
+  errors: TaskType,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
