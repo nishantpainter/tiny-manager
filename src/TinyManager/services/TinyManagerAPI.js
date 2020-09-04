@@ -37,7 +37,9 @@ function removeProject(projectId) {}
 
 function removeTask(taskId) {}
 
-function fetchTodos() {}
+function fetchTodos() {
+  return fetch(MockService.getTodos());
+}
 
 function addTodo() {}
 
@@ -56,4 +58,5 @@ export default {
   updateTask,
   removeProject,
   removeTask,
+  fetchTodos,
 };
