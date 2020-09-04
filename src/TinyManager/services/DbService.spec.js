@@ -6,6 +6,20 @@ describe("DbService", () => {
     expect(DbService).toBeTruthy();
   });
 
+  describe("getTable", () => {
+    const { getTable } = DbService;
+
+    it("must be defined", () => {
+      expect(getTable).toBeDefined();
+    });
+
+    it("must return table", () => {
+      const table = getTable("projects");
+      expect(table).toBeDefined();
+      expect(table.name).toBe("projects");
+    });
+  });
+
   describe("find", () => {
     const { find } = DbService;
 
@@ -43,6 +57,17 @@ describe("DbService", () => {
 
     it("must be defined", () => {
       expect(remove).toBeDefined();
+    });
+  });
+
+  describe("DB", () => {
+    const { getTable } = DbService;
+
+    it("must be initialized", () => {
+      const projectsTable = getTable("projects");
+
+      expect(projectsTable).toBeDefined();
+      expect(projectsTable.name).toEqual("projects");
     });
   });
 });
