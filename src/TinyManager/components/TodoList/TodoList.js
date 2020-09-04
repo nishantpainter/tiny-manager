@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { List, Typography } from "@material-ui/core";
 
 import Todo from "../Todo";
+import Types from "TinyManager/types";
 
 function TodoList(props) {
   const { todos, onTodoClick } = props;
@@ -14,12 +15,7 @@ function TodoList(props) {
   return (
     <List>
       {todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          title={todo.title}
-          isCompleted={todo.isCompleted}
-          onClick={onTodoClick}
-        />
+        <Todo key={todo.id} todo={todo} onClick={onTodoClick} />
       ))}
     </List>
   );
@@ -27,13 +23,7 @@ function TodoList(props) {
 
 TodoList.propTypes = {
   onTodoClick: PropTypes.func,
-  todos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      isComplete: PropTypes.bool,
-    })
-  ),
+  todos: PropTypes.arrayOf(Types.Todo),
 };
 
 TodoList.defaultProps = {
