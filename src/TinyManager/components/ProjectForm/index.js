@@ -6,9 +6,11 @@ import {
   Typography,
   Divider,
 } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
+import Types from "TinyManager/types";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -89,6 +91,16 @@ function ProjectForm(props) {
     </form>
   );
 }
+
+ProjectForm.propTypes = {
+  title: PropTypes.string,
+  values: PropTypes.shape(Types.project),
+  errors: PropTypes.shape(Types.project),
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
+};
 
 ProjectForm.defaultProps = {
   values: {},
