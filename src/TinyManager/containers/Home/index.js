@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     height: "inherit",
   },
   todos: {
+    height: "100%",
     marginTop: theme.spacing(2),
   },
 }));
