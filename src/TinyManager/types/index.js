@@ -6,6 +6,13 @@ const project = {
   description: PropTypes.string,
 };
 
+const task = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  note: PropTypes.string,
+};
+
 export default {
   project,
+  task,
 };
