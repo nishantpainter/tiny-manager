@@ -11,6 +11,8 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Delete as DeleteIcon } from "@material-ui/icons";
 
+import Types from "TinyManager/types";
+
 const useStyles = makeStyles({
   listItemContainer: {
     listStyle: "none",
@@ -18,7 +20,8 @@ const useStyles = makeStyles({
 });
 
 function Todo(props) {
-  const { title, divider, isCompleted, onCheck } = props;
+  const { todo, divider, onCheck } = props;
+  const { title, isCompleted } = todo;
 
   const classes = useStyles();
   return (
@@ -53,15 +56,15 @@ function Todo(props) {
 }
 
 Todo.propTypes = {
-  title: PropTypes.string.isRequired,
-  isCompleted: PropTypes.bool,
+  todo: Types.Todo,
   divider: PropTypes.bool,
   onCheck: PropTypes.func,
 };
 
 Todo.defaultProps = {
-  isCompleted: false,
+  todo: {},
   divider: true,
+  onCheck: () => {},
 };
 
 export default Todo;
