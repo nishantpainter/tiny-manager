@@ -31,7 +31,7 @@ function TodoForm(props) {
 
   const classes = useStyles();
   return (
-    <form onSubmit={onSubmit} className={classes.form}>
+    <form onSubmit={onSubmit} className={classes.form} noValidate>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h5" align="center" gutterBottom>
