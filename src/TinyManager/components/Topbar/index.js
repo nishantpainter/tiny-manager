@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import MuiAppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -19,8 +20,9 @@ const useStyles = makeStyles({
 });
 
 function Topbar(props) {
-  const classes = useStyles();
   const { onToggleDarkMode } = props;
+
+  const classes = useStyles();
   return (
     <AppBar color="default">
       <Toolbar variant="dense">
@@ -42,5 +44,9 @@ function Topbar(props) {
     </AppBar>
   );
 }
+
+Topbar.propTypes = {
+  onToggleDarkMode: PropTypes.func,
+};
 
 export default Topbar;
