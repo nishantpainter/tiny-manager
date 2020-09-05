@@ -1,10 +1,17 @@
 import React from "react";
-import { Divider } from "@material-ui/core";
 import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import { Divider, Button } from "@material-ui/core";
 
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+
+const useStyles = makeStyles((theme) => ({
+  addTodoButton: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 function Todos(props) {
   const { className } = props;
@@ -13,6 +20,8 @@ function Todos(props) {
     todos: [],
     loading: false,
   });
+
+  const classes = useStyles();
 
   const fetchTodos = React.useCallback(() => {
     setStore((store) => ({ ...store, loading: true }));
@@ -29,7 +38,20 @@ function Todos(props) {
   return (
     <div className={className}>
       <Divider />
-      {loading ? <Loader /> : <TodoList todos={todos} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.addTodoButton}
+          >
+            Add new Todo
+          </Button>
+          <TodoList todos={todos} />
+        </>
+      )}
     </div>
   );
 }
