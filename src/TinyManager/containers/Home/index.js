@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   todos: {
     height: "100%",
+    overflow: "hidden",
     marginTop: theme.spacing(2),
   },
 }));

@@ -9,7 +9,8 @@ import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
   addTodoButton: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(),
+    marginBottom: theme.spacing(),
   },
   todosContainer: {
     height: "100%",
