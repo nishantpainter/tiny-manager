@@ -47,7 +47,8 @@ function TodoForm(props) {
             label="Title"
             disabled={disabled}
             values={values.title}
-            error={errors.title}
+            error={Boolean(errors.title)}
+            helperText={errors.title}
             onChange={onChange}
             fullWidth
             required
