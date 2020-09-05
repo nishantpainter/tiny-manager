@@ -40,7 +40,7 @@ function Todos(props) {
     setStore((store) => ({ ...store, loading: true }));
 
     TinyManagerAPI.fetchTodos().then((todos) => {
-      setStore({ todos, loading: false });
+      setStore((store) => ({ ...store, todos, loading: false }));
     });
   }, []);
 
@@ -74,9 +74,11 @@ function Todos(props) {
         }));
         handleCloseDialog();
       })
-      .catch(() => alert("Error adding todo"));
+      .catch(() => {
+        setStore((store) => ({ ...store, saving: false }));
+        alert("Error adding todo");
+      });
   }, [todo, handleCloseDialog]);
-  console.log(errors);
 
   const handleSubmit = React.useCallback(
     (e) => {
@@ -88,6 +90,8 @@ function Todos(props) {
         }));
         return;
       }
+
+      setStore((store) => ({ ...store, saving: true }));
 
       if (Object.keys(errors).length) {
         setStore((store) => ({ ...store, errors: {} }));
