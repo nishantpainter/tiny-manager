@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { Divider, Button, Dialog, DialogContent } from "@material-ui/core";
+import { Divider, Button } from "@material-ui/core";
 
+import TodoFormDialog from "./TodoFormDialog";
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
-import TodoForm from "TinyManager/components/TodoForm";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,12 +23,11 @@ function Todos(props) {
   const { className } = props;
 
   const [
-    { todos, todo, errors, loading, saving, dialogOpen },
+    { todos, todo, loading, saving, dialogOpen },
     setStore,
   ] = React.useState({
     todos: [],
     todo: { title: "" },
-    errors: {},
     loading: false,
     saving: false,
     dialogOpen: false,
@@ -64,58 +63,34 @@ function Todos(props) {
     [handleOpenDialog]
   );
 
-  const handleAddNewTodo = React.useCallback(() => {
-    TinyManagerAPI.addTodo(todo)
-      .then((todo) => {
-        setStore((store) => ({
-          ...store,
-          saving: false,
-          todos: [todo, ...store.todos],
-        }));
-        handleCloseDialog();
-      })
-      .catch(() => {
-        setStore((store) => ({ ...store, saving: false }));
-        alert("Error adding todo");
-      });
-  }, [todo, handleCloseDialog]);
-
-  const handleSubmit = React.useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!todo.title) {
-        setStore((store) => ({
-          ...store,
-          errors: { title: "Title is required." },
-        }));
-        return;
-      }
-
-      setStore((store) => ({ ...store, saving: true }));
-
-      if (Object.keys(errors).length) {
-        setStore((store) => ({ ...store, errors: {} }));
-      }
-
-      if (todo.id) {
-        /* Todo */
-      } else {
-        handleAddNewTodo();
-      }
+  const handleAddNewTodo = React.useCallback(
+    (todo) => {
+      TinyManagerAPI.addTodo(todo)
+        .then((todo) => {
+          setStore((store) => ({
+            ...store,
+            saving: false,
+            todos: [todo, ...store.todos],
+          }));
+          handleCloseDialog();
+        })
+        .catch(() => {
+          setStore((store) => ({ ...store, saving: false }));
+          alert("Error adding todo");
+        });
     },
-    [todo, errors]
+    [handleCloseDialog]
   );
 
-  const handleChange = React.useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      setStore((store) => ({
-        ...store,
-        todo: { ...store.todo, [name]: value },
-      }));
-    },
-    [todo]
-  );
+  const handleSubmit = React.useCallback((todo) => {
+    setStore((store) => ({ ...store, saving: true }));
+
+    if (todo.id) {
+      /* Todo */
+    } else {
+      handleAddNewTodo(todo);
+    }
+  }, []);
 
   React.useEffect(() => {
     fetchTodos();
@@ -139,24 +114,13 @@ function Todos(props) {
           <TodoList todos={todos} />
         </div>
       )}
-
-      <Dialog
-        fullWidth={true}
-        maxWidth="sm"
+      <TodoFormDialog
+        intitialValue={todo}
         open={dialogOpen}
+        saving={saving}
+        onSubmit={handleSubmit}
         onClose={handleCloseDialog}
-      >
-        <DialogContent>
-          <TodoForm
-            values={todo}
-            errors={errors}
-            disabled={saving}
-            onChange={handleChange}
-            onCancel={handleCloseDialog}
-            onSubmit={handleSubmit}
-          />
-        </DialogContent>
-      </Dialog>
+      />
     </div>
   );
 }
