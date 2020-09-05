@@ -45,7 +45,7 @@ function ProjectList(props) {
 
   return (
     <Fade in={true}>
-      <div>
+      <div style={{ height: "100%", overflow: "hidden" }}>
         <Typography variant="h5" gutterBottom>
           Project List
         </Typography>
@@ -55,15 +55,19 @@ function ProjectList(props) {
         <br />
         <br />
         {projects && projects.length ? (
-          projects.map((project) => (
-            <React.Fragment key={project.id}>
-              <ProjectCard
-                project={project}
-                className={classes.projectCard}
-                onClick={handleProjectClick}
-              />
-            </React.Fragment>
-          ))
+          <div
+            style={{ height: "85%", padding: `32px 32px`, overflow: "auto" }}
+          >
+            {projects.map((project) => (
+              <React.Fragment key={project.id}>
+                <ProjectCard
+                  project={project}
+                  className={classes.projectCard}
+                  onClick={handleProjectClick}
+                />
+              </React.Fragment>
+            ))}
+          </div>
         ) : (
           <Typography variant="body1">No available projects.</Typography>
         )}
