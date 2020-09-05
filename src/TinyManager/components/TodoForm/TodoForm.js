@@ -5,7 +5,6 @@ import {
   TextField,
   Grid,
   Button,
-  Paper,
   Typography,
   Divider,
 } from "@material-ui/core";
@@ -13,7 +12,7 @@ import {
 import { TodoType } from "TinyManager/types";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
+  form: {
     padding: theme.spacing(2),
     height: "auto",
   },
@@ -32,45 +31,43 @@ function TodoForm(props) {
 
   const classes = useStyles();
   return (
-    <form onSubmit={onSubmit}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant="h5" align="center" gutterBottom>
-              {title}
-            </Typography>
-            <Divider />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              margin="dense"
-              id="title"
-              name="title"
-              label="Title"
-              disabled={disabled}
-              values={values.title}
-              error={errors.title}
-              onChange={onChange}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item xs={12} align="right">
-            <Button variant="outlined" disabled={disabled} onClick={onCancel}>
-              Cancel
-            </Button>
-            &nbsp;
-            <Button
-              color="primary"
-              variant="contained"
-              type="submit"
-              disabled={disabled}
-            >
-              Save
-            </Button>
-          </Grid>
+    <form onSubmit={onSubmit} className={classes.form}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Typography variant="h5" align="center" gutterBottom>
+            {title}
+          </Typography>
+          <Divider />
         </Grid>
-      </Paper>
+        <Grid item xs={12}>
+          <TextField
+            margin="dense"
+            id="title"
+            name="title"
+            label="Title"
+            disabled={disabled}
+            values={values.title}
+            error={errors.title}
+            onChange={onChange}
+            fullWidth
+            required
+          />
+        </Grid>
+        <Grid item xs={12} align="right">
+          <Button variant="outlined" disabled={disabled} onClick={onCancel}>
+            Cancel
+          </Button>
+          &nbsp;
+          <Button
+            color="primary"
+            variant="contained"
+            type="submit"
+            disabled={disabled}
+          >
+            Save
+          </Button>
+        </Grid>
+      </Grid>
     </form>
   );
 }
