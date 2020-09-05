@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Typography, Fade } from "@material-ui/core";
 
@@ -75,5 +76,10 @@ function ProjectList(props) {
     </Fade>
   );
 }
+
+ProjectList.propTypes = {
+  onNewProject: PropTypes.func,
+  onProjectClick: PropTypes.func,
+};
 
 export default ProjectList;
