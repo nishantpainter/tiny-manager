@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
   addTodoButton: {
     marginTop: theme.spacing(2),
   },
+  todosContainer: {
+    height: "100%",
+    textAlign: "right",
+  },
 }));
 
 function Todos(props) {
@@ -41,7 +45,7 @@ function Todos(props) {
       {loading ? (
         <Loader />
       ) : (
-        <>
+        <div className={classes.todosContainer}>
           <Button
             variant="outlined"
             color="primary"
@@ -50,7 +54,7 @@ function Todos(props) {
             Add new Todo
           </Button>
           <TodoList todos={todos} />
-        </>
+        </div>
       )}
     </div>
   );
