@@ -89,6 +89,7 @@ TodoForm.defaultProps = {
   title: "Add Todo",
   values: {},
   errors: {},
+  disabled: false,
   onSubmit: (e) => e.preventDefault(),
   onChange: () => {},
   onCancel: () => {},
