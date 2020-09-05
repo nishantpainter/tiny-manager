@@ -42,10 +42,19 @@ function getTodos() {
   }));
 }
 
+function addTodo(todo) {
+  return {
+    id: getId(),
+    isCompleted: false,
+    ...todo,
+  };
+}
+
 export default {
   getProjects,
   getProject,
   getTasks,
   getTask,
   getTodos,
+  addTodo,
 };

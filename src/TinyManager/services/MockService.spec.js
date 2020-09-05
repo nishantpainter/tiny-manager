@@ -101,4 +101,23 @@ describe("MockService", () => {
       expect(todo.isCompleted).toBeDefined();
     });
   });
+
+  describe("addTodo", () => {
+    const { addTodo } = MockService;
+
+    it("must be defined", () => {
+      expect(addTodo).toBeDefined();
+    });
+
+    it("must return todo with id", () => {
+      const todo = addTodo({ title: "make-coffee" });
+
+      expect(todo).toBeDefined();
+      expect(todo.id).toBeDefined();
+      expect(todo.title).toBeDefined();
+      expect(todo.title).toBe("make-coffee");
+      expect(todo.isCompleted).toBeDefined();
+      expect(todo.isCompleted).toBeFalsy();
+    });
+  });
 });
