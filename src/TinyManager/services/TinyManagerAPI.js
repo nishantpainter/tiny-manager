@@ -41,7 +41,9 @@ function fetchTodos() {
   return fetch(MockService.getTodos());
 }
 
-function addTodo() {}
+function addTodo(todo) {
+  return fetch(MockService.addTodo(todo));
+}
 
 function updateTodo() {}
 
@@ -59,4 +61,5 @@ export default {
   removeProject,
   removeTask,
   fetchTodos,
+  addTodo,
 };
