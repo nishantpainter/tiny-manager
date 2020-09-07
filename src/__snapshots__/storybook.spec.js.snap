@@ -1228,7 +1228,8 @@ exports[`Storyshots Example/TodoForm Error 1`] = `
           onClick={[Function]}
         >
           <input
-            aria-invalid="Title is required"
+            aria-describedby="title-helper-text"
+            aria-invalid={true}
             autoFocus={false}
             className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             disabled={false}
@@ -1255,6 +1256,12 @@ exports[`Storyshots Example/TodoForm Error 1`] = `
             </legend>
           </fieldset>
         </div>
+        <p
+          className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error Mui-required MuiFormHelperText-marginDense"
+          id="title-helper-text"
+        >
+          Title is required
+        </p>
       </div>
     </div>
     <div
