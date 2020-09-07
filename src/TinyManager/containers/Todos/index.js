@@ -92,6 +92,17 @@ function Todos(props) {
     }
   }, []);
 
+  const handleTodoCheck = React.useCallback((e, todo) => {
+    if (todo && todo.id) {
+      setStore((store) => ({
+        ...store,
+        todos: store.todos.map((t) =>
+          t.id === todo.id ? { ...t, isCompleted: !t.isCompleted } : t
+        ),
+      }));
+    }
+  });
+
   React.useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
@@ -111,7 +122,7 @@ function Todos(props) {
           >
             Add new Todo
           </Button>
-          <TodoList todos={todos} />
+          <TodoList todos={todos} onTodoCheck={handleTodoCheck} />
         </div>
       )}
       <TodoFormDialog
