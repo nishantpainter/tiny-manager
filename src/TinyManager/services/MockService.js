@@ -38,14 +38,14 @@ function getTodos() {
   return new Array(10).fill(0).map(() => ({
     id: getId(),
     title: faker.commerce.department(),
-    isCompleted: false,
+    completed: false,
   }));
 }
 
 function addTodo(todo) {
   return {
     id: getId(),
-    isCompleted: false,
+    completed: false,
     ...todo,
   };
 }

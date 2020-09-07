@@ -98,7 +98,7 @@ describe("MockService", () => {
 
       expect(todo.id).toBeDefined();
       expect(todo.title).toBeDefined();
-      expect(todo.isCompleted).toBeDefined();
+      expect(todo.completed).toBeDefined();
     });
   });
 
@@ -116,8 +116,8 @@ describe("MockService", () => {
       expect(todo.id).toBeDefined();
       expect(todo.title).toBeDefined();
       expect(todo.title).toBe("make-coffee");
-      expect(todo.isCompleted).toBeDefined();
-      expect(todo.isCompleted).toBeFalsy();
+      expect(todo.completed).toBeDefined();
+      expect(todo.completed).toBeFalsy();
     });
   });
 });
