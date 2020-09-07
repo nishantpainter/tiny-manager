@@ -97,7 +97,7 @@ function Todos(props) {
       setStore((store) => ({
         ...store,
         todos: store.todos.map((t) =>
-          t.id === todo.id ? { ...t, isCompleted: !t.isCompleted } : t
+          t.id === todo.id ? { ...t, completed: !t.completed } : t
         ),
       }));
     }

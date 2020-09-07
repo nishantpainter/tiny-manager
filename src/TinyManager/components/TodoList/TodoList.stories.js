@@ -39,7 +39,7 @@ export const Default = Template.bind({});
 Default.args = {
   todos: new Array(10)
     .fill(0)
-    .map((_, id) => ({ id, title: `Todo - ${id}`, isCompleted: id % 2 === 0 })),
+    .map((_, id) => ({ id, title: `Todo - ${id}`, completed: id % 2 === 0 })),
 };
 
 export const Empty = Template.bind({});

@@ -15,7 +15,7 @@ export const TaskType = PropTypes.shape({
 export const TodoType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
-  isCompleted: PropTypes.bool,
+  completed: PropTypes.bool,
 });
 
 export default {

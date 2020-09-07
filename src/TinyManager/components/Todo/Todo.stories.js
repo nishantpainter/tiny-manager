@@ -42,5 +42,5 @@ Default.args = {
 
 export const Completed = Template.bind({});
 Completed.args = {
-  todo: { ...Default.args.todo, isCompleted: true },
+  todo: { ...Default.args.todo, completed: true },
 };

@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 function Todo(props) {
   const { todo, divider, onCheck } = props;
-  const { title, isCompleted } = todo;
+  const { title, completed } = todo;
 
   const classes = useStyles();
 
@@ -43,7 +43,7 @@ function Todo(props) {
         <Checkbox
           color="primary"
           edge="start"
-          checked={isCompleted}
+          checked={completed}
           disableRipple
           onChange={handleCheck}
         />
@@ -51,7 +51,7 @@ function Todo(props) {
       <ListItemText
         primary={title}
         primaryTypographyProps={{
-          color: isCompleted ? "textSecondary" : "initial",
+          color: completed ? "textSecondary" : "initial",
         }}
       />
       <ListItemSecondaryAction>
