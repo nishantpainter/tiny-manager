@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 });
 
 function TodoList(props) {
-  const { todos, onTodoClick } = props;
+  const { todos, onTodoClick, onTodoCheck } = props;
 
   const classes = useStyles();
 
@@ -25,20 +25,27 @@ function TodoList(props) {
   return (
     <List className={classes.list}>
       {todos.map((todo) => (
-        <Todo key={todo.id} todo={todo} onClick={onTodoClick} />
+        <Todo
+          key={todo.id}
+          todo={todo}
+          onClick={onTodoClick}
+          onCheck={onTodoCheck}
+        />
       ))}
     </List>
   );
 }
 
 TodoList.propTypes = {
-  onTodoClick: PropTypes.func,
   todos: PropTypes.arrayOf(TodoType),
+  onTodoClick: PropTypes.func,
+  onTodoCheck: PropTypes.func,
 };
 
 TodoList.defaultProps = {
   todos: [],
   onTodoClick: () => {},
+  onTodoCheck: () => {},
 };
 
 export default TodoList;
