@@ -24,6 +24,14 @@ function Todo(props) {
   const { title, isCompleted } = todo;
 
   const classes = useStyles();
+
+  const handleCheck = React.useCallback(
+    (e) => {
+      onCheck(e, todo);
+    },
+    [onCheck]
+  );
+
   return (
     <ListItem
       ContainerProps={{ className: classes.listItemContainer }}
@@ -37,7 +45,7 @@ function Todo(props) {
           edge="start"
           checked={isCompleted}
           disableRipple
-          onChange={onCheck && onCheck}
+          onChange={handleCheck}
         />
       </ListItemIcon>
       <ListItemText
