@@ -18,6 +18,9 @@ const Paper = withStyles((theme) => ({
 Paper.displayName = "Paper";
 
 Paper.propTypes = {
+  /**
+   * @ignore
+   */
   className: PropTypes.string,
 };
 
