@@ -51,6 +51,9 @@ function Loader(props) {
 }
 
 Loader.propTypes = {
+  /**
+   * @ignore 
+   */
   className: PropTypes.string,
 };
 
