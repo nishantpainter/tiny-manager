@@ -93,12 +93,33 @@ function ProjectForm(props) {
 }
 
 ProjectForm.propTypes = {
+  /**
+   * Title of the form
+   */
   title: PropTypes.string,
+  /**
+   * Values of the form
+   */
   values: ProjectType,
+  /**
+   * Errors in the form
+   */
   errors: ProjectType,
+  /**
+   * Disabled
+   */
   disabled: PropTypes.bool,
+  /**
+   * Input on change handler
+   */
   onChange: PropTypes.func,
+  /**
+   * Form on submit handler
+   */
   onSubmit: PropTypes.func,
+  /**
+   * Form cancel handler
+   */
   onCancel: PropTypes.func,
 };
 
