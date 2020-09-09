@@ -2,9 +2,23 @@ import React from "react";
 
 import ProjectForm from "./ProjectForm";
 
+const argTypes = {
+  values: {
+    control: {
+      type: null,
+    },
+  },
+  errors: {
+    control: {
+      type: null,
+    },
+  },
+};
+
 export default {
   title: "Example/ProjectForm",
   component: ProjectForm,
+  argTypes,
 };
 
 const Template = (args) => <ProjectForm {...args} />;
