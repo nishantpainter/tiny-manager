@@ -66,8 +66,446 @@ exports[`Storyshots Example/Loader Default 1`] = `
 
 exports[`Storyshots Example/Paper Default 1`] = `
 <div
-  className="MuiPaper-root-5 WithStyles(ForwardRef(Paper))-root-4 MuiPaper-elevation1-9 MuiPaper-rounded-6"
+  className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-4 MuiPaper-elevation1 MuiPaper-rounded"
 />
+`;
+
+exports[`Storyshots Example/ProjectCard Default 1`] = `
+<div
+  className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-7 makeStyles-paper-5 MuiPaper-elevation1 MuiPaper-rounded"
+  onClick={[Function]}
+>
+  <h4
+    className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary"
+  >
+    Tiny Manager
+  </h4>
+  <h6
+    className="MuiTypography-root makeStyles-fullWidth-6 MuiTypography-subtitle1 MuiTypography-noWrap MuiTypography-gutterBottom"
+    title="Tiny manager for your self project"
+  >
+    Tiny manager for your self project
+  </h6>
+  <div
+    aria-valuemax={100}
+    aria-valuemin={0}
+    aria-valuenow={60}
+    className="MuiLinearProgress-root MuiLinearProgress-colorPrimary makeStyles-fullWidth-6 MuiLinearProgress-determinate"
+    role="progressbar"
+    title="60%"
+  >
+    <div
+      className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+      style={
+        Object {
+          "transform": "translateX(-40%)",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Example/ProjectCard Progress 1`] = `
+<div
+  className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-10 makeStyles-paper-8 MuiPaper-elevation1 MuiPaper-rounded"
+  onClick={[Function]}
+>
+  <h4
+    className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary"
+  >
+    Tiny Manager
+  </h4>
+  <h6
+    className="MuiTypography-root makeStyles-fullWidth-9 MuiTypography-subtitle1 MuiTypography-noWrap MuiTypography-gutterBottom"
+    title="Tiny manager for your self project"
+  >
+    Tiny manager for your self project
+  </h6>
+  <div
+    aria-valuemax={100}
+    aria-valuemin={0}
+    aria-valuenow={100}
+    className="MuiLinearProgress-root MuiLinearProgress-colorPrimary makeStyles-fullWidth-9 MuiLinearProgress-determinate"
+    role="progressbar"
+    title="100%"
+  >
+    <div
+      className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Determinate"
+      style={
+        Object {
+          "transform": "translateX(0%)",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Example/ProjectForm Default 1`] = `
+<form
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-12 makeStyles-paper-11 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <h5
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
+        >
+          New Project
+        </h5>
+        <hr
+          className="MuiDivider-root"
+        />
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+            data-shrink={false}
+            htmlFor="name"
+            id="name-label"
+          >
+            Name
+            <span
+              aria-hidden={true}
+              className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+              disabled={false}
+              id="name"
+              name="name"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-13 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-15"
+              >
+                <span>
+                  Name
+                   *
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink={false}
+            htmlFor="description"
+            id="description-label"
+          >
+            Description
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+            onClick={[Function]}
+          >
+            <textarea
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+              disabled={false}
+              id="description"
+              name="description"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              rows={4}
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-13 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-15"
+              >
+                <span>
+                  Description
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        align="right"
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Cancel
+          </span>
+        </button>
+         
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Save
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Storyshots Example/ProjectForm Disabled 1`] = `
+<form
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-18 makeStyles-paper-17 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <h5
+          className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
+        >
+          New Project
+        </h5>
+        <hr
+          className="MuiDivider-root"
+        />
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-disabled Mui-disabled Mui-required Mui-required"
+            data-shrink={false}
+            htmlFor="name"
+            id="name-label"
+          >
+            Name
+            <span
+              aria-hidden={true}
+              className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+              disabled={true}
+              id="name"
+              name="name"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-19 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-21"
+              >
+                <span>
+                  Name
+                   *
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-disabled Mui-disabled"
+            data-shrink={false}
+            htmlFor="description"
+            id="description-label"
+          >
+            Description
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+            onClick={[Function]}
+          >
+            <textarea
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+              disabled={true}
+              id="description"
+              name="description"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              rows={4}
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-19 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-21"
+              >
+                <span>
+                  Description
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        align="right"
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Cancel
+          </span>
+        </button>
+         
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
+          disabled={true}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="submit"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Save
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
 `;
 
 exports[`Storyshots Example/TaskForm Default 1`] = `
@@ -76,7 +514,7 @@ exports[`Storyshots Example/TaskForm Default 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-34 makeStyles-paper-33 MuiPaper-elevation1 MuiPaper-rounded"
+    className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-24 makeStyles-paper-23 MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
       className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
@@ -134,10 +572,10 @@ exports[`Storyshots Example/TaskForm Default 1`] = `
             />
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-35 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-25 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-37"
+                className="PrivateNotchedOutline-legendLabelled-27"
               >
                 <span>
                   Title
@@ -197,10 +635,10 @@ exports[`Storyshots Example/TaskForm Default 1`] = `
             </svg>
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-35 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-25 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-37 PrivateNotchedOutline-legendNotched-38"
+                className="PrivateNotchedOutline-legendLabelled-27 PrivateNotchedOutline-legendNotched-28"
               >
                 <span>
                   Priority
@@ -244,10 +682,10 @@ exports[`Storyshots Example/TaskForm Default 1`] = `
             />
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-35 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-25 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-37"
+                className="PrivateNotchedOutline-legendLabelled-27"
               >
                 <span>
                   Note
@@ -306,10 +744,10 @@ exports[`Storyshots Example/TaskForm Default 1`] = `
             </svg>
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-35 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-25 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-37 PrivateNotchedOutline-legendNotched-38"
+                className="PrivateNotchedOutline-legendLabelled-27 PrivateNotchedOutline-legendNotched-28"
               >
                 <span>
                   Percentage
@@ -386,7 +824,7 @@ exports[`Storyshots Example/TaskForm Disabled 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-40 makeStyles-paper-39 MuiPaper-elevation1 MuiPaper-rounded"
+    className="MuiPaper-root WithStyles(ForwardRef(Paper))-root-30 makeStyles-paper-29 MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
       className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
@@ -444,10 +882,10 @@ exports[`Storyshots Example/TaskForm Disabled 1`] = `
             />
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-43"
+                className="PrivateNotchedOutline-legendLabelled-33"
               >
                 <span>
                   Title
@@ -508,10 +946,10 @@ exports[`Storyshots Example/TaskForm Disabled 1`] = `
             </svg>
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-43 PrivateNotchedOutline-legendNotched-44"
+                className="PrivateNotchedOutline-legendLabelled-33 PrivateNotchedOutline-legendNotched-34"
               >
                 <span>
                   Priority
@@ -555,10 +993,10 @@ exports[`Storyshots Example/TaskForm Disabled 1`] = `
             />
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-43"
+                className="PrivateNotchedOutline-legendLabelled-33"
               >
                 <span>
                   Note
@@ -618,10 +1056,10 @@ exports[`Storyshots Example/TaskForm Disabled 1`] = `
             </svg>
             <fieldset
               aria-hidden={true}
-              className="PrivateNotchedOutline-root-41 MuiOutlinedInput-notchedOutline"
+              className="PrivateNotchedOutline-root-31 MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="PrivateNotchedOutline-legendLabelled-43 PrivateNotchedOutline-legendNotched-44"
+                className="PrivateNotchedOutline-legendLabelled-33 PrivateNotchedOutline-legendNotched-34"
               >
                 <span>
                   Percentage
@@ -694,7 +1132,7 @@ exports[`Storyshots Example/TaskForm Disabled 1`] = `
 
 exports[`Storyshots Example/Todo Completed 1`] = `
 <li
-  className="MuiListItem-container makeStyles-listItemContainer-50"
+  className="MuiListItem-container makeStyles-listItemContainer-40"
 >
   <div
     aria-disabled={false}
@@ -718,7 +1156,7 @@ exports[`Storyshots Example/Todo Completed 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-51 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-52 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-41 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-42 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
         onBlur={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
@@ -737,7 +1175,7 @@ exports[`Storyshots Example/Todo Completed 1`] = `
         >
           <input
             checked={true}
-            className="PrivateSwitchBase-input-54"
+            className="PrivateSwitchBase-input-44"
             data-indeterminate={false}
             onChange={[Function]}
             type="checkbox"
@@ -806,7 +1244,7 @@ exports[`Storyshots Example/Todo Completed 1`] = `
 
 exports[`Storyshots Example/Todo Default 1`] = `
 <li
-  className="MuiListItem-container makeStyles-listItemContainer-45"
+  className="MuiListItem-container makeStyles-listItemContainer-35"
 >
   <div
     aria-disabled={false}
@@ -830,7 +1268,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-46 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+        className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-36 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
         onBlur={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
@@ -848,7 +1286,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
           className="MuiIconButton-label"
         >
           <input
-            className="PrivateSwitchBase-input-49"
+            className="PrivateSwitchBase-input-39"
             data-indeterminate={false}
             onChange={[Function]}
             type="checkbox"
@@ -917,7 +1355,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
 
 exports[`Storyshots Example/TodoForm Default 1`] = `
 <form
-  className="makeStyles-form-55"
+  className="makeStyles-form-45"
   noValidate={true}
   onSubmit={[Function]}
 >
@@ -931,6 +1369,412 @@ exports[`Storyshots Example/TodoForm Default 1`] = `
         className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
       >
         Add Todo
+      </h5>
+      <hr
+        className="MuiDivider-root"
+      />
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
+          data-shrink={false}
+          htmlFor="title"
+          id="title-label"
+        >
+          Title
+          <span
+            aria-hidden={true}
+            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+          >
+             
+            *
+          </span>
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            disabled={false}
+            id="title"
+            name="title"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="text"
+          />
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-46 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-48"
+            >
+              <span>
+                Title
+                 *
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div
+      align="right"
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Cancel
+        </span>
+      </button>
+       
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Save
+        </span>
+      </button>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Storyshots Example/TodoForm Disabled 1`] = `
+<form
+  className="makeStyles-form-50"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
+      >
+        Add Todo
+      </h5>
+      <hr
+        className="MuiDivider-root"
+      />
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-disabled Mui-disabled Mui-required Mui-required"
+          data-shrink={false}
+          htmlFor="title"
+          id="title-label"
+        >
+          Title
+          <span
+            aria-hidden={true}
+            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+          >
+             
+            *
+          </span>
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            disabled={true}
+            id="title"
+            name="title"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="text"
+          />
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-51 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-53"
+            >
+              <span>
+                Title
+                 *
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div
+      align="right"
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Cancel
+        </span>
+      </button>
+       
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={-1}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Save
+        </span>
+      </button>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Storyshots Example/TodoForm Error 1`] = `
+<form
+  className="makeStyles-form-60"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
+      >
+        Add Todo
+      </h5>
+      <hr
+        className="MuiDivider-root"
+      />
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-error Mui-error Mui-required Mui-required"
+          data-shrink={false}
+          htmlFor="title"
+          id="title-label"
+        >
+          Title
+          <span
+            aria-hidden={true}
+            className="MuiFormLabel-asterisk MuiInputLabel-asterisk Mui-error Mui-error"
+          >
+             
+            *
+          </span>
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+          onClick={[Function]}
+        >
+          <input
+            aria-describedby="title-helper-text"
+            aria-invalid={true}
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+            disabled={false}
+            id="title"
+            name="title"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="text"
+          />
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-61 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-63"
+            >
+              <span>
+                Title
+                 *
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        <p
+          className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error Mui-required MuiFormHelperText-marginDense"
+          id="title-helper-text"
+        >
+          Title is required
+        </p>
+      </div>
+    </div>
+    <div
+      align="right"
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Cancel
+        </span>
+      </button>
+       
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Save
+        </span>
+      </button>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Storyshots Example/TodoForm Title 1`] = `
+<form
+  className="makeStyles-form-55"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
+      >
+        Make Coffee
       </h5>
       <hr
         className="MuiDivider-root"
@@ -1048,418 +1892,12 @@ exports[`Storyshots Example/TodoForm Default 1`] = `
 </form>
 `;
 
-exports[`Storyshots Example/TodoForm Disabled 1`] = `
-<form
-  className="makeStyles-form-60"
-  noValidate={true}
-  onSubmit={[Function]}
->
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h5
-        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
-      >
-        Add Todo
-      </h5>
-      <hr
-        className="MuiDivider-root"
-      />
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <div
-        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-disabled Mui-disabled Mui-required Mui-required"
-          data-shrink={false}
-          htmlFor="title"
-          id="title-label"
-        >
-          Title
-          <span
-            aria-hidden={true}
-            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             
-            *
-          </span>
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-            disabled={true}
-            id="title"
-            name="title"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="text"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-61 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-63"
-            >
-              <span>
-                Title
-                 *
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-    </div>
-    <div
-      align="right"
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-outlined Mui-disabled Mui-disabled"
-        disabled={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Cancel
-        </span>
-      </button>
-       
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
-        disabled={true}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="submit"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Save
-        </span>
-      </button>
-    </div>
-  </div>
-</form>
-`;
-
-exports[`Storyshots Example/TodoForm Error 1`] = `
-<form
-  className="makeStyles-form-70"
-  noValidate={true}
-  onSubmit={[Function]}
->
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h5
-        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
-      >
-        Add Todo
-      </h5>
-      <hr
-        className="MuiDivider-root"
-      />
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <div
-        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-error Mui-error Mui-required Mui-required"
-          data-shrink={false}
-          htmlFor="title"
-          id="title-label"
-        >
-          Title
-          <span
-            aria-hidden={true}
-            className="MuiFormLabel-asterisk MuiInputLabel-asterisk Mui-error Mui-error"
-          >
-             
-            *
-          </span>
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
-          onClick={[Function]}
-        >
-          <input
-            aria-describedby="title-helper-text"
-            aria-invalid={true}
-            autoFocus={false}
-            className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-            disabled={false}
-            id="title"
-            name="title"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="text"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-71 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-73"
-            >
-              <span>
-                Title
-                 *
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-        <p
-          className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error Mui-required MuiFormHelperText-marginDense"
-          id="title-helper-text"
-        >
-          Title is required
-        </p>
-      </div>
-    </div>
-    <div
-      align="right"
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Cancel
-        </span>
-      </button>
-       
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="submit"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Save
-        </span>
-      </button>
-    </div>
-  </div>
-</form>
-`;
-
-exports[`Storyshots Example/TodoForm Title 1`] = `
-<form
-  className="makeStyles-form-65"
-  noValidate={true}
-  onSubmit={[Function]}
->
-  <div
-    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
-  >
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <h5
-        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom MuiTypography-alignCenter"
-      >
-        Make Coffee
-      </h5>
-      <hr
-        className="MuiDivider-root"
-      />
-    </div>
-    <div
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <div
-        className="MuiFormControl-root MuiTextField-root MuiFormControl-marginDense MuiFormControl-fullWidth"
-      >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined Mui-required Mui-required"
-          data-shrink={false}
-          htmlFor="title"
-          id="title-label"
-        >
-          Title
-          <span
-            aria-hidden={true}
-            className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-          >
-             
-            *
-          </span>
-        </label>
-        <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-            disabled={false}
-            id="title"
-            name="title"
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="text"
-          />
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-68"
-            >
-              <span>
-                Title
-                 *
-              </span>
-            </legend>
-          </fieldset>
-        </div>
-      </div>
-    </div>
-    <div
-      align="right"
-      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
-    >
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Cancel
-        </span>
-      </button>
-       
-      <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-        disabled={false}
-        onBlur={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="submit"
-      >
-        <span
-          className="MuiButton-label"
-        >
-          Save
-        </span>
-      </button>
-    </div>
-  </div>
-</form>
-`;
-
 exports[`Storyshots Example/TodoList Default 1`] = `
 <ul
-  className="MuiList-root makeStyles-list-75 MuiList-padding"
+  className="MuiList-root makeStyles-list-65 MuiList-padding"
 >
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -1483,7 +1921,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-78 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-68 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -1502,7 +1940,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={true}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -1568,7 +2006,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -1592,7 +2030,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -1611,7 +2049,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={false}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -1677,7 +2115,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -1701,7 +2139,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-78 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-68 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -1720,7 +2158,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={true}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -1786,7 +2224,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -1810,7 +2248,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -1829,7 +2267,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={false}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -1895,7 +2333,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -1919,7 +2357,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-78 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-68 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -1938,7 +2376,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={true}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -2004,7 +2442,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -2028,7 +2466,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -2047,7 +2485,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={false}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -2113,7 +2551,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -2137,7 +2575,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-78 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-68 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -2156,7 +2594,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={true}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -2222,7 +2660,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -2246,7 +2684,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -2265,7 +2703,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={false}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -2331,7 +2769,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -2355,7 +2793,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-78 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-checked-68 Mui-checked MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -2374,7 +2812,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={true}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
@@ -2440,7 +2878,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
     </div>
   </li>
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-76"
+    className="MuiListItem-container makeStyles-listItemContainer-66"
   >
     <div
       aria-disabled={false}
@@ -2464,7 +2902,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       >
         <span
           aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-77 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-67 MuiCheckbox-root MuiCheckbox-colorPrimary MuiIconButton-colorPrimary MuiIconButton-edgeStart"
           onBlur={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
@@ -2483,7 +2921,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
           >
             <input
               checked={false}
-              className="PrivateSwitchBase-input-80"
+              className="PrivateSwitchBase-input-70"
               data-indeterminate={false}
               onChange={[Function]}
               type="checkbox"
