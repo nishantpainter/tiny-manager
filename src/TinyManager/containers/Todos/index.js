@@ -103,6 +103,15 @@ function Todos(props) {
     }
   });
 
+  const handleTodoDelete = React.useCallback((e, todo) => {
+    if (todo && todo.id) {
+      setStore((store) => ({
+        ...store,
+        todos: store.todos.filter((t) => t.id !== todo.id),
+      }));
+    }
+  });
+
   React.useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
@@ -122,7 +131,11 @@ function Todos(props) {
           >
             Add new Todo
           </Button>
-          <TodoList todos={todos} onTodoCheck={handleTodoCheck} />
+          <TodoList
+            todos={todos}
+            onTodoCheck={handleTodoCheck}
+            onTodoDelete={handleTodoDelete}
+          />
         </div>
       )}
       <TodoFormDialog
