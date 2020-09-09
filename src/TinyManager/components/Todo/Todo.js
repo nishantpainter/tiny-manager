@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 function Todo(props) {
-  const { todo, divider, onCheck } = props;
+  const { todo, divider, onCheck, onDelete } = props;
   const { title, completed } = todo;
 
   const classes = useStyles();
@@ -30,6 +30,13 @@ function Todo(props) {
       onCheck(e, todo);
     },
     [onCheck]
+  );
+
+  const handleDelete = React.useCallback(
+    (e) => {
+      onDelete(e, todo);
+    },
+    [onDelete]
   );
 
   return (
@@ -55,7 +62,7 @@ function Todo(props) {
         }}
       />
       <ListItemSecondaryAction>
-        <IconButton edge="end" size="small">
+        <IconButton edge="end" size="small" onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>
@@ -76,12 +83,17 @@ Todo.propTypes = {
    * Todo on check handler
    */
   onCheck: PropTypes.func,
+  /**
+   * Todo on delete handler
+   */
+  onDelete: PropTypes.func,
 };
 
 Todo.defaultProps = {
   todo: {},
   divider: true,
   onCheck: () => {},
+  onDelete: () => {},
 };
 
 export default Todo;
