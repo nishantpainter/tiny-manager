@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 function Todo(props) {
-  const { todo, divider, onCheck, onDelete } = props;
+  const { todo, divider, onClick, onCheck, onDelete } = props;
   const { title, completed } = todo;
 
   const classes = useStyles();
@@ -37,6 +37,13 @@ function Todo(props) {
       onDelete(e, todo);
     },
     [onDelete]
+  );
+
+  const handleClick = React.useCallback(
+    (e) => {
+      onClick(e, todo);
+    },
+    [onClick]
   );
 
   return (
@@ -56,6 +63,7 @@ function Todo(props) {
         />
       </ListItemIcon>
       <ListItemText
+        onClick={handleClick}
         primary={title}
         primaryTypographyProps={{
           color: completed ? "textSecondary" : "initial",
@@ -87,6 +95,10 @@ Todo.propTypes = {
    * Todo on delete handler
    */
   onDelete: PropTypes.func,
+  /**
+   * Todo on click handler
+   */
+  onClick: PropTypes.func,
 };
 
 Todo.defaultProps = {
@@ -94,6 +106,7 @@ Todo.defaultProps = {
   divider: true,
   onCheck: () => {},
   onDelete: () => {},
+  onClick: () => {},
 };
 
 export default Todo;
