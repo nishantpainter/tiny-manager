@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 });
 
 function TodoList(props) {
-  const { todos, onTodoClick, onTodoCheck } = props;
+  const { todos, onTodoClick, onTodoCheck, onTodoDelete } = props;
 
   const classes = useStyles();
 
@@ -30,6 +30,7 @@ function TodoList(props) {
           todo={todo}
           onClick={onTodoClick}
           onCheck={onTodoCheck}
+          onDelete={onTodoDelete}
         />
       ))}
     </List>
@@ -37,9 +38,22 @@ function TodoList(props) {
 }
 
 TodoList.propTypes = {
+  /**
+   * List of todos
+   */
   todos: PropTypes.arrayOf(TodoType),
+  /**
+   * Todo on click handler
+   */
   onTodoClick: PropTypes.func,
+  /**
+   * Todo on check handler
+   */
   onTodoCheck: PropTypes.func,
+  /**
+   * Todo on delete handler
+   */
+  onTodoDelete: PropTypes.func,
 };
 
 TodoList.defaultProps = {
