@@ -64,8 +64,17 @@ function Todo(props) {
 }
 
 Todo.propTypes = {
+  /**
+   * Todo
+   */
   todo: TodoType,
+  /**
+   * Divider beneath todo
+   */
   divider: PropTypes.bool,
+  /**
+   * Todo on check handler
+   */
   onCheck: PropTypes.func,
 };
 
