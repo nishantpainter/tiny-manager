@@ -1195,6 +1195,7 @@ exports[`Storyshots Example/Todo Completed 1`] = `
     </div>
     <div
       className="MuiListItemText-root MuiListItemText-dense"
+      onClick={[Function]}
     >
       <span
         className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -1210,6 +1211,7 @@ exports[`Storyshots Example/Todo Completed 1`] = `
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -1306,6 +1308,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
     </div>
     <div
       className="MuiListItemText-root MuiListItemText-dense"
+      onClick={[Function]}
     >
       <span
         className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-displayBlock"
@@ -1321,6 +1324,7 @@ exports[`Storyshots Example/Todo Default 1`] = `
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -1960,6 +1964,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -1975,6 +1980,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2069,6 +2075,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-displayBlock"
@@ -2084,6 +2091,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2178,6 +2186,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -2193,6 +2202,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2287,6 +2297,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-displayBlock"
@@ -2302,6 +2313,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2396,6 +2408,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -2411,6 +2424,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2505,6 +2519,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-displayBlock"
@@ -2520,6 +2535,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2614,6 +2630,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -2629,6 +2646,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2723,6 +2741,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-displayBlock"
@@ -2738,6 +2757,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2832,6 +2852,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
@@ -2847,6 +2868,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2941,6 +2963,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
       </div>
       <div
         className="MuiListItemText-root MuiListItemText-dense"
+        onClick={[Function]}
       >
         <span
           className="MuiTypography-root MuiListItemText-primary MuiTypography-body2 MuiTypography-displayBlock"
@@ -2956,6 +2979,7 @@ exports[`Storyshots Example/TodoList Default 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiIconButton-edgeEnd"
         disabled={false}
         onBlur={[Function]}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
