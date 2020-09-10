@@ -43,8 +43,8 @@ function Todos(props) {
     });
   }, []);
 
-  const handleOpenDialog = React.useCallback((e, todo) => {
-    setStore((store) => ({ ...store, dialogOpen: true, todo }));
+  const handleOpenDialog = React.useCallback((e, todo = {}) => {
+    setStore((store) => ({ ...store, dialogOpen: true, todo: { ...todo } }));
   });
 
   const handleCloseDialog = React.useCallback(() => {
@@ -59,6 +59,13 @@ function Todos(props) {
   const handleAddNewTodoClick = React.useCallback(
     (e) => {
       handleOpenDialog(e, { title: "" });
+    },
+    [handleOpenDialog]
+  );
+
+  const handleTodoClick = React.useCallback(
+    (e, todo) => {
+      handleOpenDialog(e, todo);
     },
     [handleOpenDialog]
   );
@@ -82,11 +89,31 @@ function Todos(props) {
     [handleCloseDialog]
   );
 
+  const handleEditTodo = React.useCallback(
+    (todo) => {
+      TinyManagerAPI.updateTodo(todo)
+        .then((todo) => {
+          setStore((store) => {
+            return {
+              ...store,
+              saving: false,
+              todos: store.todos.map((t) => (t.id === todo.id ? todo : t)),
+            };
+          });
+          handleCloseDialog();
+        })
+        .catch(() => {
+          setStore((store) => ({ ...store, saving: false }));
+          alert("Error editing todo");
+        });
+    },
+    [handleCloseDialog]
+  );
+
   const handleSubmit = React.useCallback((todo) => {
     setStore((store) => ({ ...store, saving: true }));
-
     if (todo.id) {
-      /* Todo */
+      handleEditTodo(todo);
     } else {
       handleAddNewTodo(todo);
     }
@@ -133,18 +160,21 @@ function Todos(props) {
           </Button>
           <TodoList
             todos={todos}
+            onTodoClick={handleTodoClick}
             onTodoCheck={handleTodoCheck}
             onTodoDelete={handleTodoDelete}
           />
         </div>
       )}
-      <TodoFormDialog
-        intitialValue={todo}
-        open={dialogOpen}
-        saving={saving}
-        onSubmit={handleSubmit}
-        onClose={handleCloseDialog}
-      />
+      {dialogOpen && (
+        <TodoFormDialog
+          initialValue={todo}
+          open={dialogOpen}
+          saving={saving}
+          onSubmit={handleSubmit}
+          onClose={handleCloseDialog}
+        />
+      )}
     </div>
   );
 }
