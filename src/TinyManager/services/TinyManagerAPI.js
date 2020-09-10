@@ -45,7 +45,9 @@ function addTodo(todo) {
   return fetch(MockService.addTodo(todo));
 }
 
-function updateTodo() {}
+function updateTodo(todo) {
+  return fetch(MockService.updateTodo(todo));
+}
 
 function removeTodo() {}
 
@@ -62,4 +64,5 @@ export default {
   removeTask,
   fetchTodos,
   addTodo,
+  updateTodo,
 };
