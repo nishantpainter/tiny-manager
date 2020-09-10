@@ -120,4 +120,25 @@ describe("MockService", () => {
       expect(todo.completed).toBeFalsy();
     });
   });
+
+  describe("updateTodo", () => {
+    const { updateTodo } = MockService;
+
+    it("must be defined", () => {
+      expect(updateTodo).toBeDefined();
+    });
+
+    it("must return todo as it is", () => {
+      const testTodo = {
+        id: 1,
+        title: "make-coffee",
+        completed: false,
+      };
+
+      const todo = updateTodo(testTodo);
+
+      expect(todo).toBeDefined();
+      expect(todo).toEqual(testTodo);
+    });
+  });
 });

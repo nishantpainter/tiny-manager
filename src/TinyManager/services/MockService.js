@@ -50,6 +50,12 @@ function addTodo(todo) {
   };
 }
 
+function updateTodo(todo) {
+  return {
+    ...todo,
+  };
+}
+
 export default {
   getProjects,
   getProject,
@@ -57,4 +63,5 @@ export default {
   getTask,
   getTodos,
   addTodo,
+  updateTodo,
 };
