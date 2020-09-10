@@ -46,7 +46,7 @@ function TodoForm(props) {
             name="title"
             label="Title"
             disabled={disabled}
-            values={values.title}
+            value={values.title}
             error={Boolean(errors.title)}
             helperText={errors.title}
             onChange={onChange}
