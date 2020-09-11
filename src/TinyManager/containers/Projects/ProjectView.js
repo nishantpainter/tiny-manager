@@ -11,20 +11,21 @@ function ProjectView(props) {
   const { params } = match;
   const { projectId } = params;
 
-  const [loading, setLoading] = React.useState(true);
-  const [project, setProject] = React.useState({});
+  const [{ loading, project }, setStore] = React.useState({
+    loading: true,
+    project: {},
+  });
 
   React.useEffect(() => {
     if (projectId) {
-      setLoading(true);
+      setStore((store) => ({ ...store, loading: true }));
       TinyManagerAPI.fetchProject(projectId)
         .then((project) => {
-          setLoading(false);
-          setProject(project);
+          setStore((store) => ({ ...store, loading: false, project }));
         })
         .catch(redirectToProjectList);
     } else {
-      setLoading(false);
+      setStore((store) => ({ ...store, loading: false }));
       redirectToProjectList();
     }
   }, [projectId, redirectToProjectList]);
