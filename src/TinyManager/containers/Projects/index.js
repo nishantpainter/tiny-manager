@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 
 import ProjectView from "TinyManager/containers/Projects/ProjectView";
@@ -51,5 +52,13 @@ function Projects(props) {
     </>
   );
 }
+
+Projects.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.shape({
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }),
+};
 
 export default Projects;
