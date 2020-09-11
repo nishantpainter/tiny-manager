@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Typography, Grid, Button, Fade } from "@material-ui/core";
 
 import ProjectCard from "TinyManager/components/ProjectCard";
@@ -55,5 +56,12 @@ function ProjectView(props) {
     </Fade>
   );
 }
+
+ProjectView.propTypes = {
+  redirectToProjectList: PropTypes.func,
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+};
 
 export default ProjectView;
