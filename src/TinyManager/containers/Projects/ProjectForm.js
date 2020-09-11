@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import PropTypes from "prop-types";
 
 import ProjectForm from "TinyManager/components/ProjectForm";
 
@@ -12,6 +13,7 @@ function ProjectFormContainer(props) {
 
   const handleSubmit = React.useCallback((values) => {
     const { name, description } = values;
+    console.log(name, description);
   }, []);
 
   const formik = useFormik({
@@ -45,5 +47,9 @@ function ProjectFormContainer(props) {
     />
   );
 }
+
+ProjectFormContainer.propTypes = {
+  history: PropTypes.object,
+};
 
 export default ProjectFormContainer;
