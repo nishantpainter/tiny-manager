@@ -1,10 +1,11 @@
 import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import { Typography, IconButton, Grid } from "@material-ui/core";
+import { Typography, IconButton, Grid, Box } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import DeleteIcon from "@material-ui/icons/Delete";
+import FlagIcon from "@material-ui/icons/Flag";
 
 import Paper from "../Paper";
 import { TaskType } from "TinyManager/types/index";
@@ -30,11 +31,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-end",
     alignItems: "center",
   },
+  completedFlag: {
+    color: theme.palette.success.light,
+    marginRight: theme.spacing(0.5),
+  },
 }));
 
 function TaskCard(props) {
   const { task, onClick, onDelete } = props;
-  const { priority } = task;
+  const { priority = 0 } = task;
 
   const classes = useStyles();
   const theme = useTheme();
@@ -52,11 +57,16 @@ function TaskCard(props) {
     >
       <Grid container alignItems="center">
         <Grid item xs={9}>
-          <Typography
-            className={clsx(priority === 1 && classes.mediumPriority)}
-          >
-            {task.title}
-          </Typography>
+          <Box display="flex" alignItem="center">
+            {task.progress === 100 ? (
+              <FlagIcon className={classes.completedFlag} />
+            ) : null}
+            <Typography
+              className={clsx(priority === 1 && classes.mediumPriority)}
+            >
+              {task.title}
+            </Typography>
+          </Box>
         </Grid>
         <Grid item xs={2} align="right" className={classes.progress}>
           <CircularProgressWithLabel
