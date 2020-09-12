@@ -12,6 +12,13 @@ export default {
       </div>
     ),
   ],
+  argTypes: {
+    task: {
+      control: {
+        type: null,
+      },
+    },
+  },
 };
 
 const Template = (args) => <TaskCard {...args} />;
