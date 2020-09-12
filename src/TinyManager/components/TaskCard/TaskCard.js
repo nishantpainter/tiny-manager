@@ -1,8 +1,10 @@
 import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import { Typography } from "@material-ui/core";
+import { Typography, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import Paper from "../Paper";
 import { TaskType } from "TinyManager/types/index";
@@ -10,7 +12,8 @@ import { TaskType } from "TinyManager/types/index";
 const useStyles = makeStyles((theme) => ({
   paper: {
     height: theme.spacing(7),
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   mediumPriority: {
     backgroundColor: theme.palette.warning.light,
@@ -21,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TaskCard(props) {
-  const { task, onClick } = props;
+  const { task, onClick, onDelete } = props;
   const { priority } = task;
 
   const classes = useStyles();
@@ -37,6 +40,9 @@ function TaskCard(props) {
       onClick={onClick}
     >
       <Typography>{task.title}</Typography>
+      <IconButton size="small" onDelete={onDelete}>
+        <DeleteIcon />
+      </IconButton>
     </Paper>
   );
 }
@@ -50,11 +56,16 @@ TaskCard.propTypes = {
    * Task click handler
    */
   onClick: PropTypes.func,
+  /**
+   * Task delete handler
+   */
+  onDelete: PropTypes.func,
 };
 
 TaskCard.defaultProps = {
   task: {},
   onClick: () => {},
+  onDelete: () => {},
 };
 
 export default TaskCard;
