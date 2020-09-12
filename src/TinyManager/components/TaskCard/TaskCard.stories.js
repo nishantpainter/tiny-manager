@@ -54,3 +54,11 @@ HighPriority.args = {
     priority: 2,
   },
 };
+
+export const Completed = Template.bind({});
+Completed.args = {
+  task: {
+    ...Default.args.task,
+    progress: 100,
+  },
+};
