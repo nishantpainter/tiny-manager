@@ -3,7 +3,7 @@ import React from "react";
 import Paper from "./Paper";
 
 export default {
-  title: "Example/Paper",
+  title: "TinyManager/Paper",
   component: Paper,
 };
 

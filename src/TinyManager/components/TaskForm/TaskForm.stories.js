@@ -3,7 +3,7 @@ import React from "react";
 import TaskForm from "./TaskForm";
 
 export default {
-  title: "Example/TaskForm",
+  title: "TinyManager/TaskForm",
   component: TaskForm,
 };
 

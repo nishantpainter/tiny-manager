@@ -65,7 +65,7 @@ const argTypes = {
 };
 
 export default {
-  title: "Example/TodoForm",
+  title: "TinyManager/TodoForm",
   component: TodoForm,
   argTypes,
 };

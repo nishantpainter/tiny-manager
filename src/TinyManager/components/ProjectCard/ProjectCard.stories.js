@@ -3,7 +3,7 @@ import React from "react";
 import ProjectCard from "./ProjectCard";
 
 export default {
-  title: "Example/ProjectCard",
+  title: "TinyManager/ProjectCard",
   component: ProjectCard,
 };
 

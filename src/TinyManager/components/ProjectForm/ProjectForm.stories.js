@@ -16,7 +16,7 @@ const argTypes = {
 };
 
 export default {
-  title: "Example/ProjectForm",
+  title: "TinyManager/ProjectForm",
   component: ProjectForm,
   argTypes,
 };

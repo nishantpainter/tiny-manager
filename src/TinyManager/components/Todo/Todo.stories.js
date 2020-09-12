@@ -16,7 +16,7 @@ const argTypes = {
 };
 
 export default {
-  title: "Example/Todo",
+  title: "TinyManager/Todo",
   component: Todo,
   argTypes,
 };
