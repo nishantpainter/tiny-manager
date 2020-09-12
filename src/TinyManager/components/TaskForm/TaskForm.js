@@ -91,6 +91,7 @@ function TaskForm(props) {
               <Select
                 label="Priority"
                 margin="dense"
+                name="priority"
                 defaultValue={PRIORITIES[0].value}
               >
                 {PRIORITIES.map((priority) => (
