@@ -29,3 +29,27 @@ Default.args = {
     title: "Initate production",
   },
 };
+
+export const LowPriority = Template.bind({});
+LowPriority.args = {
+  task: {
+    title: "Initate production",
+    priority: 0,
+  },
+};
+
+export const MediumPriority = Template.bind({});
+MediumPriority.args = {
+  task: {
+    title: "Initate production",
+    priority: 1,
+  },
+};
+
+export const HighPriority = Template.bind({});
+HighPriority.args = {
+  task: {
+    title: "Initate production",
+    priority: 2,
+  },
+};
