@@ -10,6 +10,7 @@ export const TaskType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
   note: PropTypes.string,
+  priority: PropTypes.number,
 });
 
 export const TodoType = PropTypes.shape({
