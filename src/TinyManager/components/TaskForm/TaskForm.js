@@ -124,8 +124,9 @@ function TaskForm(props) {
               disabled={disabled}
               fullWidth
             >
-              <InputLabel>Completed</InputLabel>
+              <InputLabel>Progress</InputLabel>
               <Select
+                name="progress"
                 label="Percentage"
                 margin="dense"
                 defaultValue={PERCENTAGES[0].value}

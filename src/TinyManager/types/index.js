@@ -11,6 +11,7 @@ export const TaskType = PropTypes.shape({
   title: PropTypes.string,
   note: PropTypes.string,
   priority: PropTypes.number,
+  progress:PropTypes.number
 });
 
 export const TodoType = PropTypes.shape({
