@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { Typography, IconButton, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -16,10 +16,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   mediumPriority: {
-    backgroundColor: theme.palette.warning.light,
+    color: theme.palette.type === "dark" && theme.palette.warning.light,
+    backgroundColor:
+      theme.palette.type === "light" && theme.palette.warning.light,
   },
   highPriority: {
-    backgroundColor: theme.palette.error.light,
+    color: theme.palette.type === "dark" && theme.palette.error.light,
+    backgroundColor:
+      theme.palette.type === "light" && theme.palette.error.light,
   },
   progress: {
     display: "flex",
@@ -33,6 +37,7 @@ function TaskCard(props) {
   const { priority } = task;
 
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <Paper
@@ -47,16 +52,26 @@ function TaskCard(props) {
     >
       <Grid container alignItems="center">
         <Grid item xs={9}>
-          <Typography>{task.title}</Typography>
+          <Typography
+            className={clsx(priority === 1 && classes.mediumPriority)}
+          >
+            {task.title}
+          </Typography>
         </Grid>
         <Grid item xs={2} align="right" className={classes.progress}>
           <CircularProgressWithLabel
-            color={priority === 0 ? "primary" : "secondary"}
+            color={
+              priority === 0
+                ? "primary"
+                : theme.palette.type === "dark"
+                ? "inherit"
+                : "secondary"
+            }
             value={task.progress}
           />
         </Grid>
         <Grid item xs={1} align="right">
-          <IconButton onDelete={onDelete}>
+          <IconButton size="small" onDelete={onDelete}>
             <DeleteIcon />
           </IconButton>
         </Grid>
