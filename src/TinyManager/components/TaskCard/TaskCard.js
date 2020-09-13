@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TaskCard(props) {
-  const { task, onClick, onDelete } = props;
+  const { task, onClick, onDelete, className } = props;
   const { priority = 0 } = task;
 
   const classes = useStyles();
@@ -50,7 +50,8 @@ function TaskCard(props) {
         root: clsx(
           classes.paper,
           priority === 1 && classes.mediumPriority,
-          priority === 2 && classes.highPriority
+          priority === 2 && classes.highPriority,
+          className
         ),
       }}
       onClick={onClick}
@@ -103,6 +104,10 @@ TaskCard.propTypes = {
    * Task delete handler
    */
   onDelete: PropTypes.func,
+  /**
+   * @ignore
+   */
+  className: PropTypes.string,
 };
 
 TaskCard.defaultProps = {
