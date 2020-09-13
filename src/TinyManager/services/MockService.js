@@ -5,6 +5,10 @@ function getId() {
   return uuid();
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 function getProjects() {
   return new Array(10).fill(0).map(() => getProject(getId()));
 }
@@ -21,8 +25,10 @@ function getTasks(projectId) {
   return new Array(10).fill(0).map(() => ({
     id: getId(),
     projectId,
-    title: faker.lorem.word(),
+    title: faker.internet.domainName(),
     description: faker.lorem.sentence(),
+    progress: getRandomInt(101),
+    priority: getRandomInt(3),
   }));
 }
 
