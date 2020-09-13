@@ -1,20 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Grid, Button, Fade, Dialog } from "@material-ui/core";
 
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import Loader from "TinyManager/components/Loader";
 import TaskForm from "TinyManager/components/TaskForm";
+import TaskCard from "TinyManager/components/TaskCard";
+
+const useStyles = makeStyles((theme) => ({
+  taskCard: {
+    marginBottom: theme.spacing(2),
+  },
+}));
 
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
   const { params } = match;
   const { projectId } = params;
 
-  const [{ loading, project }, setStore] = React.useState({
+  const classes = useStyles();
+  
+  const [{ loading, project, tasks }, setStore] = React.useState({
     loading: true,
     project: {},
+    tasks: [],
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = React.useState(false);
@@ -32,7 +43,9 @@ function ProjectView(props) {
       setStore((store) => ({ ...store, loading: true }));
       TinyManagerAPI.fetchProject(projectId)
         .then((project) => {
-          setStore((store) => ({ ...store, loading: false, project }));
+          TinyManagerAPI.fetchTasks(projectId).then((tasks) => {
+            setStore((store) => ({ ...store, loading: false, project, tasks }));
+          });
         })
         .catch(redirectToProjectList);
     } else {
@@ -66,6 +79,21 @@ function ProjectView(props) {
             </Button>
           </Grid>
         </Grid>
+        {tasks && tasks.length ? (
+          <div
+            style={{ height: "85%", padding: `32px 32px`, overflow: "auto" }}
+          >
+            {tasks.map((task) => (
+              <TaskCard
+                task={task}
+                key={task.id}
+                className={classes.taskCard}
+              />
+            ))}
+          </div>
+        ) : (
+          <Typography variant="body1">No available tasks.</Typography>
+        )}
         <Dialog open={taskDialogOpen} onClose={handleCloseTaskDialog}>
           <TaskForm onCancel={handleCloseTaskDialog} />
         </Dialog>
