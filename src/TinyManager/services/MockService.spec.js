@@ -141,4 +141,21 @@ describe("MockService", () => {
       expect(todo).toEqual(testTodo);
     });
   });
+
+  describe("addTask", () => {
+    const { addTask } = MockService;
+
+    it("must be defined", () => {
+      expect(addTask).toBeDefined();
+    });
+
+    it("must return task with id", () => {
+      const task = addTask({ title: "make-coffee" });
+
+      expect(task).toBeDefined();
+      expect(task.id).toBeDefined();
+      expect(task.title).toBeDefined();
+      expect(task.title).toBe("make-coffee");
+    });
+  });
 });
