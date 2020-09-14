@@ -158,4 +158,24 @@ describe("MockService", () => {
       expect(task.title).toBe("make-coffee");
     });
   });
+
+  describe("updateTask", () => {
+    const { updateTask } = MockService;
+
+    it("must be defined", () => {
+      expect(updateTask).toBeDefined();
+    });
+
+    it("must return task as it is", () => {
+      const testTask = {
+        id: 1,
+        title: "make-coffee",
+      };
+
+      const todo = updateTask(testTask);
+
+      expect(todo).toBeDefined();
+      expect(todo).toEqual(testTask);
+    });
+  });
 });
