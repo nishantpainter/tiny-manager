@@ -6,7 +6,7 @@ import { Typography, Grid, Button, Fade, Dialog } from "@material-ui/core";
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import Loader from "TinyManager/components/Loader";
-import TaskForm from "TinyManager/components/TaskForm";
+import TaskFormContainer from "TinyManager/containers/Projects/TaskForm";
 import TaskCard from "TinyManager/components/TaskCard";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ function ProjectView(props) {
   const { projectId } = params;
 
   const classes = useStyles();
-  
+
   const [{ loading, project, tasks }, setStore] = React.useState({
     loading: true,
     project: {},
@@ -37,6 +37,16 @@ function ProjectView(props) {
   const handleCloseTaskDialog = React.useCallback(() => {
     setTaskDialogOpen(false);
   }, []);
+
+  const handleAddNewTask = React.useCallback(
+    (task) => {
+      TinyManagerAPI.addTask(task).then((task) => {
+        setStore((store) => ({ ...store, tasks: [task, ...store.tasks] }));
+        handleCloseTaskDialog();
+      });
+    },
+    [handleCloseTaskDialog]
+  );
 
   React.useEffect(() => {
     if (projectId) {
@@ -95,7 +105,10 @@ function ProjectView(props) {
           <Typography variant="body1">No available tasks.</Typography>
         )}
         <Dialog open={taskDialogOpen} onClose={handleCloseTaskDialog}>
-          <TaskForm onCancel={handleCloseTaskDialog} />
+          <TaskFormContainer
+            onCancel={handleCloseTaskDialog}
+            onSubmit={handleAddNewTask}
+          />
         </Dialog>
       </div>
     </Fade>
