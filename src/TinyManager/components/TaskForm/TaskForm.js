@@ -31,7 +31,7 @@ const PRIORITIES = [
   },
 ];
 
-const PERCENTAGES = new Array(10)
+const PERCENTAGES = new Array(11)
   .fill(0)
   .map((_, i) => ({ value: i * 10, label: `${i * 10}%` }));
 
