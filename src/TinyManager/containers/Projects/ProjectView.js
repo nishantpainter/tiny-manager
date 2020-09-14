@@ -81,6 +81,10 @@ function ProjectView(props) {
     [handleOpenTaskDialog]
   );
 
+  const handleTaskDelete = React.useCallback((e) => {
+    e.stopPropogation();
+  }, []);
+
   React.useEffect(() => {
     if (projectId) {
       setStore((store) => ({ ...store, loading: true }));
@@ -130,8 +134,9 @@ function ProjectView(props) {
               <TaskCard
                 task={task}
                 key={task.id}
-                onClick={handleTaskClick}
                 className={classes.taskCard}
+                onClick={handleTaskClick}
+                onDelete={handleTaskDelete}
               />
             ))}
           </div>
