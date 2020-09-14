@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { useFormik } from "formik";
 
 import TaskForm from "TinyManager/components/TaskForm";
+import { TaskType } from "TinyManager/types";
 
 function TaskFormContainer(props) {
-  const { onCancel, onSubmit } = props;
+  const { onCancel, onSubmit, initialValues } = props;
 
   const formik = useFormik({
     initialValues: {
@@ -13,6 +14,7 @@ function TaskFormContainer(props) {
       note: "",
       priority: 0,
       progress: 0,
+      ...initialValues,
     },
     validate: (values) => {
       const errors = {};
@@ -26,6 +28,7 @@ function TaskFormContainer(props) {
     onSubmit: (values) => {
       onSubmit(values);
     },
+    enableReinitialize: true,
   });
 
   return (
@@ -41,6 +44,7 @@ function TaskFormContainer(props) {
 }
 
 TaskFormContainer.propTypes = {
+  initialValues: TaskType,
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
 };
