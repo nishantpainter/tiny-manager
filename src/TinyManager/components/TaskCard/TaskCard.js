@@ -58,10 +58,9 @@ function TaskCard(props) {
           className
         ),
       }}
-      onClick={handleClick}
     >
       <Grid container alignItems="center">
-        <Grid item xs={9}>
+        <Grid item xs={9} onClick={handleClick}>
           <Box display="flex" alignItem="center">
             {task.progress === 100 ? (
               <FlagIcon className={classes.completedFlag} />
@@ -73,7 +72,13 @@ function TaskCard(props) {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={2} align="right" className={classes.progress}>
+        <Grid
+          item
+          xs={2}
+          align="right"
+          className={classes.progress}
+          onClick={handleClick}
+        >
           <CircularProgressWithLabel
             color={
               priority === 0
