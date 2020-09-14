@@ -35,7 +35,9 @@ function addTask(task) {
 
 function updateProject(projectId, project) {}
 
-function updateTask(taskId, task) {}
+function updateTask(taskId, task) {
+  return fetch(MockService.updateTask(task));
+}
 
 function removeProject(projectId) {}
 
