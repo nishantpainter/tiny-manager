@@ -62,6 +62,13 @@ function updateTodo(todo) {
   };
 }
 
+function addTask(task) {
+  return {
+    id: getId(),
+    ...task,
+  };
+}
+
 export default {
   getProjects,
   getProject,
@@ -70,4 +77,5 @@ export default {
   getTodos,
   addTodo,
   updateTodo,
+  addTask,
 };
