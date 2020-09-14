@@ -69,6 +69,10 @@ function addTask(task) {
   };
 }
 
+function updateTask(task) {
+  return task;
+}
+
 export default {
   getProjects,
   getProject,
@@ -78,4 +82,5 @@ export default {
   addTodo,
   updateTodo,
   addTask,
+  updateTask,
 };
