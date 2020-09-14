@@ -93,6 +93,7 @@ function TaskForm(props) {
                 margin="dense"
                 name="priority"
                 defaultValue={PRIORITIES[0].value}
+                onChange={onChange}
               >
                 {PRIORITIES.map((priority) => (
                   <MenuItem key={priority.value} value={priority.value}>
@@ -130,6 +131,7 @@ function TaskForm(props) {
                 label="Percentage"
                 margin="dense"
                 defaultValue={PERCENTAGES[0].value}
+                onChange={onChange}
               >
                 {PERCENTAGES.map((percentage) => (
                   <MenuItem key={percentage.value} value={percentage.value}>
