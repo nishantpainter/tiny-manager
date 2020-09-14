@@ -44,6 +44,10 @@ function TaskCard(props) {
   const classes = useStyles();
   const theme = useTheme();
 
+  const handleClick = React.useCallback((e) => {
+    onClick(e, task);
+  }, []);
+
   return (
     <Paper
       classes={{
@@ -54,7 +58,7 @@ function TaskCard(props) {
           className
         ),
       }}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <Grid container alignItems="center">
         <Grid item xs={9}>
