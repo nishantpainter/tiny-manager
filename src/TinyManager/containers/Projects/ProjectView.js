@@ -22,10 +22,11 @@ function ProjectView(props) {
 
   const classes = useStyles();
 
-  const [{ loading, project, tasks }, setStore] = React.useState({
+  const [{ loading, project, tasks, task }, setStore] = React.useState({
     loading: true,
     project: {},
     tasks: [],
+    task: {},
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = React.useState(false);
@@ -38,6 +39,19 @@ function ProjectView(props) {
     setTaskDialogOpen(false);
   }, []);
 
+  const handleUpdateTask = React.useCallback(
+    (task) => {
+      TinyManagerAPI.updateTask(task.id, task).then((task) => {
+        setStore((store) => ({
+          ...store,
+          tasks: store.tasks.map((t) => (t.id === task.id ? task : t)),
+        }));
+        handleCloseTaskDialog();
+      });
+    },
+    [handleCloseTaskDialog]
+  );
+
   const handleAddNewTask = React.useCallback(
     (task) => {
       TinyManagerAPI.addTask(task).then((task) => {
@@ -46,6 +60,25 @@ function ProjectView(props) {
       });
     },
     [handleCloseTaskDialog]
+  );
+
+  const handleTaskFormSubmit = React.useCallback(
+    (task) => {
+      if (task.id) {
+        handleUpdateTask(task);
+      } else {
+        handleAddNewTask(task);
+      }
+    },
+    [handleUpdateTask, handleAddNewTask]
+  );
+
+  const handleTaskClick = React.useCallback(
+    (e, task = {}) => {
+      setStore((store) => ({ ...store, task }));
+      handleOpenTaskDialog();
+    },
+    [handleOpenTaskDialog]
   );
 
   React.useEffect(() => {
@@ -97,6 +130,7 @@ function ProjectView(props) {
               <TaskCard
                 task={task}
                 key={task.id}
+                onClick={handleTaskClick}
                 className={classes.taskCard}
               />
             ))}
@@ -106,8 +140,9 @@ function ProjectView(props) {
         )}
         <Dialog open={taskDialogOpen} onClose={handleCloseTaskDialog}>
           <TaskFormContainer
+            initialValues={task}
             onCancel={handleCloseTaskDialog}
-            onSubmit={handleAddNewTask}
+            onSubmit={handleTaskFormSubmit}
           />
         </Dialog>
       </div>
