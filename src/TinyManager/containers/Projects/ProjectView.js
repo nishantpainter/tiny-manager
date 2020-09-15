@@ -81,8 +81,11 @@ function ProjectView(props) {
     [handleOpenTaskDialog]
   );
 
-  const handleTaskDelete = React.useCallback((e) => {
-    e.stopPropogation();
+  const handleTaskDelete = React.useCallback((e, task) => {
+    setStore((store) => ({
+      ...store,
+      tasks: store.tasks.filter((t) => t.id !== task.id),
+    }));
   }, []);
 
   React.useEffect(() => {
