@@ -2,24 +2,23 @@ module.exports = {
   env: {
     browser: true,
     commonjs: true,
-    jest: true
+    jest: true,
   },
   extends: [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
   ],
-  plugins: [
-    "react"
-  ],
-  parser:"@babel/eslint-parser",
+  plugins: ["react"],
+  parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
-  settings:{
-    react:{
-      version: "detect"
-    }
-  }
-}
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+};
