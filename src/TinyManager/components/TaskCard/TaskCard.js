@@ -48,14 +48,14 @@ function TaskCard(props) {
     (e) => {
       onClick(e, task);
     },
-    [onClick]
+    [onClick, task]
   );
 
   const handleDelete = React.useCallback(
     (e) => {
       onDelete(e, task);
     },
-    [onDelete]
+    [onDelete, task]
   );
 
   return (
