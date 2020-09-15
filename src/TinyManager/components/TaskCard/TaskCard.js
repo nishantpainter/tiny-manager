@@ -44,9 +44,19 @@ function TaskCard(props) {
   const classes = useStyles();
   const theme = useTheme();
 
-  const handleClick = React.useCallback((e) => {
-    onClick(e, task);
-  }, []);
+  const handleClick = React.useCallback(
+    (e) => {
+      onClick(e, task);
+    },
+    [onClick]
+  );
+
+  const handleDelete = React.useCallback(
+    (e) => {
+      onDelete(e, task);
+    },
+    [onDelete]
+  );
 
   return (
     <Paper
@@ -91,7 +101,7 @@ function TaskCard(props) {
           />
         </Grid>
         <Grid item xs={1} align="right">
-          <IconButton size="small" onDelete={onDelete}>
+          <IconButton size="small" onClick={handleDelete}>
             <DeleteIcon />
           </IconButton>
         </Grid>
