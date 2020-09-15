@@ -27,7 +27,7 @@ function getTasks(projectId) {
     projectId,
     title: faker.internet.domainName(),
     description: faker.lorem.sentence(),
-    progress: getRandomInt(101),
+    progress: (getRandomInt(101) % 10) * 10,
     priority: getRandomInt(3),
   }));
 }
