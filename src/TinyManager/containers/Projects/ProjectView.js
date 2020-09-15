@@ -40,6 +40,7 @@ function ProjectView(props) {
 
   const handleCloseTaskDialog = React.useCallback(() => {
     setTaskDialogOpen(false);
+    setStore((store) => ({ ...store, task: {} }));
   }, []);
 
   const handleUpdateTask = React.useCallback(
