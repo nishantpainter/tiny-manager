@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   taskCard: {
     marginBottom: theme.spacing(2),
   },
+  noTasksMessage: {
+    marginTop: theme.spacing(),
+  },
 }));
 
 function ProjectView(props) {
@@ -144,7 +147,9 @@ function ProjectView(props) {
             ))}
           </div>
         ) : (
-          <Typography variant="body1">No available tasks.</Typography>
+          <Typography variant="body1" className={classes.noTasksMessage}>
+            No available tasks.
+          </Typography>
         )}
         <Dialog open={taskDialogOpen} onClose={handleCloseTaskDialog}>
           <TaskFormContainer
