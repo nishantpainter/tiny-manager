@@ -93,6 +93,7 @@ function TaskForm(props) {
                 margin="dense"
                 name="priority"
                 defaultValue={PRIORITIES[0].value}
+                value={values.priority}
                 onChange={onChange}
               >
                 {PRIORITIES.map((priority) => (
@@ -131,6 +132,7 @@ function TaskForm(props) {
                 label="Percentage"
                 margin="dense"
                 defaultValue={PERCENTAGES[0].value}
+                value={values.progress}
                 onChange={onChange}
               >
                 {PERCENTAGES.map((percentage) => (
