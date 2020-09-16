@@ -48,7 +48,7 @@ function ProjectList(props) {
     <Fade in={true}>
       <div style={{ height: "100%", overflow: "hidden" }}>
         <Typography variant="h5" gutterBottom>
-          Project List
+          Projects
         </Typography>
         <Button color="primary" variant="outlined" onClick={handleNewProject}>
           Add New
