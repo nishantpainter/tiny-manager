@@ -115,10 +115,6 @@ function ProjectView(props) {
   return (
     <Fade in={true}>
       <div>
-        <Typography variant="h5" gutterBottom>
-          Project View
-        </Typography>
-        <br />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <ProjectCard project={project} />
