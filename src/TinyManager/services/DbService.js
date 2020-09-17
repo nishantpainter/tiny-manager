@@ -7,7 +7,12 @@ function initateDB() {
     projects: "++id,name",
   });
 
+  db.version(1).stores({
+    todos: "++id,title,completed",
+  });
+
   db.projects.defineClass({ name: String, description: String });
+  db.todos.defineClass({ title: String, completed: Boolean });
 }
 
 function getTable(tableName) {
