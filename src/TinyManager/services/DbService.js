@@ -22,11 +22,15 @@ function getTable(tableName) {
   };
 }
 
-function find() {}
+function find(tableName, query) {
+  return db[tableName].toArray();
+}
 
 function findOne() {}
 
-function insert() {}
+function insert(tableName, record) {
+  return db[tableName].add(record);
+}
 
 function update() {}
 
