@@ -1,4 +1,5 @@
 import MockService from "TinyManager/services/MockService";
+import DbService from "TinyManager/services/DbService";
 
 async function fetch(data, rejectPromise = false, errorMessage = "") {
   return new Promise((resolve, reject) => {
@@ -44,11 +45,11 @@ function removeProject(projectId) {}
 function removeTask(taskId) {}
 
 function fetchTodos() {
-  return fetch(MockService.getTodos());
+  return DbService.find("todos");
 }
 
 function addTodo(todo) {
-  return fetch(MockService.addTodo(todo));
+  return DbService.insert("todos", todo);
 }
 
 function updateTodo(todo) {
