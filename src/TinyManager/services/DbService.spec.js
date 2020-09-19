@@ -73,6 +73,11 @@ describe("DbService", () => {
 
       expect(todosTable).toBeDefined();
       expect(todosTable.name).toEqual("todos");
+
+      const tasksTable = getTable("tasks");
+
+      expect(tasksTable).toBeDefined();
+      expect(tasksTable.name).toEqual("tasks");
     });
   });
 });

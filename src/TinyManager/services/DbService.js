@@ -11,8 +11,18 @@ function initateDB() {
     todos: "++id,title,completed",
   });
 
+  db.version(1).stores({
+    tasks: "++id,title",
+  });
+
   db.projects.defineClass({ name: String, description: String });
   db.todos.defineClass({ title: String, completed: Boolean });
+  db.tasks.defineClass({
+    title: String,
+    note: String,
+    priority: Number,
+    progress: Number,
+  });
 }
 
 function getTable(tableName) {
