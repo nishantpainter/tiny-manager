@@ -33,7 +33,7 @@ function addProject(project) {
 }
 
 function addTask(task) {
-  return fetch(MockService.addTask(task));
+  return DbService.insert("tasks", task);
 }
 
 function updateProject(projectId, project) {}
