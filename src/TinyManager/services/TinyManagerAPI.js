@@ -56,7 +56,9 @@ function updateTodo(todo) {
   return DbService.update("todos", todo);
 }
 
-function removeTodo() {}
+function removeTodo(todo) {
+  return DbService.remove("todos", todo);
+}
 
 export default {
   fetchProjects,
@@ -67,6 +69,7 @@ export default {
   addTask,
   updateProject,
   updateTask,
+  removeTodo,
   removeProject,
   removeTask,
   fetchTodos,

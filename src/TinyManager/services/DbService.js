@@ -46,7 +46,9 @@ function update(tableName, record) {
   });
 }
 
-function remove() {}
+function remove(tableName, record) {
+  return db[tableName].delete(record.id);
+}
 
 initateDB();
 
