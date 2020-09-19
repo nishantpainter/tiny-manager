@@ -53,7 +53,7 @@ function addTodo(todo) {
 }
 
 function updateTodo(todo) {
-  return fetch(MockService.updateTodo(todo));
+  return DbService.update("todos", todo);
 }
 
 function removeTodo() {}

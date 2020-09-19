@@ -36,7 +36,15 @@ function insert(tableName, record) {
     .then((recordId) => findOne(tableName, recordId));
 }
 
-function update() {}
+function update(tableName, record) {
+  return db[tableName].update(record.id, record).then((updateCount) => {
+    if (updateCount) {
+      return findOne(tableName, record.id);
+    } else {
+      return new Error("Error updating record");
+    }
+  });
+}
 
 function remove() {}
 
