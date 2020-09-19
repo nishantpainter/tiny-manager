@@ -110,14 +110,17 @@ function Todos(props) {
     [handleCloseDialog]
   );
 
-  const handleSubmit = React.useCallback((todo) => {
-    setStore((store) => ({ ...store, saving: true }));
-    if (todo.id) {
-      handleEditTodo(todo);
-    } else {
-      handleAddNewTodo(todo);
-    }
-  }, []);
+  const handleSubmit = React.useCallback(
+    (todo) => {
+      setStore((store) => ({ ...store, saving: true }));
+      if (todo.id) {
+        handleEditTodo(todo);
+      } else {
+        handleAddNewTodo(todo);
+      }
+    },
+    [handleAddNewTodo, handleEditTodo]
+  );
 
   const handleTodoCheck = React.useCallback((e, todo) => {
     if (todo && todo.id) {
