@@ -15,7 +15,7 @@ async function fetch(data, rejectPromise = false, errorMessage = "") {
 }
 
 function fetchProjects() {
-  return fetch(MockService.getProjects());
+  return DbService.find("projects");
 }
 
 function fetchProject(projectId) {
