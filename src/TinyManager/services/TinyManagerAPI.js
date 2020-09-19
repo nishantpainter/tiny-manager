@@ -28,7 +28,9 @@ function fetchTasks(projectId) {
 
 function fetchTask(taskId) {}
 
-function addProject(project) {}
+function addProject(project) {
+  return DbService.insert("projects", project);
+}
 
 function addTask(task) {
   return fetch(MockService.addTask(task));

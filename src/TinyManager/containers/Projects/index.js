@@ -27,7 +27,12 @@ function Projects(props) {
       <Switch>
         <Route
           path={path + "/new"}
-          render={(props) => <ProjectForm {...props} />}
+          render={(props) => (
+            <ProjectForm
+              {...props}
+              redirectToProjectList={redirectToProjectList}
+            />
+          )}
         />
         <Route
           path={path + "/:projectId"}
