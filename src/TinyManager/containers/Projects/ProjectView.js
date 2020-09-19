@@ -99,7 +99,7 @@ function ProjectView(props) {
       setStore((store) => ({ ...store, loading: true }));
       TinyManagerAPI.fetchProject(Number(projectId))
         .then((project) => {
-          TinyManagerAPI.fetchTasks(projectId).then((tasks) => {
+          TinyManagerAPI.fetchTasks(Number(projectId)).then((tasks) => {
             setStore((store) => ({ ...store, loading: false, project, tasks }));
           });
         })

@@ -23,7 +23,7 @@ function fetchProject(projectId) {
 }
 
 function fetchTasks(projectId) {
-  return fetch(MockService.getTasks(projectId));
+  return DbService.find("tasks", { projectId });
 }
 
 function fetchTask(taskId) {}
