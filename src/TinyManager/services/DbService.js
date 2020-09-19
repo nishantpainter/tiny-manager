@@ -12,7 +12,7 @@ function initateDB() {
   });
 
   db.version(1).stores({
-    tasks: "++id,title",
+    tasks: "++id,title,projectId",
   });
 
   db.projects.defineClass({ name: String, description: String });
@@ -22,6 +22,7 @@ function initateDB() {
     note: String,
     priority: Number,
     progress: Number,
+    projectId: Number,
   });
 }
 
