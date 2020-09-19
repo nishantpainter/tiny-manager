@@ -132,12 +132,14 @@ function Todos(props) {
 
   const handleTodoDelete = React.useCallback((e, todo) => {
     if (todo && todo.id) {
-      setStore((store) => ({
-        ...store,
-        todos: store.todos.filter((t) => t.id !== todo.id),
-      }));
+      TinyManagerAPI.removeTodo(todo).then(() => {
+        setStore((store) => ({
+          ...store,
+          todos: store.todos.filter((t) => t.id !== todo.id),
+        }));
+      });
     }
-  });
+  }, []);
 
   React.useEffect(() => {
     fetchTodos();
