@@ -121,14 +121,18 @@ function Todos(props) {
 
   const handleTodoCheck = React.useCallback((e, todo) => {
     if (todo && todo.id) {
-      setStore((store) => ({
-        ...store,
-        todos: store.todos.map((t) =>
-          t.id === todo.id ? { ...t, completed: !t.completed } : t
-        ),
-      }));
+      TinyManagerAPI.updateTodo(
+        Object.assign({}, todo, { completed: !todo.completed })
+      ).then(() => {
+        setStore((store) => ({
+          ...store,
+          todos: store.todos.map((t) =>
+            t.id === todo.id ? { ...t, completed: !t.completed } : t
+          ),
+        }));
+      });
     }
-  });
+  }, []);
 
   const handleTodoDelete = React.useCallback((e, todo) => {
     if (todo && todo.id) {
