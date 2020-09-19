@@ -34,7 +34,7 @@ function getTable(tableName) {
 }
 
 function find(tableName, query) {
-  return db[tableName].toArray();
+  return query ? db[tableName].where(query).toArray() : db[tableName].toArray();
 }
 
 function findOne(tableName, query) {
