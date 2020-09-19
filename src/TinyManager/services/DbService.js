@@ -26,10 +26,14 @@ function find(tableName, query) {
   return db[tableName].toArray();
 }
 
-function findOne() {}
+function findOne(tableName, query) {
+  return db[tableName].get(query);
+}
 
 function insert(tableName, record) {
-  return db[tableName].add(record);
+  return db[tableName]
+    .add(record)
+    .then((recordId) => findOne(tableName, recordId));
 }
 
 function update() {}
