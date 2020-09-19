@@ -95,7 +95,7 @@ function ProjectView(props) {
   React.useEffect(() => {
     if (projectId) {
       setStore((store) => ({ ...store, loading: true }));
-      TinyManagerAPI.fetchProject(projectId)
+      TinyManagerAPI.fetchProject(Number(projectId))
         .then((project) => {
           TinyManagerAPI.fetchTasks(projectId).then((tasks) => {
             setStore((store) => ({ ...store, loading: false, project, tasks }));
