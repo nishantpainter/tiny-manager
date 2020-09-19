@@ -58,12 +58,14 @@ function ProjectView(props) {
 
   const handleAddNewTask = React.useCallback(
     (task) => {
-      TinyManagerAPI.addTask(task).then((task) => {
+      TinyManagerAPI.addTask(
+        Object.assign({ projectId: Number(projectId) }, task)
+      ).then((task) => {
         setStore((store) => ({ ...store, tasks: [task, ...store.tasks] }));
         handleCloseTaskDialog();
       });
     },
-    [handleCloseTaskDialog]
+    [handleCloseTaskDialog, projectId]
   );
 
   const handleTaskFormSubmit = React.useCallback(
