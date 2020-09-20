@@ -1,11 +1,13 @@
 import React from "react";
+import { CssBaseline } from "@material-ui/core";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import indigo from "@material-ui/core/colors/indigo";
-import orange from "@material-ui/core/colors/orange";
-import grey from "@material-ui/core/colors/grey";
-import red from "@material-ui/core/colors/red";
-import deepOrange from "@material-ui/core/colors/deepOrange";
+import {
+  indigo,
+  orange,
+  grey,
+  red,
+  deepOrange,
+} from "@material-ui/core/colors";
 
 const ThemeContext = React.createContext();
 
