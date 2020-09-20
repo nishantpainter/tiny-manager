@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CssBaseline } from "@material-ui/core";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import {
@@ -54,5 +55,16 @@ function ThemeProvider(props) {
 }
 
 export const useTheme = () => React.useContext(ThemeContext);
+
+ThemeProvider.propTypes = {
+  /**
+   * Children of theme provider ( element )
+   */
+  children: PropTypes.element,
+  /**
+   * Darkmode theme type boolean
+   */
+  darkMode: PropTypes.bool,
+};
 
 export default ThemeProvider;
