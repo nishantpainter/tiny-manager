@@ -23,7 +23,7 @@ function fetchProject(projectId) {
 }
 
 function fetchTasks(projectId) {
-  return DbService.find("tasks", { projectId });
+  return DbService.find("tasks", { where: { projectId } });
 }
 
 function fetchTask(taskId) {}
@@ -39,7 +39,7 @@ function addTask(task) {
 function updateProject(projectId, project) {}
 
 function updateTask(taskId, task) {
-  return fetch(MockService.updateTask(task));
+  return DbService.update("tasks", task);
 }
 
 function removeProject(projectId) {}
