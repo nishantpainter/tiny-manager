@@ -33,8 +33,24 @@ function getTable(tableName) {
   };
 }
 
-function find(tableName, query) {
-  return query ? db[tableName].where(query).toArray() : db[tableName].toArray();
+async function find(tableName, query = {}) {
+  const { orderBy = "-id", where } = query;
+
+  let table = db[tableName];
+
+  if (orderBy) {
+    if (orderBy[0] === "-") {
+      table = table.orderBy(orderBy.substring(1)).reverse();
+    } else {
+      table = table.orderBy(orderBy);
+    }
+  }
+
+  if (where) {
+    table = table.where(where);
+  }
+
+  return table.toArray();
 }
 
 function findOne(tableName, query) {
