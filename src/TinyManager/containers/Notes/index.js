@@ -5,8 +5,10 @@ import {
   SaveAlt as DownloadIcon,
   DeleteForever as ClearIcon,
 } from "@material-ui/icons";
+import debounce from "lodash.debounce";
 
 import Loader from "TinyManager/components/Loader";
+import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
   action: {
@@ -22,7 +24,33 @@ const useStyles = makeStyles((theme) => ({
 function Notes() {
   const classes = useStyles();
 
-  const [loading, setLoading] = React.useState(false);
+  const [{ id, note }, setNote] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
+
+  const handleUpdateStorage = React.useMemo(
+    () => debounce(TinyManagerAPI.updateNote, 150),
+    []
+  );
+
+  const handleChange = React.useCallback(
+    (e) => {
+      const { value } = e.target;
+      setNote((store) => ({ ...store, note: value }));
+      handleUpdateStorage({ id, note: value });
+    },
+    [id, handleUpdateStorage]
+  );
+
+  React.useEffect(() => {
+    TinyManagerAPI.fetchNote()
+      .then((notes) => {
+        setNote(notes);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <>
@@ -51,6 +79,8 @@ function Notes() {
       </Box>
       <TextField
         disabled={loading}
+        onChange={handleChange}
+        value={note}
         rows={20}
         rowsMax={20}
         placeholder="You can enter your notes here..."
