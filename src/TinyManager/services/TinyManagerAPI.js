@@ -62,6 +62,20 @@ function removeTodo(todo) {
   return DbService.remove("todos", todo);
 }
 
+function fetchNote() {
+  return DbService.find("notes").then(([notes]) => {
+    if (!notes) {
+      return DbService.insert("notes", { note: "" });
+    } else {
+      return notes;
+    }
+  });
+}
+
+function updateNote(notes) {
+  return DbService.update("notes", notes);
+}
+
 export default {
   fetchProjects,
   fetchProject,
@@ -77,4 +91,6 @@ export default {
   fetchTodos,
   addTodo,
   updateTodo,
+  fetchNote,
+  updateNote,
 };
