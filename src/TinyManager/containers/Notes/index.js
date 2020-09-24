@@ -41,6 +41,16 @@ function Notes() {
     [id, handleUpdateStorage]
   );
 
+  const handleDownloadNote = React.useCallback(() => {
+    const url = window.URL.createObjectURL(new Blob([note]), {
+      type: "text/plain",
+    });
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "Notes.txt");
+    link.click();
+  }, [note]);
+
   React.useEffect(() => {
     TinyManagerAPI.fetchNote()
       .then((notes) => {
@@ -67,6 +77,7 @@ function Notes() {
         )}
         <IconButton
           disabled={loading}
+          onClick={handleDownloadNote}
           color="primary"
           size="small"
           title="Download Note"
