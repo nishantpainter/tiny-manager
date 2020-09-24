@@ -51,6 +51,10 @@ function Notes() {
     link.click();
   }, [note]);
 
+  const handleClearNote = React.useCallback(() => {
+    handleChange({ target: { value: "" } });
+  }, [handleChange]);
+
   React.useEffect(() => {
     TinyManagerAPI.fetchNote()
       .then((notes) => {
@@ -84,7 +88,12 @@ function Notes() {
         >
           <DownloadIcon />
         </IconButton>
-        <IconButton disabled={loading} size="small" title="Clear Note">
+        <IconButton
+          disabled={loading}
+          onClick={handleClearNote}
+          size="small"
+          title="Clear Note"
+        >
           <ClearIcon />
         </IconButton>
       </Box>
