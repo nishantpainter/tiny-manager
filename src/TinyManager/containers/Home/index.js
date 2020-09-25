@@ -1,10 +1,19 @@
 import React from "react";
-import { Fade, Typography, Tabs, Tab } from "@material-ui/core";
+import {
+  Fade,
+  Typography,
+  Tabs,
+  Tab,
+  FormControlLabel,
+  Checkbox,
+  Box,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Notes from "TinyManager/containers/Notes";
 import Todos from "TinyManager/containers/Todos";
 import QuoteService from "TinyManager/services/QuoteService";
+import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -21,11 +30,20 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
   const classes = useStyles();
 
-  const [activeTab, setActiveTab] = React.useState(0);
+  const defaultNotes = TinyManagerAPI.fetchDefaultNotes() === "true";
+
+  const [activeTab, setActiveTab] = React.useState(defaultNotes ? 1 : 0);
+  const [checked, setChecked] = React.useState(defaultNotes);
   const quote = React.useMemo(() => QuoteService.getQuote(), []);
 
   const handleChangeActiveTab = React.useCallback((e, value) => {
     setActiveTab(value);
+  }, []);
+
+  const handleChangeDefaultNotes = React.useCallback((e) => {
+    const { checked } = e.target;
+    setChecked(checked);
+    TinyManagerAPI.updateDefaultNotes(checked);
   }, []);
 
   return (
@@ -34,6 +52,18 @@ function Home() {
         <Typography variant="body1" color="textSecondary" gutterBottom>
           {quote}
         </Typography>
+        <Box display="flex" justifyContent="flex-end">
+          <FormControlLabel
+            control={
+              <Checkbox
+                color="primary"
+                checked={checked}
+                onChange={handleChangeDefaultNotes}
+              />
+            }
+            label="Default Notes"
+          />
+        </Box>
         <Tabs
           value={activeTab}
           indicatorColor="primary"
