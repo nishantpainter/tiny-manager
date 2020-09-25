@@ -1,7 +1,8 @@
 import React from "react";
-import { Fade, Typography } from "@material-ui/core";
+import { Fade, Typography, Tabs, Tab } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Notes from "TinyManager/containers/Notes";
 import Todos from "TinyManager/containers/Todos";
 import QuoteService from "TinyManager/services/QuoteService";
 
@@ -20,13 +21,30 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
   const quote = QuoteService.getQuote();
   const classes = useStyles();
+
+  const [activeTab, setActiveTab] = React.useState(0);
+
+  const handleChangeActiveTab = React.useCallback((e, value) => {
+    setActiveTab(value);
+  }, []);
+
   return (
     <Fade in={true}>
       <div className={classes.container}>
         <Typography variant="body1" color="textSecondary" gutterBottom>
           {quote}
         </Typography>
-        <Todos className={classes.todos} />
+        <Tabs
+          value={activeTab}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={handleChangeActiveTab}
+        >
+          <Tab label="Todos" value={0} />
+          <Tab label="Notes" value={1} />
+        </Tabs>
+        {activeTab === 0 && <Todos className={classes.todos} />}
+        {activeTab === 1 && <Notes />}
       </div>
     </Fade>
   );
