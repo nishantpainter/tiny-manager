@@ -1,5 +1,6 @@
 import MockService from "TinyManager/services/MockService";
 import DbService from "TinyManager/services/DbService";
+import LocalStorageService from "TinyManager/services/LocalStorageService";
 
 async function fetch(data, rejectPromise = false, errorMessage = "") {
   return new Promise((resolve, reject) => {
@@ -76,6 +77,14 @@ function updateNote(notes) {
   return DbService.update("notes", notes);
 }
 
+function updateDefaultNotes(value) {
+  LocalStorageService.setDefaultNotes(value);
+}
+
+function fetchDefaultNotes() {
+  return LocalStorageService.getDefaultNotes();
+}
+
 export default {
   fetchProjects,
   fetchProject,
@@ -93,4 +102,6 @@ export default {
   updateTodo,
   fetchNote,
   updateNote,
+  updateDefaultNotes,
+  fetchDefaultNotes,
 };
