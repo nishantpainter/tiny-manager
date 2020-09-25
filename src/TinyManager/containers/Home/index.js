@@ -7,8 +7,8 @@ import QuoteService from "TinyManager/services/QuoteService";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: "inherit",
-    height: "inherit",
+    width: "100%",
+    height: "100%",
   },
   todos: {
     height: "100%",
