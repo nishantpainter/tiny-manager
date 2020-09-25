@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
-  const quote = QuoteService.getQuote();
   const classes = useStyles();
 
   const [activeTab, setActiveTab] = React.useState(0);
+  const quote = React.useMemo(() => QuoteService.getQuote(), []);
 
   const handleChangeActiveTab = React.useCallback((e, value) => {
     setActiveTab(value);
