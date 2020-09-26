@@ -10,15 +10,22 @@ import {
   deepOrange,
 } from "@material-ui/core/colors";
 
+import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+
 const ThemeContext = React.createContext();
 
 function ThemeProvider(props) {
   const { children, darkMode: darkModeProp = false } = props;
 
-  const [darkMode, setDarkMode] = React.useState(darkModeProp);
+  const [darkMode, setDarkMode] = React.useState(
+    darkModeProp || TinyManagerAPI.fetchDarkMode()
+  );
 
   const toggleDarkMode = React.useCallback(() => {
-    setDarkMode((darkMode) => !darkMode);
+    setDarkMode((darkMode) => {
+      TinyManagerAPI.updateDarkMode(!darkMode);
+      return !darkMode;
+    });
   }, []);
 
   const theme = createMuiTheme({
