@@ -1,4 +1,4 @@
-const DEFAULT_NOTES = "default_notes";
+const DEFAULT_NOTES = "dn";
 const DARK_MODE = "dm";
 
 function setItem(key, value, service) {
@@ -6,7 +6,11 @@ function setItem(key, value, service) {
 }
 
 function getItem(key, service) {
-  return JSON.parse(service.getItem(key));
+  try {
+    return JSON.parse(service.getItem(key));
+  } catch (err) {
+    return;
+  }
 }
 
 function setDefaultNotes(value, service = localStorage) {
