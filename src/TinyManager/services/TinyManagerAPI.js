@@ -85,6 +85,14 @@ function fetchDefaultNotes() {
   return LocalStorageService.getDefaultNotes();
 }
 
+function updateDarkMode(value) {
+  LocalStorageService.setDarkMode(value);
+}
+
+function fetchDarkMode() {
+  return LocalStorageService.getDarkMode();
+}
+
 export default {
   fetchProjects,
   fetchProject,
@@ -104,4 +112,6 @@ export default {
   updateNote,
   updateDefaultNotes,
   fetchDefaultNotes,
+  updateDarkMode,
+  fetchDarkMode,
 };
