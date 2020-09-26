@@ -48,8 +48,11 @@ describe("LocalStorageService", () => {
     });
 
     it("must get local storage DEFAULT_NOTES value", () => {
-      getDefaultNotes(service);
+      service.getItem.mockImplementation(() => true);
+
+      const defaultNotes = getDefaultNotes(service);
       expect(service.getItem).toHaveBeenCalledTimes(1);
+      expect(defaultNotes).toBeTruthy();
     });
   });
 });
