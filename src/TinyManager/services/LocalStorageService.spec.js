@@ -55,4 +55,34 @@ describe("LocalStorageService", () => {
       expect(defaultNotes).toBeTruthy();
     });
   });
+
+  describe("setDarkMode", () => {
+    const { setDarkMode, DARK_MODE } = LocalStorageService;
+
+    it("must be defined", () => {
+      expect(setDarkMode).toBeDefined();
+    });
+
+    it("must set local storage DARK_MODE value", () => {
+      setDarkMode(true, service);
+      expect(service.setItem).toHaveBeenCalledTimes(1);
+      expect(service.setItem).toHaveBeenCalledWith(DARK_MODE, true);
+    });
+  });
+
+  describe("getDarkMode", () => {
+    const { getDarkMode } = LocalStorageService;
+
+    it("must be defined", () => {
+      expect(getDarkMode).toBeDefined();
+    });
+
+    it("must get local storage DARK_MODE value", () => {
+      service.getItem.mockImplementation(() => true);
+
+      const darkMode = getDarkMode(service);
+      expect(service.getItem).toHaveBeenCalledTimes(1);
+      expect(darkMode).toBeTruthy();
+    });
+  });
 });
