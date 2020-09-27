@@ -24,46 +24,43 @@ const useStyles = makeStyles((theme) => ({
 function Notes() {
   const classes = useStyles();
 
-  const [{ id, note }, setNote] = React.useState({});
+  const [notes, setNotes] = React.useState("");
   const [loading, setLoading] = React.useState(true);
 
   const handleUpdateStorage = React.useMemo(
-    () => debounce(TinyManagerAPI.updateNote, 150),
+    () => debounce(TinyManagerAPI.updateNotes, 150),
     []
   );
 
   const handleChange = React.useCallback(
     (e) => {
       const { value } = e.target;
-      setNote((store) => ({ ...store, note: value }));
-      handleUpdateStorage({ id, note: value });
+      setNotes(value);
+      handleUpdateStorage(value);
     },
-    [id, handleUpdateStorage]
+    [handleUpdateStorage]
   );
 
   const handleDownloadNote = React.useCallback(() => {
-    const url = window.URL.createObjectURL(new Blob([note]), {
+    const url = window.URL.createObjectURL(new Blob([notes]), {
       type: "text/plain",
     });
     const link = document.createElement("a");
     link.href = url;
     link.setAttribute("download", "Notes.txt");
     link.click();
-  }, [note]);
+  }, [notes]);
 
   const handleClearNote = React.useCallback(() => {
     handleChange({ target: { value: "" } });
   }, [handleChange]);
 
   React.useEffect(() => {
-    TinyManagerAPI.fetchNote()
-      .then((notes) => {
-        setNote(notes);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    const notes = TinyManagerAPI.fetchNotes();
+    if (notes) {
+      setNotes(notes);
+    }
+    setLoading(false);
   }, []);
 
   return (
@@ -100,7 +97,7 @@ function Notes() {
       <TextField
         disabled={loading}
         onChange={handleChange}
-        value={note}
+        value={notes}
         rows={20}
         rowsMax={20}
         placeholder="You can enter your notes here..."
