@@ -36,7 +36,7 @@ describe("LocalStorageService", () => {
     it("must set local storage DEFAULT_NOTES value", () => {
       setDefaultNotes(true, service);
       expect(service.setItem).toHaveBeenCalledTimes(1);
-      expect(service.setItem).toHaveBeenCalledWith(DEFAULT_NOTES, true);
+      expect(service.setItem).toHaveBeenCalledWith(DEFAULT_NOTES, "true");
     });
   });
 
@@ -66,7 +66,7 @@ describe("LocalStorageService", () => {
     it("must set local storage DARK_MODE value", () => {
       setDarkMode(true, service);
       expect(service.setItem).toHaveBeenCalledTimes(1);
-      expect(service.setItem).toHaveBeenCalledWith(DARK_MODE, true);
+      expect(service.setItem).toHaveBeenCalledWith(DARK_MODE, "true");
     });
   });
 
@@ -83,6 +83,36 @@ describe("LocalStorageService", () => {
       const darkMode = getDarkMode(service);
       expect(service.getItem).toHaveBeenCalledTimes(1);
       expect(darkMode).toBeTruthy();
+    });
+  });
+
+  describe("setNotes", () => {
+    const { setNotes, NOTES } = LocalStorageService;
+
+    it("must be defined", () => {
+      expect(setNotes).toBeDefined();
+    });
+
+    it("must set local storage NOTES value", () => {
+      setNotes("test-note", service);
+      expect(service.setItem).toHaveBeenCalledTimes(1);
+      expect(service.setItem).toHaveBeenCalledWith(NOTES, '"test-note"');
+    });
+  });
+
+  describe("getNotes", () => {
+    const { getNotes } = LocalStorageService;
+
+    it("must be defined", () => {
+      expect(getNotes).toBeDefined();
+    });
+
+    it("must get local storage NOTES value", () => {
+      service.getItem.mockImplementation(() => JSON.stringify("test-note"));
+
+      const notes = getNotes(service);
+      expect(service.getItem).toHaveBeenCalledTimes(1);
+      expect(notes).toBe("test-note");
     });
   });
 });
