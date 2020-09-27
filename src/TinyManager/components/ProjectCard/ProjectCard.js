@@ -51,7 +51,7 @@ function ProjectCard(props) {
 
 ProjectCard.propTypes = {
   className: PropTypes.string,
-  project: Types.Project,
+  project: Types.ProjectType,
   progress: PropTypes.number,
   onClick: PropTypes.func,
 };
