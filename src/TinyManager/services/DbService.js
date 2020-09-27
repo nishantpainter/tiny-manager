@@ -15,10 +15,6 @@ function initateDB() {
     tasks: "++id,title,projectId",
   });
 
-  db.version(1).stores({
-    notes: "++id",
-  });
-
   db.projects.defineClass({ name: String, description: String });
   db.todos.defineClass({ title: String, completed: Boolean });
   db.tasks.defineClass({
@@ -28,7 +24,6 @@ function initateDB() {
     progress: Number,
     projectId: Number,
   });
-  db.notes.defineClass({ note: String });
 }
 
 function getTable(tableName) {
