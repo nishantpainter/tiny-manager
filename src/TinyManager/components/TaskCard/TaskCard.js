@@ -71,7 +71,7 @@ function TaskCard(props) {
     >
       <Grid container alignItems="center">
         <Grid item xs={9} onClick={handleClick}>
-          <Box display="flex" alignItem="center">
+          <Box display="flex" alignItems="center">
             {task.progress === 100 ? (
               <FlagIcon className={classes.completedFlag} />
             ) : null}
