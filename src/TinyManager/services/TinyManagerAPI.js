@@ -63,18 +63,12 @@ function removeTodo(todo) {
   return DbService.remove("todos", todo);
 }
 
-function fetchNote() {
-  return DbService.find("notes").then(([notes]) => {
-    if (!notes) {
-      return DbService.insert("notes", { note: "" });
-    } else {
-      return notes;
-    }
-  });
+function fetchNotes() {
+  return LocalStorageService.getNotes();
 }
 
-function updateNote(notes) {
-  return DbService.update("notes", notes);
+function updateNotes(notes) {
+  return LocalStorageService.setNotes(notes);
 }
 
 function updateDefaultNotes(value) {
@@ -108,8 +102,8 @@ export default {
   fetchTodos,
   addTodo,
   updateTodo,
-  fetchNote,
-  updateNote,
+  fetchNotes,
+  updateNotes,
   updateDefaultNotes,
   fetchDefaultNotes,
   updateDarkMode,
