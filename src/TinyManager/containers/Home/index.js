@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
   const classes = useStyles();
 
-  const defaultNotes = TinyManagerAPI.fetchDefaultNotes() === "true";
+  const defaultNotes = TinyManagerAPI.fetchDefaultNotes();
 
   const [activeTab, setActiveTab] = React.useState(defaultNotes ? 1 : 0);
   const [checked, setChecked] = React.useState(defaultNotes);
