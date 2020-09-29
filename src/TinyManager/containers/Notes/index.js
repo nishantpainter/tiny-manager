@@ -95,7 +95,6 @@ function Notes() {
         </IconButton>
       </Box>
       <TextField
-        disabled={loading}
         onChange={handleChange}
         value={notes}
         rows={20}
