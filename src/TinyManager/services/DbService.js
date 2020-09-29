@@ -34,23 +34,15 @@ function getTable(tableName) {
 }
 
 async function find(tableName, query = {}) {
-  const { orderBy = "-id", where } = query;
+  const { where } = query;
 
   let table = db[tableName];
-
-  if (orderBy) {
-    if (orderBy[0] === "-") {
-      table = table.orderBy(orderBy.substring(1)).reverse();
-    } else {
-      table = table.orderBy(orderBy);
-    }
-  }
 
   if (where) {
     table = table.where(where);
   }
 
-  return table.toArray();
+  return table.reverse().toArray();
 }
 
 function findOne(tableName, query) {
