@@ -119,7 +119,19 @@ function ProjectView(props) {
       <div>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <ProjectCard project={project} />
+            <ProjectCard
+              project={project}
+              progress={
+                tasks && tasks.length
+                  ? tasks.reduce(
+                      (progress, task) =>
+                        progress +
+                        ((100 / tasks.length) * Number(task.progress)) / 100,
+                      0
+                    )
+                  : 0
+              }
+            />
           </Grid>
           <Grid item xs={12}>
             <Button
