@@ -78,6 +78,11 @@ describe("DbService", () => {
 
       expect(tasksTable).toBeDefined();
       expect(tasksTable.name).toEqual("tasks");
+
+      const updatesTable = getTable("updates");
+
+      expect(updatesTable).toBeDefined();
+      expect(updatesTable.name).toEqual("updates");
     });
   });
 });

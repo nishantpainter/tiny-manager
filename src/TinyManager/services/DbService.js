@@ -15,6 +15,10 @@ function initateDB() {
     tasks: "++id,title,projectId",
   });
 
+  db.version(1).stores({
+    updates: "++id,description,projectId,taskId,createdAt",
+  });
+
   db.projects.defineClass({ name: String, description: String });
   db.todos.defineClass({ title: String, completed: Boolean });
   db.tasks.defineClass({
@@ -23,6 +27,12 @@ function initateDB() {
     priority: Number,
     progress: Number,
     projectId: Number,
+  });
+  db.updates.defineClass({
+    description: String,
+    projectId: Number,
+    taskId: Number,
+    createdAt: String,
   });
 }
 
