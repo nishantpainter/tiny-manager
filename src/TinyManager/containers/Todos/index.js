@@ -1,21 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { Divider, Button } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
 
+import TodosFilter from "./TodoFilter";
 import TodoFormDialog from "./TodoFormDialog";
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
-  addTodoButton: {
-    marginTop: theme.spacing(),
-    marginBottom: theme.spacing(),
-  },
   todosContainer: {
     height: "100%",
     textAlign: "right",
+  },
+  todosFilter: {
+    marginRight: theme.spacing(),
   },
 }));
 
@@ -33,19 +35,39 @@ function Todos(props) {
     dialogOpen: false,
   });
 
+  const [filter, setFilter] = React.useState("all");
+
   const classes = useStyles();
+
+  const filterTodos = React.useCallback(
+    (todos = []) => {
+      switch (filter) {
+        case "completed":
+          return todos.filter((t) => t.completed);
+        case "pending":
+          return todos.filter((t) => !t.completed);
+        default:
+          return todos;
+      }
+    },
+    [filter]
+  );
 
   const fetchTodos = React.useCallback(() => {
     setStore((store) => ({ ...store, loading: true }));
 
     TinyManagerAPI.fetchTodos().then((todos) => {
-      setStore((store) => ({ ...store, todos, loading: false }));
+      setStore((store) => ({
+        ...store,
+        todos: filterTodos(todos),
+        loading: false,
+      }));
     });
-  }, []);
+  }, [filterTodos]);
 
   const handleOpenDialog = React.useCallback((e, todo = {}) => {
     setStore((store) => ({ ...store, dialogOpen: true, todo: { ...todo } }));
-  });
+  }, []);
 
   const handleCloseDialog = React.useCallback(() => {
     setStore((store) => ({
@@ -54,7 +76,7 @@ function Todos(props) {
       todo: { title: "" },
       errors: {},
     }));
-  });
+  }, []);
 
   const handleAddNewTodoClick = React.useCallback(
     (e) => {
@@ -148,6 +170,10 @@ function Todos(props) {
     }
   }, []);
 
+  const handleFilterClick = React.useCallback((filter) => {
+    setFilter(filter);
+  });
+
   React.useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
@@ -159,14 +185,25 @@ function Todos(props) {
         <Loader />
       ) : (
         <div className={classes.todosContainer}>
-          <Button
-            variant="outlined"
-            color="primary"
-            className={classes.addTodoButton}
-            onClick={handleAddNewTodoClick}
+          <Box
+            display="flex"
+            justifyContent="flex-end"
+            marginTop={1}
+            marginBottom={1}
           >
-            Add new Todo
-          </Button>
+            <TodosFilter
+              className={classes.todosFilter}
+              active={filter}
+              onFilterClick={handleFilterClick}
+            />
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={handleAddNewTodoClick}
+            >
+              Add
+            </Button>
+          </Box>
           <TodoList
             todos={todos}
             onTodoClick={handleTodoClick}
