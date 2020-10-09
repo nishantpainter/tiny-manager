@@ -575,7 +575,6 @@ exports[`Storyshots TinyManager/TaskCard Completed 1`] = `
         onClick={[Function]}
       >
         <div
-          alignItem="center"
           className="MuiBox-root MuiBox-root-72"
         >
           <svg
@@ -708,7 +707,6 @@ exports[`Storyshots TinyManager/TaskCard Default 1`] = `
         onClick={[Function]}
       >
         <div
-          alignItem="center"
           className="MuiBox-root MuiBox-root-32"
         >
           <p
@@ -831,7 +829,6 @@ exports[`Storyshots TinyManager/TaskCard High Priority 1`] = `
         onClick={[Function]}
       >
         <div
-          alignItem="center"
           className="MuiBox-root MuiBox-root-62"
         >
           <p
@@ -954,7 +951,6 @@ exports[`Storyshots TinyManager/TaskCard Low Priority 1`] = `
         onClick={[Function]}
       >
         <div
-          alignItem="center"
           className="MuiBox-root MuiBox-root-42"
         >
           <p
@@ -1077,7 +1073,6 @@ exports[`Storyshots TinyManager/TaskCard Medium Priority 1`] = `
         onClick={[Function]}
       >
         <div
-          alignItem="center"
           className="MuiBox-root MuiBox-root-52"
         >
           <p
@@ -2090,7 +2085,7 @@ exports[`Storyshots TinyManager/TodoForm Default 1`] = `
         >
           <input
             aria-invalid={false}
-            autoFocus={false}
+            autoFocus={true}
             className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             disabled={false}
             id="title"
@@ -2223,7 +2218,7 @@ exports[`Storyshots TinyManager/TodoForm Disabled 1`] = `
         >
           <input
             aria-invalid={false}
-            autoFocus={false}
+            autoFocus={true}
             className="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             disabled={true}
             id="title"
@@ -2357,7 +2352,7 @@ exports[`Storyshots TinyManager/TodoForm Error 1`] = `
           <input
             aria-describedby="title-helper-text"
             aria-invalid={true}
-            autoFocus={false}
+            autoFocus={true}
             className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             disabled={false}
             id="title"
@@ -2496,7 +2491,7 @@ exports[`Storyshots TinyManager/TodoForm Title 1`] = `
         >
           <input
             aria-invalid={false}
-            autoFocus={false}
+            autoFocus={true}
             className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
             disabled={false}
             id="title"
