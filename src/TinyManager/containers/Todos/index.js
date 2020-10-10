@@ -172,7 +172,7 @@ function Todos(props) {
 
   const handleFilterClick = React.useCallback((filter) => {
     setFilter(filter);
-  });
+  }, []);
 
   React.useEffect(() => {
     fetchTodos();
