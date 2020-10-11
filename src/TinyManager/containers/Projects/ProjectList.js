@@ -23,7 +23,28 @@ function ProjectList(props) {
 
   React.useEffect(() => {
     TinyManagerAPI.fetchProjects()
-      .then((projects) => {
+      .then(async (projects) => {
+        const tasks = await Promise.all(
+          projects.map((project) =>
+            TinyManagerAPI.fetchTasks(Number(project.id))
+          )
+        );
+
+        projects = projects.map((project, i) => {
+          const projectTasks = tasks[i];
+          project.tasks = projectTasks;
+          project.progress =
+            projectTasks && projectTasks.length
+              ? projectTasks.reduce(
+                  (progress, task) =>
+                    progress +
+                    ((100 / projectTasks.length) * Number(task.progress)) / 100,
+                  0
+                )
+              : 0;
+          return project;
+        });
+
         setLoadingProjects(false);
         setProjects(projects);
       })
@@ -62,6 +83,7 @@ function ProjectList(props) {
             {projects.map((project) => (
               <React.Fragment key={project.id}>
                 <ProjectCard
+                  progress={project.progress}
                   project={project}
                   className={classes.projectCard}
                   onClick={handleProjectClick}
