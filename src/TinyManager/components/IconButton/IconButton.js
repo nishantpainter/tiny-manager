@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import MuiIconButton from "@material-ui/core/IconButton";
 
 import FilterListIcon from "@material-ui/icons/FilterList";
+import EditIcon from "@material-ui/icons/Edit";
 
 const icons = {
   filter: FilterListIcon,
+  edit: EditIcon,
 };
 
 function IconButton(props) {
