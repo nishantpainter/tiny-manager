@@ -45,7 +45,9 @@ function updateTask(taskId, task) {
 
 function removeProject(projectId) {}
 
-function removeTask(taskId) {}
+function removeTask(taskId) {
+  return DbService.remove("tasks", { id: taskId });
+}
 
 function fetchTodos() {
   return DbService.find("todos");

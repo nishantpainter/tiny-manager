@@ -88,6 +88,7 @@ function ProjectView(props) {
   );
 
   const handleTaskDelete = React.useCallback((e, task) => {
+    TinyManagerAPI.removeTask(task.id);
     setStore((store) => ({
       ...store,
       tasks: store.tasks.filter((t) => t.id !== task.id),
