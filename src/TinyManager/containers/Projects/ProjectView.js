@@ -121,6 +121,7 @@ function ProjectView(props) {
           <Grid item xs={12}>
             <ProjectCard
               project={project}
+              showEditButton={true}
               progress={
                 tasks && tasks.length
                   ? tasks.reduce(
