@@ -22,11 +22,15 @@ function ProjectCard(props) {
 
   const classes = useStyles();
 
+  const handleClick = React.useCallback(
+    (e) => {
+      onClick && onClick(e, project);
+    },
+    [project, onClick]
+  );
+
   return (
-    <Paper
-      className={clsx(classes.paper, className)}
-      onClick={(e) => onClick(e, project)}
-    >
+    <Paper className={clsx(classes.paper, className)} onClick={handleClick}>
       <Typography variant="h4" color="primary">
         {project.name}
       </Typography>
@@ -58,8 +62,7 @@ ProjectCard.propTypes = {
 
 ProjectCard.defaultProps = {
   project: {},
-  progress: 60,
-  onClick: () => {},
+  progress: 0,
 };
 
 export default ProjectCard;
