@@ -1,10 +1,13 @@
 import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import { LinearProgress, Typography } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
+import IconButton from "../IconButton";
 import Types from "TinyManager/types";
 
 const useStyles = makeStyles(() => ({
@@ -18,7 +21,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 function ProjectCard(props) {
-  const { className, project, progress, onClick } = props;
+  const { className, project, progress, onClick, showEditButton } = props;
 
   const classes = useStyles();
 
@@ -31,9 +34,17 @@ function ProjectCard(props) {
 
   return (
     <Paper className={clsx(classes.paper, className)} onClick={handleClick}>
-      <Typography variant="h4" color="primary">
-        {project.name}
-      </Typography>
+      <Box
+        display="flex"
+        width="100%"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Typography variant="h4" color="primary">
+          {project.name}
+        </Typography>
+        {showEditButton && <IconButton icon="edit" />}
+      </Box>
       <Typography
         variant="subtitle1"
         title={project.description}
@@ -58,11 +69,13 @@ ProjectCard.propTypes = {
   project: Types.ProjectType,
   progress: PropTypes.number,
   onClick: PropTypes.func,
+  showEditButton: PropTypes.bool,
 };
 
 ProjectCard.defaultProps = {
   project: {},
   progress: 0,
+  showEditButton: false,
 };
 
 export default ProjectCard;
