@@ -1,6 +1,19 @@
 import faker from "faker";
 import { v4 as uuid } from "uuid";
 
+async function fetch(data, rejectPromise = false, errorMessage = "") {
+  return new Promise((resolve, reject) => {
+    const handler = () => {
+      if (rejectPromise) {
+        reject(errorMessage);
+      } else {
+        resolve(data);
+      }
+    };
+    setTimeout(handler, 1000); // Stimulate fetch
+  });
+}
+
 function getId() {
   return uuid();
 }

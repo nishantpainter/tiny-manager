@@ -1,19 +1,5 @@
-import MockService from "TinyManager/services/MockService";
 import DbService from "TinyManager/services/DbService";
 import LocalStorageService from "TinyManager/services/LocalStorageService";
-
-async function fetch(data, rejectPromise = false, errorMessage = "") {
-  return new Promise((resolve, reject) => {
-    const handler = () => {
-      if (rejectPromise) {
-        reject(errorMessage);
-      } else {
-        resolve(data);
-      }
-    };
-    setTimeout(handler, 1000); // Stimulate fetch
-  });
-}
 
 function fetchProjects() {
   return DbService.find("projects");
