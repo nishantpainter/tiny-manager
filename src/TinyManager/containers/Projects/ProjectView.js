@@ -7,6 +7,7 @@ import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import Loader from "TinyManager/components/Loader";
 import TaskFormContainer from "TinyManager/containers/Projects/TaskForm";
+import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
 import TaskCard from "TinyManager/components/TaskCard";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +34,7 @@ function ProjectView(props) {
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = React.useState(false);
+  const [projectDialogOpen, setProjectDialogOpen] = React.useState(false);
 
   const handleOpenTaskDialog = React.useCallback(() => {
     setTaskDialogOpen(true);
@@ -41,6 +43,14 @@ function ProjectView(props) {
   const handleCloseTaskDialog = React.useCallback(() => {
     setTaskDialogOpen(false);
     setStore((store) => ({ ...store, task: {} }));
+  }, []);
+
+  const handleOpenProjectDialog = React.useCallback(() => {
+    setProjectDialogOpen(true);
+  }, []);
+
+  const handleCloseProjectDialog = React.useCallback(() => {
+    setProjectDialogOpen(false);
   }, []);
 
   const handleUpdateTask = React.useCallback(
@@ -54,6 +64,19 @@ function ProjectView(props) {
       });
     },
     [handleCloseTaskDialog]
+  );
+
+  const handleUpdateProject = React.useCallback(
+    (project) => {
+      TinyManagerAPI.updateProject(project.id, project).then((project) => {
+        setStore((store) => ({
+          ...store,
+          project,
+        }));
+        handleCloseProjectDialog();
+      });
+    },
+    [handleCloseProjectDialog]
   );
 
   const handleAddNewTask = React.useCallback(
@@ -95,6 +118,10 @@ function ProjectView(props) {
     }));
   }, []);
 
+  const handleProjectEditClick = React.useCallback(() => {
+    handleOpenProjectDialog();
+  }, [handleOpenProjectDialog]);
+
   React.useEffect(() => {
     if (projectId) {
       setStore((store) => ({ ...store, loading: true }));
@@ -123,6 +150,7 @@ function ProjectView(props) {
             <ProjectCard
               project={project}
               showEditButton={true}
+              onEdit={handleProjectEditClick}
               progress={
                 tasks && tasks.length
                   ? tasks.reduce(
@@ -169,6 +197,14 @@ function ProjectView(props) {
             initialValues={task}
             onCancel={handleCloseTaskDialog}
             onSubmit={handleTaskFormSubmit}
+          />
+        </Dialog>
+
+        <Dialog open={projectDialogOpen} onClose={handleCloseProjectDialog}>
+          <ProjectFormContainer
+            initialValues={project}
+            onCancel={handleCloseProjectDialog}
+            onSubmit={handleUpdateProject}
           />
         </Dialog>
       </div>
