@@ -21,7 +21,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 function ProjectCard(props) {
-  const { className, project, progress, onClick, showEditButton } = props;
+  const {
+    className,
+    project,
+    progress,
+    onClick,
+    onEdit,
+    showEditButton,
+  } = props;
 
   const classes = useStyles();
 
@@ -30,6 +37,13 @@ function ProjectCard(props) {
       onClick && onClick(e, project);
     },
     [project, onClick]
+  );
+
+  const handleEdit = React.useCallback(
+    (e) => {
+      onEdit && onEdit(e, project);
+    },
+    [project, onEdit]
   );
 
   return (
@@ -43,7 +57,7 @@ function ProjectCard(props) {
         <Typography variant="h4" color="primary">
           {project.name}
         </Typography>
-        {showEditButton && <IconButton icon="edit" />}
+        {showEditButton && <IconButton icon="edit" onClick={handleEdit} />}
       </Box>
       <Typography
         variant="subtitle1"
@@ -69,6 +83,7 @@ ProjectCard.propTypes = {
   project: Types.ProjectType,
   progress: PropTypes.number,
   onClick: PropTypes.func,
+  onEdit: PropTypes.func,
   showEditButton: PropTypes.bool,
 };
 
