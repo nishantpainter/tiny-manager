@@ -23,7 +23,9 @@ function addTask(task) {
   return DbService.insert("tasks", task);
 }
 
-function updateProject(projectId, project) {}
+function updateProject(projectId, project) {
+  return DbService.update("projects", project);
+}
 
 function updateTask(taskId, task) {
   return DbService.update("tasks", task);
