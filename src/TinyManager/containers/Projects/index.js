@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 
+import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import ProjectView from "TinyManager/containers/Projects/ProjectView";
 import ProjectList from "TinyManager/containers/Projects/ProjectList";
 import ProjectForm from "TinyManager/containers/Projects/ProjectForm";
@@ -18,9 +19,16 @@ function Projects(props) {
     history.push(url + `/${projectId}`);
   };
 
-  const redirectToProjectList = () => {
+  const redirectToProjectList = React.useCallback(() => {
     history.push(url);
-  };
+  }, [history, url]);
+
+  const handleAddNewProject = React.useCallback(
+    (values) => {
+      TinyManagerAPI.addProject(values).then(redirectToProjectList);
+    },
+    [redirectToProjectList]
+  );
 
   return (
     <>
@@ -30,7 +38,8 @@ function Projects(props) {
           render={(props) => (
             <ProjectForm
               {...props}
-              redirectToProjectList={redirectToProjectList}
+              onCancel={redirectToProjectList}
+              onSubmit={handleAddNewProject}
             />
           )}
         />
