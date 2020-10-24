@@ -3,26 +3,27 @@ import { useFormik } from "formik";
 import PropTypes from "prop-types";
 
 import ProjectForm from "TinyManager/components/ProjectForm";
-import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+import { ProjectType } from "TinyManager/types/index";
 
 function ProjectFormContainer(props) {
-  const { redirectToProjectList } = props;
+  const { onCancel, onSubmit, initialValues } = props;
 
   const handleCancel = React.useCallback(() => {
-    redirectToProjectList();
-  }, [redirectToProjectList]);
+    onCancel();
+  }, [onCancel]);
 
   const handleSubmit = React.useCallback(
     (values) => {
-      TinyManagerAPI.addProject(values).then(redirectToProjectList);
+      onSubmit(values);
     },
-    [redirectToProjectList]
+    [onSubmit]
   );
 
   const formik = useFormik({
     initialValues: {
       name: "",
       description: "",
+      ...initialValues,
     },
     validate: (values) => {
       const errors = {};
@@ -52,7 +53,9 @@ function ProjectFormContainer(props) {
 }
 
 ProjectFormContainer.propTypes = {
-  redirectToProjectList: PropTypes.func,
+  initialValues: ProjectType,
+  onCancel: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default ProjectFormContainer;
