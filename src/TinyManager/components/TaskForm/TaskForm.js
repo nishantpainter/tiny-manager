@@ -1,15 +1,13 @@
 import React from "react";
-import {
-  TextField,
-  Button,
-  Grid,
-  Typography,
-  Divider,
-  Select,
-  FormControl,
-  InputLabel,
-  MenuItem,
-} from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 

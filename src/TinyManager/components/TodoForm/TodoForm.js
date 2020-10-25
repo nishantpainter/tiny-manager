@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  TextField,
-  Grid,
-  Button,
-  Typography,
-  Divider,
-} from "@material-ui/core";
 
 import { TodoType } from "TinyManager/types";
 

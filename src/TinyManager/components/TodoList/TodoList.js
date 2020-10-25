@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import List from "@material-ui/core/List";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { List, Typography } from "@material-ui/core";
 
 import Todo from "../Todo";
 import { TodoType } from "TinyManager/types";

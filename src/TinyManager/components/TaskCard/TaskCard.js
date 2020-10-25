@@ -1,15 +1,18 @@
 import React from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import { Typography, IconButton, Grid, Box } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import FlagIcon from "@material-ui/icons/Flag";
 
 import Paper from "../Paper";
-import { TaskType } from "TinyManager/types/index";
 import CircularProgressWithLabel from "../CircularProgressWithLabel";
+import { TaskType } from "TinyManager/types/index";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
