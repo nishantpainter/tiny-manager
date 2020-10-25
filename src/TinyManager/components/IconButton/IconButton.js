@@ -5,11 +5,13 @@ import MuiIconButton from "@material-ui/core/IconButton";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import EditIcon from "@material-ui/icons/Edit";
 import AttachFile from "@material-ui/icons/AttachFile";
+import InvertColors from "@material-ui/icons/InvertColors";
 
 const icons = {
   filter: FilterListIcon,
   edit: EditIcon,
   attachment: AttachFile,
+  invertColors: InvertColors,
 };
 
 function IconButton(props) {

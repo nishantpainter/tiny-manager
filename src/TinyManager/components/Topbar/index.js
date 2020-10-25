@@ -5,10 +5,9 @@ import MuiAppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
 
+import IconButton from "TinyManager/components/IconButton";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { InvertColors as ToggleDarkThemeIcon } from "@material-ui/icons";
 
 const AppBar = withStyles((theme) => ({
   root: {
@@ -38,9 +37,12 @@ function Topbar(props) {
           Projects
         </Button>
         &nbsp;
-        <IconButton size="small" color="primary" onClick={onToggleDarkMode}>
-          <ToggleDarkThemeIcon />
-        </IconButton>
+        <IconButton
+          icon="invertColors"
+          size="small"
+          color="primary"
+          onClick={onToggleDarkMode}
+        ></IconButton>
       </Toolbar>
     </AppBar>
   );
