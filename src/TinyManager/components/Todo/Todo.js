@@ -5,12 +5,11 @@ import {
   ListItemIcon,
   ListItemText,
   ListItemSecondaryAction,
-  IconButton,
   Checkbox,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Delete as DeleteIcon } from "@material-ui/icons";
 
+import IconButton from "TinyManager/components/IconButton";
 import { TodoType } from "TinyManager/types";
 
 const useStyles = makeStyles({
@@ -70,9 +69,12 @@ function Todo(props) {
         }}
       />
       <ListItemSecondaryAction>
-        <IconButton edge="end" size="small" onClick={handleDelete}>
-          <DeleteIcon />
-        </IconButton>
+        <IconButton
+          icon="delete"
+          edge="end"
+          size="small"
+          onClick={handleDelete}
+        ></IconButton>
       </ListItemSecondaryAction>
     </ListItem>
   );
