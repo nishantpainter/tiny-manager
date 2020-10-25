@@ -1,6 +1,7 @@
 import React from "react";
 
 import TodoList from "./TodoList";
+import { withWrapper } from "TinyManager/decorators";
 
 const argTypes = {
   todos: {
@@ -29,6 +30,7 @@ export default {
   title: "TinyManager/TodoList",
   component: TodoList,
   argTypes,
+  decorators: [withWrapper],
 };
 
 const Template = (args) => {

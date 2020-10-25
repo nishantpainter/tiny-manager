@@ -1,17 +1,12 @@
 import React from "react";
 
 import TaskCard from "./TaskCard";
+import { withWrapper } from "TinyManager/decorators";
 
 export default {
   title: "TinyManager/TaskCard",
   component: TaskCard,
-  decorators: [
-    (Story) => (
-      <div style={{ width: 500 }}>
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [withWrapper],
   argTypes: {
     task: {
       control: {

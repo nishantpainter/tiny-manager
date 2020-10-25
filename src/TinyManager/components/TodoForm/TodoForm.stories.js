@@ -2,6 +2,7 @@ import React from "react";
 
 import TodoForm from "./TodoForm";
 import { TodoType } from "TinyManager/types";
+import { withLargeWrapper } from "TinyManager/decorators";
 
 const argTypes = {
   title: {
@@ -68,6 +69,7 @@ export default {
   title: "TinyManager/TodoForm",
   component: TodoForm,
   argTypes,
+  decorators: [withLargeWrapper],
 };
 
 const Template = (args) => <TodoForm {...args} />;

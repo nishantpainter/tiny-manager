@@ -1,10 +1,12 @@
 import React from "react";
 
 import ProjectCard from "./ProjectCard";
+import { withWrapper } from "TinyManager/decorators";
 
 export default {
   title: "TinyManager/ProjectCard",
   component: ProjectCard,
+  decorators: [withWrapper],
 };
 
 const Template = (args) => <ProjectCard {...args} />;

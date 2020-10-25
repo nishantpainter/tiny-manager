@@ -1,10 +1,12 @@
 import React from "react";
 
 import TaskForm from "./TaskForm";
+import { withLargeWrapper } from "TinyManager/decorators";
 
 export default {
   title: "TinyManager/TaskForm",
   component: TaskForm,
+  decorators: [withLargeWrapper],
 };
 
 const Template = (args) => {

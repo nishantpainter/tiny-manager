@@ -1,6 +1,7 @@
 import React from "react";
 
 import ProjectForm from "./ProjectForm";
+import { withLargeWrapper } from "TinyManager/decorators";
 
 const argTypes = {
   values: {
@@ -19,6 +20,7 @@ export default {
   title: "TinyManager/ProjectForm",
   component: ProjectForm,
   argTypes,
+  decorators: [withLargeWrapper],
 };
 
 const Template = (args) => <ProjectForm {...args} />;
