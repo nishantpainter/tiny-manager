@@ -29,21 +29,21 @@ function Todo(props) {
     (e) => {
       onCheck(e, todo);
     },
-    [onCheck]
+    [onCheck, todo]
   );
 
   const handleDelete = React.useCallback(
     (e) => {
       onDelete(e, todo);
     },
-    [onDelete]
+    [onDelete, todo]
   );
 
   const handleClick = React.useCallback(
     (e) => {
       onClick(e, todo);
     },
-    [onClick]
+    [onClick, todo]
   );
 
   return (
