@@ -31,10 +31,16 @@ function updateTask(taskId, task) {
   return DbService.update("tasks", task);
 }
 
-function removeProject(projectId) {}
+function removeProject(projectId) {
+  return DbService.remove("projects", { id: projectId });
+}
 
 function removeTask(taskId) {
   return DbService.remove("tasks", { id: taskId });
+}
+
+function removeBulkTask(taskIds) {
+  return DbService.removeBulk("tasks", taskIds);
 }
 
 function fetchTodos() {
@@ -89,6 +95,7 @@ export default {
   removeTodo,
   removeProject,
   removeTask,
+  removeBulkTask,
   fetchTodos,
   addTodo,
   updateTodo,
