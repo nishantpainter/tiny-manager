@@ -24,3 +24,10 @@ Progress.args = {
   ...Default.args,
   progress: 100,
 };
+
+export const Actions = Template.bind({});
+Actions.args = {
+  ...Default.args,
+  showEditButton: true,
+  showDeleteButton: true,
+};
