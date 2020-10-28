@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Typography, Fade } from "@material-ui/core";
+import {
+  Button,
+  Typography,
+  Fade,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@material-ui/core";
 
 import Loader from "TinyManager/components/Loader";
 import ProjectCard from "TinyManager/components/ProjectCard";
@@ -20,6 +28,11 @@ function ProjectList(props) {
 
   const [loadingProjects, setLoadingProjects] = React.useState(true);
   const [projects, setProjects] = React.useState([]);
+
+  const [deleteConfirmationStore, setDeleteConfirmationStore] = React.useState({
+    open: false,
+    project: null,
+  });
 
   React.useEffect(() => {
     TinyManagerAPI.fetchProjects()
@@ -61,6 +74,23 @@ function ProjectList(props) {
     onNewProject();
   }, [onNewProject]);
 
+  const handleOpenDeleteConfirmation = React.useCallback((e, project) => {
+    e.stopPropagation();
+    setDeleteConfirmationStore({ open: true, project });
+  }, []);
+
+  const handleCloseDeleteConfirmation = React.useCallback((e) => {
+    setDeleteConfirmationStore({ open: false, project: null });
+  }, []);
+
+  const handleDeleteProject = React.useCallback(() => {
+    const { id: projectId } = deleteConfirmationStore.project;
+    TinyManagerAPI.removeProject(projectId).then(() => {
+      setProjects((projects) => projects.filter((p) => p.id !== projectId));
+    });
+    handleCloseDeleteConfirmation();
+  }, [deleteConfirmationStore, handleCloseDeleteConfirmation]);
+
   if (loadingProjects) {
     return <Loader />;
   }
@@ -83,10 +113,12 @@ function ProjectList(props) {
             {projects.map((project) => (
               <React.Fragment key={project.id}>
                 <ProjectCard
-                  progress={project.progress}
                   project={project}
+                  progress={project.progress}
                   className={classes.projectCard}
                   onClick={handleProjectClick}
+                  onDelete={handleOpenDeleteConfirmation}
+                  showDeleteButton={true}
                 />
               </React.Fragment>
             ))}
@@ -94,6 +126,25 @@ function ProjectList(props) {
         ) : (
           <Typography variant="body1">No available projects.</Typography>
         )}
+        <Dialog
+          open={deleteConfirmationStore.open}
+          onClose={handleCloseDeleteConfirmation}
+        >
+          <DialogTitle>Delete Project</DialogTitle>
+          <DialogContent>
+            Delete {deleteConfirmationStore.project?.name} and related tasks ?
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDeleteConfirmation}>Cancel</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleDeleteProject}
+            >
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </Fade>
   );
