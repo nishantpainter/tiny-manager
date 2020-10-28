@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Grid, Button, Fade, Dialog } from "@material-ui/core";
+import {
+  Typography,
+  Grid,
+  Button,
+  Fade,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@material-ui/core";
 
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
@@ -34,6 +43,11 @@ function ProjectView(props) {
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = React.useState(false);
+
+  const [deleteAllTaskDialogOpen, setDeleteAllTaskDialogOpen] = React.useState(
+    false
+  );
+
   const [projectDialogOpen, setProjectDialogOpen] = React.useState(false);
 
   const handleOpenTaskDialog = React.useCallback(() => {
@@ -122,6 +136,23 @@ function ProjectView(props) {
     handleOpenProjectDialog();
   }, [handleOpenProjectDialog]);
 
+  const handleOpenDeleteAllTaskDialog = React.useCallback(() => {
+    setDeleteAllTaskDialogOpen(true);
+  }, []);
+
+  const handleCloseDeleteAllTaskDialog = React.useCallback(() => {
+    setDeleteAllTaskDialogOpen(false);
+  }, []);
+
+  const handleDeleteAllTask = React.useCallback(() => {
+    if (tasks.length) {
+      TinyManagerAPI.removeBulkTask(tasks.map(({ id }) => id)).then(() => {
+        setStore((store) => ({ ...store, tasks: [] }));
+        handleCloseDeleteAllTaskDialog();
+      });
+    }
+  }, [handleCloseDeleteAllTaskDialog, tasks]);
+
   React.useEffect(() => {
     if (projectId) {
       setStore((store) => ({ ...store, loading: true }));
@@ -166,10 +197,18 @@ function ProjectView(props) {
           <Grid item xs={12}>
             <Button
               color="primary"
-              variant="outlined"
+              variant="contained"
               onClick={handleOpenTaskDialog}
             >
               Add New Task
+            </Button>
+            &nbsp;&nbsp;
+            <Button
+              color="primary"
+              variant="outlined"
+              onClick={handleOpenDeleteAllTaskDialog}
+            >
+              Delete All
             </Button>
           </Grid>
         </Grid>
@@ -206,6 +245,24 @@ function ProjectView(props) {
             onCancel={handleCloseProjectDialog}
             onSubmit={handleUpdateProject}
           />
+        </Dialog>
+
+        <Dialog
+          open={deleteAllTaskDialogOpen}
+          onClose={handleCloseDeleteAllTaskDialog}
+        >
+          <DialogTitle>Delete All Tasks</DialogTitle>
+          <DialogContent>Do you want to remove all the tasks ?</DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDeleteAllTaskDialog}>Cancel</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleDeleteAllTask}
+            >
+              Confirm
+            </Button>
+          </DialogActions>
         </Dialog>
       </div>
     </Fade>
