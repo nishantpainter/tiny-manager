@@ -79,6 +79,10 @@ function remove(tableName, record) {
   return db[tableName].delete(record.id);
 }
 
+function removeBulk(tableName, ids) {
+  return db[tableName].bulkDelete(ids);
+}
+
 initateDB();
 
 export default {
@@ -87,5 +91,6 @@ export default {
   insert,
   update,
   remove,
+  removeBulk,
   getTable,
 };
