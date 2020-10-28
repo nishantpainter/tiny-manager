@@ -27,7 +27,9 @@ function ProjectCard(props) {
     progress,
     onClick,
     onEdit,
+    onDelete,
     showEditButton,
+    showDeleteButton,
   } = props;
 
   const classes = useStyles();
@@ -46,6 +48,13 @@ function ProjectCard(props) {
     [project, onEdit]
   );
 
+  const handleDelete = React.useCallback(
+    (e) => {
+      onDelete && onDelete(e, project);
+    },
+    [project, onDelete]
+  );
+
   return (
     <Paper className={clsx(classes.paper, className)} onClick={handleClick}>
       <Box
@@ -57,7 +66,12 @@ function ProjectCard(props) {
         <Typography variant="h4" color="primary">
           {project.name}
         </Typography>
-        {showEditButton && <IconButton icon="edit" onClick={handleEdit} />}
+        <Box display="flex">
+          {showEditButton && <IconButton icon="edit" onClick={handleEdit} />}
+          {showDeleteButton && (
+            <IconButton icon="delete" onClick={handleDelete} />
+          )}
+        </Box>
       </Box>
       <Typography
         variant="subtitle1"
@@ -84,7 +98,9 @@ ProjectCard.propTypes = {
   progress: PropTypes.number,
   onClick: PropTypes.func,
   onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
   showEditButton: PropTypes.bool,
+  showDeleteButton: PropTypes.bool,
 };
 
 ProjectCard.defaultProps = {
