@@ -16,7 +16,7 @@ import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
-  projectlist: { height: "85%", padding: theme.spacing(4), overflow: "auto" },
+  projectList: { height: "85%", padding: theme.spacing(4), overflow: "auto" },
   projectCard: {
     marginBottom: theme.spacing(2),
   },
