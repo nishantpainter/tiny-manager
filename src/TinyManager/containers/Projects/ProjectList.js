@@ -79,7 +79,7 @@ function ProjectList(props) {
     setDeleteConfirmationStore({ open: true, project });
   }, []);
 
-  const handleCloseDeleteConfirmation = React.useCallback((e) => {
+  const handleCloseDeleteConfirmation = React.useCallback(() => {
     setDeleteConfirmationStore({ open: false, project: null });
   }, []);
 
