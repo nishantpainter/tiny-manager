@@ -16,6 +16,7 @@ import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
+  projectlist: { height: "85%", padding: theme.spacing(4), overflow: "auto" },
   projectCard: {
     marginBottom: theme.spacing(2),
   },
@@ -107,9 +108,7 @@ function ProjectList(props) {
         <br />
         <br />
         {projects && projects.length ? (
-          <div
-            style={{ height: "85%", padding: `32px 32px`, overflow: "auto" }}
-          >
+          <div className={classes.projectList}>
             {projects.map((project) => (
               <React.Fragment key={project.id}>
                 <ProjectCard
