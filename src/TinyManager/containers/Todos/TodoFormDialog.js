@@ -21,24 +21,27 @@ function TodoFormDialog(props) {
     }));
   }, []);
 
-  const handleSubmit = React.useCallback((e) => {
-    e.preventDefault();
+  const handleSubmit = React.useCallback(
+    (e) => {
+      e.preventDefault();
 
-    if (!todo.title) {
-      setStore((store) => ({
-        ...store,
-        errors: { title: "Title is required." },
-      }));
-      return;
-    }
+      if (!todo.title) {
+        setStore((store) => ({
+          ...store,
+          errors: { title: "Title is required." },
+        }));
+        return;
+      }
 
-    if (Object.keys(errors).length) {
-      setStore((store) => ({ ...store, errors: {} }));
-    }
+      if (Object.keys(errors).length) {
+        setStore((store) => ({ ...store, errors: {} }));
+      }
 
-    onSubmit(todo);
-    setStore((store) => ({ ...store, todo: { title: "" } }));
-  });
+      onSubmit(todo);
+      setStore((store) => ({ ...store, todo: { title: "" } }));
+    },
+    [todo, errors, onSubmit]
+  );
 
   return (
     <Dialog fullWidth={true} maxWidth="sm" open={open} onClose={onClose}>
