@@ -17,6 +17,9 @@ const AppBar = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   title: { flexGrow: 1, cursor: "pointer" },
+  logo: {
+    fontSize: "1.25rem",
+  },
 });
 
 function Topbar(props) {
@@ -26,8 +29,16 @@ function Topbar(props) {
   return (
     <AppBar color="default">
       <Toolbar variant="dense">
-        <Typography className={classes.title} component={Link} to="/">
-          <b>Tiny Manager</b>
+        <Typography
+          color="primary"
+          className={classes.title}
+          component={Link}
+          to="/"
+        >
+          <span role="img" aria-label="Ant" className={classes.logo}>
+            🐜
+          </span>
+          &nbsp;<b>Tiny Manager</b>
         </Typography>
         <Button color="primary" size="large" component={Link} to="/">
           Home
