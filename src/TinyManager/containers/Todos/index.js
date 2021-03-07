@@ -12,6 +12,12 @@ import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexGrow: 1,
+    overflow: "auto",
+    padding: theme.spacing(1),
+  },
   todosContainer: {
     height: "100%",
     textAlign: "right",
@@ -179,7 +185,7 @@ function Todos(props) {
   }, [fetchTodos]);
 
   return (
-    <div className={className}>
+    <div className={classes.container}>
       <Divider />
       {loading ? (
         <Loader />

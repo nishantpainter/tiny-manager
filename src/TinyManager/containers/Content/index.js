@@ -11,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
     minHeight: theme.spacing(8), //48
   },
   main: {
+    display: "flex",
+    height: "100%",
+    width: "100%",
     overflow: "auto",
-    maxWidth: 500,
-    margin: "auto",
-    padding: theme.spacing(3),
-    height: `calc(100% - ${theme.spacing(8)}px)`,
+    justifyContent: "center",
   },
 }));
 

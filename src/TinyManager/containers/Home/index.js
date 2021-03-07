@@ -19,11 +19,15 @@ const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
     height: "100%",
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    maxWidth: 500,
+
   },
-  todos: {
-    height: "100%",
-    overflow: "hidden",
-    marginTop: theme.spacing(2),
+  defaultNotesCheckbox: {
+    alignSelf: "flex-end",
   },
 }));
 
@@ -49,10 +53,12 @@ function Home() {
   return (
     <Fade in={true}>
       <div className={classes.container}>
-        <Typography variant="body1" color="textSecondary" gutterBottom>
-          {quote}
-        </Typography>
-        <Box display="flex" justifyContent="flex-end">
+        <div>
+          <Typography variant="body1" color="textSecondary" gutterBottom>
+            {quote}
+          </Typography>
+        </div>
+        <div className={classes.defaultNotesCheckbox}>
           <FormControlLabel
             control={
               <Checkbox
@@ -63,17 +69,19 @@ function Home() {
             }
             label="Default Notes"
           />
-        </Box>
-        <Tabs
-          value={activeTab}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={handleChangeActiveTab}
-        >
-          <Tab label="Todos" value={0} />
-          <Tab label="Notes" value={1} />
-        </Tabs>
-        {activeTab === 0 && <Todos className={classes.todos} />}
+        </div>
+        <div>
+          <Tabs
+            value={activeTab}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={handleChangeActiveTab}
+          >
+            <Tab label="Todos" value={0} />
+            <Tab label="Notes" value={1} />
+          </Tabs>
+        </div>
+        {activeTab === 0 && <Todos />}
         {activeTab === 1 && <Notes />}
       </div>
     </Fade>
