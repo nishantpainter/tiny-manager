@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import Content from "TinyManager/containers/Content";
 import ThemeProvider from "TinyManager/services/ThemeProvider";
@@ -7,9 +7,9 @@ import ThemeProvider from "TinyManager/services/ThemeProvider";
 function TinyManager() {
   return (
     <ThemeProvider>
-      <Router>
+      <HashRouter>
         <Content />
-      </Router>
+      </HashRouter>
     </ThemeProvider>
   );
 }
