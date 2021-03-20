@@ -16,9 +16,16 @@ import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
-  projectList: { height: "85%", padding: theme.spacing(4), overflow: "auto" },
-  projectCard: {
-    marginBottom: theme.spacing(2),
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    overflow: "hidden",
+  },
+  list: {
+    flex: 1,
+    marginTop: theme.spacing(),
+    overflow: "auto",
   },
 }));
 
@@ -98,33 +105,35 @@ function ProjectList(props) {
 
   return (
     <Fade in={true}>
-      <div style={{ height: "100%", overflow: "hidden" }}>
-        <Typography variant="h5" gutterBottom>
-          Projects
-        </Typography>
-        <Button color="primary" variant="outlined" onClick={handleNewProject}>
-          Add New
-        </Button>
-        <br />
-        <br />
-        {projects && projects.length ? (
-          <div className={classes.projectList}>
-            {projects.map((project) => (
-              <React.Fragment key={project.id}>
-                <ProjectCard
-                  project={project}
-                  progress={project.progress}
-                  className={classes.projectCard}
-                  onClick={handleProjectClick}
-                  onDelete={handleOpenDeleteConfirmation}
-                  showDeleteButton={true}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-        ) : (
-          <Typography variant="body1">No available projects.</Typography>
-        )}
+      <div className={classes.container}>
+        <div>
+          <Typography variant="h5" gutterBottom>
+            Projects
+          </Typography>
+          <Button color="primary" variant="outlined" onClick={handleNewProject}>
+            Add New
+          </Button>
+        </div>
+        <div className={classes.list}>
+          {projects && projects.length ? (
+            <div className={classes.projectList}>
+              {projects.map((project) => (
+                <React.Fragment key={project.id}>
+                  <ProjectCard
+                    project={project}
+                    progress={project.progress}
+                    className={classes.projectCard}
+                    onClick={handleProjectClick}
+                    onDelete={handleOpenDeleteConfirmation}
+                    showDeleteButton={true}
+                  />
+                </React.Fragment>
+              ))}
+            </div>
+          ) : (
+            <Typography variant="body1">No available projects.</Typography>
+          )}
+        </div>
         <Dialog
           open={deleteConfirmationStore.open}
           onClose={handleCloseDeleteConfirmation}
