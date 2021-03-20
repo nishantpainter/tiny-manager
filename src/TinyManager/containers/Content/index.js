@@ -8,14 +8,13 @@ import Projects from "TinyManager/containers/Projects";
 
 const useStyles = makeStyles((theme) => ({
   topbar: {
-    minHeight: theme.spacing(8), //48
+    minHeight: theme.spacing(8),
   },
   main: {
     display: "flex",
     height: "100%",
     width: "100%",
     overflow: "auto",
-    justifyContent: "center",
   },
 }));
 

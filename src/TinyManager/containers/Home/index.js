@@ -17,6 +17,11 @@ import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "center",
+  },
+  content: {
     width: "100%",
     height: "100%",
     display: "flex",
@@ -24,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     maxWidth: 500,
-
   },
   defaultNotesCheckbox: {
     alignSelf: "flex-end",
@@ -53,36 +57,38 @@ function Home() {
   return (
     <Fade in={true}>
       <div className={classes.container}>
-        <div>
-          <Typography variant="body1" color="textSecondary" gutterBottom>
-            {quote}
-          </Typography>
+        <div className={classes.content}>
+          <div>
+            <Typography variant="body1" color="textSecondary" gutterBottom>
+              {quote}
+            </Typography>
+          </div>
+          <div className={classes.defaultNotesCheckbox}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={checked}
+                  onChange={handleChangeDefaultNotes}
+                />
+              }
+              label="Default Notes"
+            />
+          </div>
+          <div>
+            <Tabs
+              value={activeTab}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={handleChangeActiveTab}
+            >
+              <Tab label="Todos" value={0} />
+              <Tab label="Notes" value={1} />
+            </Tabs>
+          </div>
+          {activeTab === 0 && <Todos />}
+          {activeTab === 1 && <Notes />}
         </div>
-        <div className={classes.defaultNotesCheckbox}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                color="primary"
-                checked={checked}
-                onChange={handleChangeDefaultNotes}
-              />
-            }
-            label="Default Notes"
-          />
-        </div>
-        <div>
-          <Tabs
-            value={activeTab}
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={handleChangeActiveTab}
-          >
-            <Tab label="Todos" value={0} />
-            <Tab label="Notes" value={1} />
-          </Tabs>
-        </div>
-        {activeTab === 0 && <Todos />}
-        {activeTab === 1 && <Notes />}
       </div>
     </Fade>
   );
