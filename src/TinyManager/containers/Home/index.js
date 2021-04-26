@@ -1,13 +1,10 @@
-import React from "react";
-import {
-  Fade,
-  Typography,
-  Tabs,
-  Tab,
-  FormControlLabel,
-  Checkbox,
-  Box,
-} from "@material-ui/core";
+import React, { useCallback, useMemo, useState } from "react";
+import Fade from "@material-ui/core/Fade";
+import Typography from "@material-ui/core/Typography";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Notes from "TinyManager/containers/Notes";
@@ -15,7 +12,7 @@ import Todos from "TinyManager/containers/Todos";
 import QuoteService from "TinyManager/services/QuoteService";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
     flex: 1,
@@ -25,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     display: "flex",
-    flexGrow: 1,
+    flex: 1,
     flexDirection: "column",
     alignItems: "center",
     maxWidth: 500,
   },
-  defaultNotesCheckbox: {
+  checkbox: {
     alignSelf: "flex-end",
   },
 }));
@@ -40,16 +37,16 @@ function Home() {
 
   const defaultNotes = TinyManagerAPI.fetchDefaultNotes();
 
-  const [activeTab, setActiveTab] = React.useState(defaultNotes ? 1 : 0);
-  const [checked, setChecked] = React.useState(defaultNotes);
-  const quote = React.useMemo(() => QuoteService.getQuote(), []);
+  const [activeTab, setActiveTab] = useState(defaultNotes ? 1 : 0);
+  const [checked, setChecked] = useState(defaultNotes);
+  const quote = useMemo(() => QuoteService.getQuote(), []);
 
-  const handleChangeActiveTab = React.useCallback((e, value) => {
+  const handleChangeActiveTab = useCallback((event, value) => {
     setActiveTab(value);
   }, []);
 
-  const handleChangeDefaultNotes = React.useCallback((e) => {
-    const { checked } = e.target;
+  const handleChangeDefaultNotes = useCallback((event) => {
+    const { checked } = event.target;
     setChecked(checked);
     TinyManagerAPI.updateDefaultNotes(checked);
   }, []);
@@ -63,7 +60,7 @@ function Home() {
               {quote}
             </Typography>
           </div>
-          <div className={classes.defaultNotesCheckbox}>
+          <div className={classes.checkbox}>
             <FormControlLabel
               control={
                 <Checkbox
