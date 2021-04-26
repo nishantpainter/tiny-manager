@@ -13,12 +13,14 @@ import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    flex: 1,
+    overflow: "hidden",
+    width: "100%",
     display: "flex",
-    flexGrow: 1,
-    overflow: "auto",
     padding: theme.spacing(1),
   },
   todosContainer: {
+    flex: 1,
     height: "100%",
     textAlign: "right",
   },
@@ -27,9 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Todos(props) {
-  const { className } = props;
-
+function Todos() {
   const [
     { todos, todo, loading, saving, dialogOpen },
     setStore,
