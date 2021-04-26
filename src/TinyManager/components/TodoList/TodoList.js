@@ -10,7 +10,7 @@ import { TodoType } from "TinyManager/types";
 const useStyles = makeStyles({
   list: {
     overflow: "auto",
-    height: "95%",
+    height: "90%",
   },
 });
 
