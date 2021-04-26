@@ -11,8 +11,29 @@ import Loader from "TinyManager/components/Loader";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    width: "100%",
+    overflow: "hidden",
+    flexDirection: "column",
+    flex: 1,
+  },
   action: {
     marginBottom: theme.spacing(1),
+  },
+  input: {
+    display: "flex",
+    overflow: "auto",
+    flex: 1,
+  },
+  inputRoot: {
+    flex: 1,
+  },
+  inputControl: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden",
   },
   caption: {
     display: "block",
@@ -64,7 +85,7 @@ function Notes() {
   }, []);
 
   return (
-    <>
+    <div className={classes.container}>
       <Box
         className={classes.action}
         display="flex"
@@ -94,16 +115,27 @@ function Notes() {
           <ClearIcon />
         </IconButton>
       </Box>
-      <TextField
-        onChange={handleChange}
-        value={notes}
-        rows={20}
-        rowsMax={20}
-        placeholder="You can enter your notes here..."
-        multiline
-        fullWidth
-        autoFocus
-      />
+      <div className={classes.input}>
+        <TextField
+          classes={{
+            root: classes.inputRoot,
+          }}
+          InputProps={{
+            classes: {
+              root: classes.inputControl,
+            },
+          }}
+          inputProps={{
+            style: { overflow: "auto" },
+          }}
+          onChange={handleChange}
+          value={notes}
+          placeholder="You can enter your notes here..."
+          multiline
+          fullWidth
+          autoFocus
+        />
+      </div>
       <Typography
         className={classes.caption}
         color="textSecondary"
@@ -111,7 +143,7 @@ function Notes() {
       >
         *Notes will be stored locally on the browser and will be persisted.
       </Typography>
-    </>
+    </div>
   );
 }
 
