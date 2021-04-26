@@ -7,12 +7,16 @@ import Home from "TinyManager/containers/Home";
 import Projects from "TinyManager/containers/Projects";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(1),
+    height: "100%",
+  },
   topbar: {
-    minHeight: theme.spacing(8),
+    height: theme.spacing(8),
   },
   main: {
     display: "flex",
-    height: "100%",
+    height: `calc(100% - ${theme.spacing(8)}px)`, // $topbar height
     width: "100%",
     overflow: "auto",
   },
@@ -21,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 function Content() {
   const classes = useStyles();
   return (
-    <>
+    <div className={classes.root}>
       <Topbar />
       <div className={classes.topbar} />
       <main className={classes.main}>
@@ -30,7 +34,7 @@ function Content() {
           <Route path="/" component={Home} />
         </Switch>
       </main>
-    </>
+    </div>
   );
 }
 
