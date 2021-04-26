@@ -42,6 +42,9 @@ function ThemeProvider(props) {
       MuiTextField: {
         variant: "outlined",
       },
+      MuiButton: {
+        size: "small",
+      },
     },
     overrides: {
       MuiButton: { root: { textTransform: "none" } },
