@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import IconButton from "TinyManager/components/IconButton";
 import { TodoType } from "TinyManager/types";
+import { noop } from "../utils";
 
 const useStyles = makeStyles({
   listItemContainer: {
@@ -104,9 +105,9 @@ Todo.propTypes = {
 Todo.defaultProps = {
   todo: {},
   divider: true,
-  onCheck: () => {},
-  onDelete: () => {},
-  onClick: () => {},
+  onCheck: noop,
+  onDelete: noop,
+  onClick: noop,
 };
 
 export default Todo;

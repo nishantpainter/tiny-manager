@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Todo from "../Todo";
 import { TodoType } from "TinyManager/types";
+import { noop } from "../utils";
 
 const useStyles = makeStyles({
   list: {
@@ -59,8 +60,8 @@ TodoList.propTypes = {
 
 TodoList.defaultProps = {
   todos: [],
-  onTodoClick: () => {},
-  onTodoCheck: () => {},
+  onTodoClick: noop,
+  onTodoCheck: noop,
 };
 
 export default TodoList;

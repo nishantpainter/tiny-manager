@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { TodoType } from "TinyManager/types";
+import { noop } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -88,8 +89,8 @@ TodoForm.defaultProps = {
   errors: {},
   disabled: false,
   onSubmit: (e) => e.preventDefault(),
-  onChange: () => {},
-  onCancel: () => {},
+  onChange: noop,
+  onCancel: noop,
 };
 
 export default TodoForm;

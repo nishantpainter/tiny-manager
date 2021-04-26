@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "../Paper";
 import IconButton from "../IconButton";
 import { TaskType } from "TinyManager/types";
+import { noop } from "../utils";
 
 const PRIORITIES = [
   {
@@ -182,11 +183,11 @@ TaskForm.defaultProps = {
   errors: {},
   disabled: false,
   title: "New Task",
-  onChange: () => {},
+  onChange: noop,
   onSubmit: (e) => {
     e.preventDefault();
   },
-  onCancel: () => {},
+  onCancel: noop,
 };
 
 export default TaskForm;

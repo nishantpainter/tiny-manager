@@ -13,6 +13,7 @@ import FlagIcon from "@material-ui/icons/Flag";
 import Paper from "../Paper";
 import CircularProgressWithLabel from "../CircularProgressWithLabel";
 import { TaskType } from "TinyManager/types/index";
+import { noop } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -134,8 +135,8 @@ TaskCard.propTypes = {
 
 TaskCard.defaultProps = {
   task: {},
-  onClick: () => {},
-  onDelete: () => {},
+  onClick: noop,
+  onDelete: noop,
 };
 
 export default TaskCard;

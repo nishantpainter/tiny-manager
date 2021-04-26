@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
 import { ProjectType } from "TinyManager/types";
+import { noop } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -128,11 +129,11 @@ ProjectForm.defaultProps = {
   errors: {},
   disabled: false,
   title: "New Project",
-  onChange: () => {},
+  onChange: noop,
   onSubmit: (e) => {
     e.preventDefault();
   },
-  onCancel: () => {},
+  onCancel: noop,
 };
 
 export default ProjectForm;
