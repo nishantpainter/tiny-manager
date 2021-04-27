@@ -20,6 +20,10 @@ import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
 import TaskCard from "TinyManager/components/TaskCard";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+  },
   taskCard: {
     marginBottom: theme.spacing(2),
   },
@@ -175,7 +179,7 @@ function ProjectView(props) {
 
   return (
     <Fade in={true}>
-      <div>
+      <div className={classes.container}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <ProjectCard
