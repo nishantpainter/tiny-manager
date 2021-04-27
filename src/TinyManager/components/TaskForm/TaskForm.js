@@ -12,7 +12,6 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
-import IconButton from "../IconButton";
 import { TaskType } from "TinyManager/types";
 import { noop } from "../utils";
 
@@ -145,9 +144,6 @@ function TaskForm(props) {
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}></Grid>
-          <Grid item xs={12}>
-            <IconButton icon="attachment" />
-          </Grid>
           <Grid item xs={12} align="right">
             <Button variant="outlined" disabled={disabled} onClick={onCancel}>
               Cancel
