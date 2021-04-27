@@ -200,7 +200,8 @@ function Todos() {
         <div className={classes.todosContainer}>
           <Box
             display="flex"
-            justifyContent="flex-end"
+            justifyContent="space-between"
+            alignItems="center"
             marginTop={1}
             marginBottom={1}
           >
@@ -209,14 +210,17 @@ function Todos() {
               value={filter}
               onChange={handleFilterChange}
             />
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={handleAddNewTodoClick}
-            >
-              Add
-            </Button>
+            <Box display="flex" justifyContent="flex-end" alignItems="center">
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleAddNewTodoClick}
+              >
+                Add
+              </Button>
+            </Box>
           </Box>
+
           <TodoList
             todos={todos}
             onTodoClick={handleTodoClick}
