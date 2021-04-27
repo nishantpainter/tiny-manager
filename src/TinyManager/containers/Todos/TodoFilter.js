@@ -1,58 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Menu from "@material-ui/core/Menu";
+import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import IconButton from "TinyManager/components/IconButton";
-
+import { FILTERS } from "./index";
 function TodoFilter(props) {
-  const { active, onFilterClick, ...rest } = props;
+  const { value, onChange, className } = props;
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleMenuClick = (filter) => () => {
-    handleClose();
-    onFilterClick && onFilterClick(filter);
+  const handleChange = (event) => {
+    onChange && onChange(event.target.value);
   };
 
   return (
-    <>
-      <IconButton icon="filter" onClick={handleClick} {...rest} />
-      <Menu
-        keepMounted
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        {[
-          { value: "all", label: "All" },
-          { value: "pending", label: "Pending" },
-          { value: "completed", label: "Completed" },
-        ].map((item) => (
-          <MenuItem
-            key={item.value}
-            selected={active === item.value}
-            onClick={handleMenuClick(item.value)}
-          >
-            {item.label}
-          </MenuItem>
-        ))}
-      </Menu>
-    </>
+    <Select
+      size="small"
+      margin="dense"
+      variant="outlined"
+      value={value}
+      onChange={handleChange}
+      className={className}
+    >
+      {Object.keys(FILTERS).map((key) => (
+        <MenuItem key={FILTERS[key]} value={FILTERS[key]}>
+          {key}
+        </MenuItem>
+      ))}
+    </Select>
   );
 }
 
 TodoFilter.propTypes = {
-  active: PropTypes.string,
-  onFilterClick: PropTypes.any,
+  value: PropTypes.string,
+  className: PropTypes.string,
+  onChange: PropTypes.any,
 };
 
 export default TodoFilter;
