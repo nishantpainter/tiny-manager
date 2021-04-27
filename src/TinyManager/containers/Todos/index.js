@@ -4,6 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 
 import TodosFilter from "./TodoFilter";
 import TodoFormDialog from "./TodoFormDialog";
@@ -46,6 +50,11 @@ function Todos() {
     saving: false,
     dialogOpen: false,
   });
+
+  const [
+    deleteAllTodosDialogOpen,
+    setDeleteAllTodosDialogOpen,
+  ] = React.useState(false);
 
   const [filter, setFilter] = React.useState("all");
 
@@ -183,6 +192,23 @@ function Todos() {
     }
   }, []);
 
+  const handleOpenDeleteAllTodosDialog = React.useCallback(() => {
+    setDeleteAllTodosDialogOpen(true);
+  }, []);
+
+  const handleCloseDeleteAllTodosDialog = React.useCallback(() => {
+    setDeleteAllTodosDialogOpen(false);
+  }, []);
+
+  const handleDeleteAllTodos = React.useCallback(() => {
+    if (todos.length) {
+      TinyManagerAPI.removeBulkTodos(todos.map(({ id }) => id)).then(() => {
+        setStore((store) => ({ ...store, todos: [] }));
+      });
+    }
+    handleCloseDeleteAllTodosDialog();
+  }, [todos, handleCloseDeleteAllTodosDialog]);
+
   const handleFilterChange = React.useCallback((filter) => {
     setFilter(filter);
   }, []);
@@ -218,6 +244,14 @@ function Todos() {
               >
                 Add
               </Button>
+              &nbsp;&nbsp;
+              <Button
+                color="primary"
+                variant="outlined"
+                onClick={handleOpenDeleteAllTodosDialog}
+              >
+                Delete All
+              </Button>
             </Box>
           </Box>
 
@@ -238,6 +272,23 @@ function Todos() {
           onClose={handleCloseDialog}
         />
       )}
+      <Dialog
+        open={deleteAllTodosDialogOpen}
+        onClose={handleCloseDeleteAllTodosDialog}
+      >
+        <DialogTitle>Delete All Todos</DialogTitle>
+        <DialogContent>Do you want to remove all the todos ?</DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDeleteAllTodosDialog}>Cancel</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleDeleteAllTodos}
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
