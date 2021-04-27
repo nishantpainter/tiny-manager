@@ -76,6 +76,17 @@ function Notes() {
     handleChange({ target: { value: "" } });
   }, [handleChange]);
 
+  const handleKeyDown = React.useCallback(
+    (event) => {
+      const isSave = event.key === "s" && event.ctrlKey === true;
+      if (isSave) {
+        event.preventDefault();
+        handleDownloadNote();
+      }
+    },
+    [handleDownloadNote]
+  );
+
   React.useEffect(() => {
     const notes = TinyManagerAPI.fetchNotes();
     if (notes) {
@@ -129,6 +140,7 @@ function Notes() {
             style: { overflow: "auto" },
           }}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           value={notes}
           placeholder="You can enter your notes here..."
           multiline
