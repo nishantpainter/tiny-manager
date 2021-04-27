@@ -59,6 +59,10 @@ function removeTodo(todo) {
   return DbService.remove("todos", todo);
 }
 
+function removeBulkTodos(todoIds) {
+  return DbService.removeBulk("todos", todoIds);
+}
+
 function fetchNotes() {
   return LocalStorageService.getNotes();
 }
@@ -93,6 +97,7 @@ export default {
   updateProject,
   updateTask,
   removeTodo,
+  removeBulkTodos,
   removeProject,
   removeTask,
   removeBulkTask,
