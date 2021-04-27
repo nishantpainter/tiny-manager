@@ -8,14 +8,17 @@ import ProjectView from "TinyManager/containers/Projects/ProjectView";
 import ProjectList from "TinyManager/containers/Projects/ProjectList";
 import ProjectForm from "TinyManager/containers/Projects/ProjectForm";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   container: {
-    display: "flex",
     flex: 1,
+    display: "flex",
     justifyContent: "center",
   },
   content: {
-    width: 500,
+    flex: 1,
+    display: "flex",
+    maxWidth: 500,
+    padding: theme.spacing(3.5),
   },
 }));
 
