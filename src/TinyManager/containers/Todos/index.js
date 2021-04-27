@@ -249,6 +249,7 @@ function Todos() {
                 color="primary"
                 variant="outlined"
                 onClick={handleOpenDeleteAllTodosDialog}
+                disabled={!todos.length}
               >
                 Delete All
               </Button>
