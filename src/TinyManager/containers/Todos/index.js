@@ -29,6 +29,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export const FILTERS = {
+  Completed: "completed",
+  Pending: "pending",
+  All: "all",
+};
+
 function Todos() {
   const [
     { todos, todo, loading, saving, dialogOpen },
@@ -48,10 +54,11 @@ function Todos() {
   const filterTodos = React.useCallback(
     (todos = []) => {
       switch (filter) {
-        case "completed":
+        case FILTERS.Completed:
           return todos.filter((t) => t.completed);
-        case "pending":
+        case FILTERS.Pending:
           return todos.filter((t) => !t.completed);
+        case FILTERS.All:
         default:
           return todos;
       }
@@ -176,7 +183,7 @@ function Todos() {
     }
   }, []);
 
-  const handleFilterClick = React.useCallback((filter) => {
+  const handleFilterChange = React.useCallback((filter) => {
     setFilter(filter);
   }, []);
 
@@ -199,8 +206,8 @@ function Todos() {
           >
             <TodosFilter
               className={classes.todosFilter}
-              active={filter}
-              onFilterClick={handleFilterClick}
+              value={filter}
+              onChange={handleFilterChange}
             />
             <Button
               color="primary"
