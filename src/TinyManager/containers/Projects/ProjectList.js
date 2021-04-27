@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     marginTop: theme.spacing(),
     overflow: "auto",
+    padding: theme.spacing(3.5),
+  },
+  card: {
+    marginBottom: theme.spacing(3.5),
   },
 }));
 
@@ -122,10 +126,10 @@ function ProjectList(props) {
                   <ProjectCard
                     project={project}
                     progress={project.progress}
-                    className={classes.projectCard}
+                    className={classes.card}
                     onClick={handleProjectClick}
                     onDelete={handleOpenDeleteConfirmation}
-                    showDeleteButton={true}
+                    showDeleteButton={true} 
                   />
                 </React.Fragment>
               ))}
