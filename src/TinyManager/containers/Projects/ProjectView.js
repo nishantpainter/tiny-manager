@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
+    flex: 1,
   },
   taskCard: {
     marginBottom: theme.spacing(2),
