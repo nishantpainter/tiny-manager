@@ -209,6 +209,7 @@ function ProjectView(props) {
             </Button>
             &nbsp;&nbsp;
             <Button
+              disabled={!tasks.length}
               color="primary"
               variant="outlined"
               onClick={handleOpenDeleteAllTaskDialog}
