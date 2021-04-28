@@ -10,6 +10,10 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
 } from "@material-ui/core";
 
 import ProjectCard from "TinyManager/components/ProjectCard";
@@ -33,6 +37,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const sortByMenu = [
+  {
+    label: "Priority",
+    value: "priority",
+  },
+  {
+    label: "Created",
+    value: "created",
+  },
+];
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
   const { params } = match;
@@ -40,11 +54,12 @@ function ProjectView(props) {
 
   const classes = useStyles();
 
-  const [{ loading, project, tasks, task }, setStore] = React.useState({
+  const [{ loading, project, tasks, task, sortBy }, setStore] = React.useState({
     loading: true,
     project: {},
     tasks: [],
     task: {},
+    sortBy: "created",
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = React.useState(false);
@@ -70,6 +85,10 @@ function ProjectView(props) {
 
   const handleCloseProjectDialog = React.useCallback(() => {
     setProjectDialogOpen(false);
+  }, []);
+
+  const handleChangeSortBy = React.useCallback((event) => {
+    setStore((store) => ({ ...store, sortBy: event.target.value }));
   }, []);
 
   const handleUpdateTask = React.useCallback(
@@ -216,6 +235,26 @@ function ProjectView(props) {
             >
               Delete All
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl margin="dense" variant="outlined">
+              <InputLabel id="task-sort-by">Sort By</InputLabel>
+              <Select
+                margin="dense"
+                label="Sort By"
+                labelId="task-sort-by"
+                variant="outlined"
+                value={sortBy}
+                disabled
+                onChange={handleChangeSortBy}
+              >
+                {sortByMenu.map((item) => (
+                  <MenuItem value={item.value} key={item.value}>
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
         </Grid>
         {tasks && tasks.length ? (
