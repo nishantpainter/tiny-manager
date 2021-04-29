@@ -266,6 +266,7 @@ function ProjectView(props) {
                 variant="outlined"
                 value={sortBy}
                 onChange={handleChangeSortBy}
+                disabled={!(tasks && tasks.length)}
               >
                 {sortByMenu.map((item) => (
                   <MenuItem value={item.value} key={item.value}>
