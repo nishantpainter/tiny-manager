@@ -27,6 +27,8 @@ function initateDB() {
     priority: Number,
     progress: Number,
     projectId: Number,
+    createdAt: Date,
+    updatedAt: Date,
   });
   db.updates.defineClass({
     description: String,
@@ -60,12 +62,14 @@ function findOne(tableName, query) {
 }
 
 function insert(tableName, record) {
+  record = { ...record, createdAt: new Date(), updatedAt: new Date() };
   return db[tableName]
     .add(record)
     .then((recordId) => findOne(tableName, recordId));
 }
 
 function update(tableName, record) {
+  record = { ...record, updatedAt: new Date() };
   return db[tableName].update(record.id, record).then((updateCount) => {
     if (updateCount) {
       return findOne(tableName, record.id);
