@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -54,7 +54,7 @@ function ProjectView(props) {
 
   const classes = useStyles();
 
-  const [{ loading, project, tasks, task, sortBy }, setStore] = React.useState({
+  const [{ loading, project, tasks, task, sortBy }, setStore] = useState({
     loading: true,
     project: {},
     tasks: [],
@@ -62,36 +62,34 @@ function ProjectView(props) {
     sortBy: "created",
   });
 
-  const [taskDialogOpen, setTaskDialogOpen] = React.useState(false);
+  const [taskDialogOpen, setTaskDialogOpen] = useState(false);
 
-  const [deleteAllTaskDialogOpen, setDeleteAllTaskDialogOpen] = React.useState(
-    false
-  );
+  const [deleteAllTaskDialogOpen, setDeleteAllTaskDialogOpen] = useState(false);
 
-  const [projectDialogOpen, setProjectDialogOpen] = React.useState(false);
+  const [projectDialogOpen, setProjectDialogOpen] = useState(false);
 
-  const handleOpenTaskDialog = React.useCallback(() => {
+  const handleOpenTaskDialog = useCallback(() => {
     setTaskDialogOpen(true);
   }, []);
 
-  const handleCloseTaskDialog = React.useCallback(() => {
+  const handleCloseTaskDialog = useCallback(() => {
     setTaskDialogOpen(false);
     setStore((store) => ({ ...store, task: {} }));
   }, []);
 
-  const handleOpenProjectDialog = React.useCallback(() => {
+  const handleOpenProjectDialog = useCallback(() => {
     setProjectDialogOpen(true);
   }, []);
 
-  const handleCloseProjectDialog = React.useCallback(() => {
+  const handleCloseProjectDialog = useCallback(() => {
     setProjectDialogOpen(false);
   }, []);
 
-  const handleChangeSortBy = React.useCallback((event) => {
+  const handleChangeSortBy = useCallback((event) => {
     setStore((store) => ({ ...store, sortBy: event.target.value }));
   }, []);
 
-  const handleUpdateTask = React.useCallback(
+  const handleUpdateTask = useCallback(
     (task) => {
       TinyManagerAPI.updateTask(task.id, task).then((task) => {
         setStore((store) => ({
@@ -104,7 +102,7 @@ function ProjectView(props) {
     [handleCloseTaskDialog]
   );
 
-  const handleUpdateProject = React.useCallback(
+  const handleUpdateProject = useCallback(
     (project) => {
       TinyManagerAPI.updateProject(project.id, project).then((project) => {
         setStore((store) => ({
@@ -117,7 +115,7 @@ function ProjectView(props) {
     [handleCloseProjectDialog]
   );
 
-  const handleAddNewTask = React.useCallback(
+  const handleAddNewTask = useCallback(
     (task) => {
       TinyManagerAPI.addTask(
         Object.assign({ projectId: Number(projectId) }, task)
@@ -129,7 +127,7 @@ function ProjectView(props) {
     [handleCloseTaskDialog, projectId]
   );
 
-  const handleTaskFormSubmit = React.useCallback(
+  const handleTaskFormSubmit = useCallback(
     (task) => {
       if (task.id) {
         handleUpdateTask(task);
@@ -140,7 +138,7 @@ function ProjectView(props) {
     [handleUpdateTask, handleAddNewTask]
   );
 
-  const handleTaskClick = React.useCallback(
+  const handleTaskClick = useCallback(
     (e, task = {}) => {
       setStore((store) => ({ ...store, task }));
       handleOpenTaskDialog();
@@ -148,7 +146,7 @@ function ProjectView(props) {
     [handleOpenTaskDialog]
   );
 
-  const handleTaskDelete = React.useCallback((e, task) => {
+  const handleTaskDelete = useCallback((e, task) => {
     TinyManagerAPI.removeTask(task.id);
     setStore((store) => ({
       ...store,
@@ -156,19 +154,19 @@ function ProjectView(props) {
     }));
   }, []);
 
-  const handleProjectEditClick = React.useCallback(() => {
+  const handleProjectEditClick = useCallback(() => {
     handleOpenProjectDialog();
   }, [handleOpenProjectDialog]);
 
-  const handleOpenDeleteAllTaskDialog = React.useCallback(() => {
+  const handleOpenDeleteAllTaskDialog = useCallback(() => {
     setDeleteAllTaskDialogOpen(true);
   }, []);
 
-  const handleCloseDeleteAllTaskDialog = React.useCallback(() => {
+  const handleCloseDeleteAllTaskDialog = useCallback(() => {
     setDeleteAllTaskDialogOpen(false);
   }, []);
 
-  const handleDeleteAllTask = React.useCallback(() => {
+  const handleDeleteAllTask = useCallback(() => {
     if (tasks.length) {
       TinyManagerAPI.removeBulkTask(tasks.map(({ id }) => id)).then(() => {
         setStore((store) => ({ ...store, tasks: [] }));
@@ -177,7 +175,7 @@ function ProjectView(props) {
     }
   }, [handleCloseDeleteAllTaskDialog, tasks]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (projectId) {
       setStore((store) => ({ ...store, loading: true }));
       TinyManagerAPI.fetchProject(Number(projectId))
