@@ -41,10 +41,18 @@ const sortByMenu = [
     value: "priority",
   },
   {
+    label: "Progress",
+    value: "progress",
+  },
+  {
     label: "Created",
     value: "created",
   },
 ];
+
+function sortTasksBy(tasks, filter) {
+  return tasks.sort((a, b) => b[filter] - a[filter]);
+}
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
   const { params } = match;
@@ -241,7 +249,6 @@ function ProjectView(props) {
                 labelId="task-sort-by"
                 variant="outlined"
                 value={sortBy}
-                disabled
                 onChange={handleChangeSortBy}
               >
                 {sortByMenu.map((item) => (
@@ -257,7 +264,7 @@ function ProjectView(props) {
           <div
             style={{ height: "85%", padding: `32px 32px`, overflow: "auto" }}
           >
-            {tasks.map((task) => (
+            {sortTasksBy(tasks, sortBy).map((task) => (
               <TaskCard
                 task={task}
                 key={task.id}
