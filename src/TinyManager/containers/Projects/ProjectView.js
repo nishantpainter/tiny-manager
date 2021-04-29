@@ -46,7 +46,11 @@ const sortByMenu = [
   },
   {
     label: "Created",
-    value: "created",
+    value: "createdAt",
+  },
+  {
+    label: "Updated",
+    value: "updatedAt",
   },
 ];
 
@@ -65,7 +69,7 @@ function ProjectView(props) {
     project: {},
     tasks: [],
     task: {},
-    sortBy: "created",
+    sortBy: "createdAt",
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = useState(false);
