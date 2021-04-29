@@ -15,12 +15,16 @@ function initateDB() {
     tasks: "++id,title,projectId",
   });
 
-  db.version(1).stores({
-    updates: "++id,description,projectId,taskId,createdAt",
+  db.projects.defineClass({
+    name: String,
+    description: String,
   });
 
-  db.projects.defineClass({ name: String, description: String });
-  db.todos.defineClass({ title: String, completed: Boolean });
+  db.todos.defineClass({
+    title: String,
+    completed: Boolean,
+  });
+
   db.tasks.defineClass({
     title: String,
     note: String,
@@ -29,12 +33,6 @@ function initateDB() {
     projectId: Number,
     createdAt: Date,
     updatedAt: Date,
-  });
-  db.updates.defineClass({
-    description: String,
-    projectId: Number,
-    taskId: Number,
-    createdAt: String,
   });
 }
 
