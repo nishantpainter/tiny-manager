@@ -13,7 +13,9 @@ function fetchTasks(projectId) {
   return DbService.find("tasks", { where: { projectId } });
 }
 
-function fetchTask(taskId) {}
+function fetchTask(taskId) {
+  return DbService.findOne("tasks", taskId);
+}
 
 function addProject(project) {
   return DbService.insert("projects", project);
