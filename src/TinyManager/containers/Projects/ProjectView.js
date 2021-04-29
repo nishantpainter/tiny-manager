@@ -45,6 +45,10 @@ const sortByMenu = [
     value: "progress",
   },
   {
+    label: "Title",
+    value: "title",
+  },
+  {
     label: "Created",
     value: "createdAt",
   },
@@ -55,7 +59,15 @@ const sortByMenu = [
 ];
 
 function sortTasksBy(tasks, filter) {
-  return tasks.sort((a, b) => b[filter] - a[filter]);
+  return tasks.sort((a, b) => {
+    if (b[filter] < a[filter]) {
+      return -1;
+    }
+    if (b[filter] > a[filter]) {
+      return 1;
+    }
+    return 0;
+  });
 }
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
