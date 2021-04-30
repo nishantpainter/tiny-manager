@@ -35,7 +35,7 @@ function Topbar(props) {
     setLanguageAnchorEl(event.currentTargets);
   };
 
-  const closeLanguageSelection = (event) => {
+  const closeLanguageSelection = () => {
     setLanguageAnchorEl(null);
   };
 
@@ -99,6 +99,7 @@ function Topbar(props) {
 Topbar.propTypes = {
   onToggleDarkMode: PropTypes.func,
   onlanguageChange: PropTypes.func,
+  languages: PropTypes.array,
 };
 
 export default Topbar;
