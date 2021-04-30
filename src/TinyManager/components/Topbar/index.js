@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MuiAppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import IconButton from "TinyManager/components/IconButton";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -23,9 +25,24 @@ const useStyles = makeStyles({
 });
 
 function Topbar(props) {
-  const { onToggleDarkMode } = props;
+  const { onToggleDarkMode, languages = [], onlanguageChange } = props;
 
   const classes = useStyles();
+
+  const [languageAnchorEl, setLanguageAnchorEl] = useState(null);
+
+  const openLanguageSelection = (event) => {
+    setLanguageAnchorEl(event.currentTargets);
+  };
+
+  const closeLanguageSelection = (event) => {
+    setLanguageAnchorEl(null);
+  };
+
+  const handleLanguageChange = (language) => (event) => {
+    onlanguageChange && onlanguageChange(event, language);
+  };
+
   return (
     <AppBar color="default">
       <Toolbar variant="dense">
@@ -54,6 +71,26 @@ function Topbar(props) {
           color="primary"
           onClick={onToggleDarkMode}
         ></IconButton>
+        <IconButton
+          icon="language"
+          size="small"
+          color="primary"
+          onClick={openLanguageSelection}
+          disabled={!languages.length}
+        ></IconButton>
+        <Menu
+          id="language-selection"
+          anchorEl={languageAnchorEl}
+          keepMounted
+          open={Boolean(languageAnchorEl)}
+          onClose={closeLanguageSelection}
+        >
+          {languages.map((language) => (
+            <MenuItem onClick={handleLanguageChange(language)} key={language}>
+              {language}
+            </MenuItem>
+          ))}
+        </Menu>
       </Toolbar>
     </AppBar>
   );
@@ -61,6 +98,7 @@ function Topbar(props) {
 
 Topbar.propTypes = {
   onToggleDarkMode: PropTypes.func,
+  onlanguageChange: PropTypes.func,
 };
 
 export default Topbar;
