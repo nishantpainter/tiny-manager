@@ -31,6 +31,9 @@ function TaskFormContainer(props) {
     enableReinitialize: true,
   });
 
+  const isEdit = initialValues && initialValues.id;
+  const formTitle = isEdit ? "Edit Task" : "New Task";
+
   return (
     <TaskForm
       values={formik.values}
@@ -39,6 +42,7 @@ function TaskFormContainer(props) {
       disabled={formik.isSubmitting}
       onSubmit={formik.handleSubmit}
       onChange={formik.handleChange}
+      title={formTitle}
     />
   );
 }
