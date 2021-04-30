@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
   noTasksMessage: {
     marginTop: theme.spacing(),
   },
+  selection: {
+    marginRight: theme.spacing(),
+  },
 }));
 
 const sortByMenu = [
@@ -58,6 +61,12 @@ const sortByMenu = [
   },
 ];
 
+const filterByMenu = [
+  { label: "All", value: "all" },
+  { label: "Pending", value: "pending" },
+  { label: "Completed", value: "completed" },
+];
+
 function sortTasksBy(tasks, filter) {
   return tasks.sort((a, b) => {
     if (b[filter] < a[filter]) {
@@ -69,6 +78,18 @@ function sortTasksBy(tasks, filter) {
     return 0;
   });
 }
+
+function filterTasksBy(tasks, filter) {
+  switch (filter) {
+    case "pending":
+      return tasks.filter((t) => t.progress !== 100);
+    case "completed":
+      return tasks.filter((t) => t.progress === 100);
+    case "all":
+    default:
+      return tasks;
+  }
+}
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
   const { params } = match;
@@ -76,12 +97,16 @@ function ProjectView(props) {
 
   const classes = useStyles();
 
-  const [{ loading, project, tasks, task, sortBy }, setStore] = useState({
+  const [
+    { loading, project, tasks, task, sortBy, filterBy },
+    setStore,
+  ] = useState({
     loading: true,
     project: {},
     tasks: [],
     task: {},
     sortBy: "createdAt",
+    filterBy: "all",
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = useState(false);
@@ -109,6 +134,10 @@ function ProjectView(props) {
 
   const handleChangeSortBy = useCallback((event) => {
     setStore((store) => ({ ...store, sortBy: event.target.value }));
+  }, []);
+
+  const handleChangeFilterBy = useCallback((event) => {
+    setStore((store) => ({ ...store, filterBy: event.target.value }));
   }, []);
 
   const handleUpdateTask = useCallback(
@@ -217,6 +246,9 @@ function ProjectView(props) {
     return <Loader />;
   }
 
+  let $tasks = sortTasksBy(tasks, sortBy);
+  $tasks = filterTasksBy($tasks, filterBy);
+
   return (
     <Fade in={true}>
       <div className={classes.container}>
@@ -256,8 +288,12 @@ function ProjectView(props) {
               Delete All
             </Button>
           </Grid>
-          <Grid item xs={12}>
-            <FormControl margin="dense" variant="outlined">
+          <Grid item xs={12} md={6}>
+            <FormControl
+              margin="dense"
+              variant="outlined"
+              className={classes.selection}
+            >
               <InputLabel id="task-sort-by">Sort By</InputLabel>
               <Select
                 margin="dense"
@@ -275,13 +311,31 @@ function ProjectView(props) {
                 ))}
               </Select>
             </FormControl>
+            <FormControl margin="dense" variant="outlined">
+              <InputLabel id="task-filter-by">Filter By</InputLabel>
+              <Select
+                margin="dense"
+                label="Sort By"
+                labelId="task-filter-by"
+                variant="outlined"
+                value={filterBy}
+                onChange={handleChangeFilterBy}
+                disabled={!(tasks && tasks.length)}
+              >
+                {filterByMenu.map((item) => (
+                  <MenuItem value={item.value} key={item.value}>
+                    {item.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
         </Grid>
-        {tasks && tasks.length ? (
+        {$tasks && $tasks.length ? (
           <div
             style={{ height: "85%", padding: `32px 32px`, overflow: "auto" }}
           >
-            {sortTasksBy(tasks, sortBy).map((task) => (
+            {$tasks.map((task) => (
               <TaskCard
                 task={task}
                 key={task.id}
