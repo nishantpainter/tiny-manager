@@ -43,10 +43,14 @@ function TodoFormDialog(props) {
     [todo, errors, onSubmit]
   );
 
+  const isEdit = todo && todo.id;
+  const formTitle = isEdit ? "Edit Todo" : "Add Todo";
+
   return (
     <Dialog fullWidth={true} maxWidth="sm" open={open} onClose={onClose}>
       <DialogContent>
         <TodoForm
+          title={formTitle}
           values={todo}
           errors={errors}
           disabled={saving}
