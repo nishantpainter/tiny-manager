@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -23,23 +23,23 @@ function Todo(props) {
 
   const classes = useStyles();
 
-  const handleCheck = React.useCallback(
-    (e) => {
-      onCheck(e, todo);
+  const handleCheck = useCallback(
+    (event) => {
+      onCheck(event, todo);
     },
     [onCheck, todo]
   );
 
-  const handleDelete = React.useCallback(
-    (e) => {
-      onDelete(e, todo);
+  const handleDelete = useCallback(
+    (event) => {
+      onDelete(event, todo);
     },
     [onDelete, todo]
   );
 
-  const handleClick = React.useCallback(
-    (e) => {
-      onClick(e, todo);
+  const handleClick = useCallback(
+    (event) => {
+      onClick(event, todo);
     },
     [onClick, todo]
   );
