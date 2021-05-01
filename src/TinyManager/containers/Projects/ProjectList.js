@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  Grid,
   Button,
   Typography,
   Fade,
@@ -120,20 +121,20 @@ function ProjectList(props) {
         </div>
         <div className={classes.list}>
           {projects && projects.length ? (
-            <div className={classes.projectList}>
+            <Grid container spacing={3}>
               {projects.map((project) => (
-                <React.Fragment key={project.id}>
+                <Grid item xs={12} sm={6} md={4} key={project.id}>
                   <ProjectCard
                     project={project}
                     progress={project.progress}
                     className={classes.card}
                     onClick={handleProjectClick}
                     onDelete={handleOpenDeleteConfirmation}
-                    showDeleteButton={true} 
+                    showDeleteButton={true}
                   />
-                </React.Fragment>
+                </Grid>
               ))}
-            </div>
+            </Grid>
           ) : (
             <Typography variant="body1">No available projects.</Typography>
           )}
