@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: 1,
     display: "flex",
-    maxWidth: 500,
     padding: theme.spacing(3.5),
   },
 }));
