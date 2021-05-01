@@ -36,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
   selection: {
     marginRight: theme.spacing(),
   },
+  list: {
+    padding: theme.spacing(4),
+    height: "85%",
+    overflow: "auto",
+  },
 }));
 
 const sortByMenu = [
@@ -332,19 +337,18 @@ function ProjectView(props) {
           </Grid>
         </Grid>
         {$tasks && $tasks.length ? (
-          <div
-            style={{ height: "85%", padding: `32px 32px`, overflow: "auto" }}
-          >
+          <Grid container spacing={3} className={classes.list}>
             {$tasks.map((task) => (
-              <TaskCard
-                task={task}
-                key={task.id}
-                className={classes.taskCard}
-                onClick={handleTaskClick}
-                onDelete={handleTaskDelete}
-              />
+              <Grid item xs={12} sm={6} md={4} key={task.id}>
+                <TaskCard
+                  task={task}
+                  className={classes.taskCard}
+                  onClick={handleTaskClick}
+                  onDelete={handleTaskDelete}
+                />
+              </Grid>
             ))}
-          </div>
+          </Grid>
         ) : (
           <Typography variant="body1" className={classes.noTasksMessage}>
             No available tasks.
