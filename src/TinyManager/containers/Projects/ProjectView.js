@@ -27,8 +27,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     flex: 1,
   },
-  noTasksMessage: {
+  noTasksMessageWrapper: {
     marginTop: theme.spacing(),
+    marginRight: "auto",
+    marginLeft: "auto",
+    maxWidth: 500,
+  },
+  noTasksMessage: {
+    minWidth: 500,
   },
   selection: {
     marginRight: theme.spacing(),
@@ -352,9 +358,11 @@ function ProjectView(props) {
             ))}
           </Grid>
         ) : (
-          <Typography variant="body1" className={classes.noTasksMessage}>
-            No available tasks.
-          </Typography>
+          <div className={classes.noTasksMessageWrapper}>
+            <Typography variant="body1" className={classes.noTasksMessage}>
+              No available tasks.
+            </Typography>
+          </div>
         )}
         <Dialog open={taskDialogOpen} onClose={handleCloseTaskDialog}>
           <TaskFormContainer
