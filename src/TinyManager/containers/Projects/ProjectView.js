@@ -27,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     flex: 1,
   },
-  taskCard: {
-    marginBottom: theme.spacing(2),
-  },
   noTasksMessage: {
     marginTop: theme.spacing(),
   },
@@ -37,9 +34,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(),
   },
   list: {
-    padding: theme.spacing(4),
+    padding: `${theme.spacing(3)}px ${theme.spacing(2)}px`,
     height: "85%",
     overflow: "auto",
+    alignContent: "baseline",
   },
   action: {
     maxWidth: 500,
@@ -262,12 +260,7 @@ function ProjectView(props) {
   return (
     <Fade in={true}>
       <div className={classes.container}>
-        <Grid
-          container
-          spacing={2}
-          alignContent="baseline"
-          className={classes.action}
-        >
+        <Grid container spacing={2} className={classes.action}>
           <Grid item xs={12}>
             <ProjectCard
               project={project}
@@ -352,7 +345,6 @@ function ProjectView(props) {
               <Grid item xs={12} sm={6} md={4} key={task.id}>
                 <TaskCard
                   task={task}
-                  className={classes.taskCard}
                   onClick={handleTaskClick}
                   onDelete={handleTaskDelete}
                 />
