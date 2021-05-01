@@ -262,7 +262,12 @@ function ProjectView(props) {
   return (
     <Fade in={true}>
       <div className={classes.container}>
-        <Grid container spacing={2} className={classes.action}>
+        <Grid
+          container
+          spacing={2}
+          alignContent="baseline"
+          className={classes.action}
+        >
           <Grid item xs={12}>
             <ProjectCard
               project={project}
@@ -342,7 +347,7 @@ function ProjectView(props) {
           </Grid>
         </Grid>
         {$tasks && $tasks.length ? (
-          <Grid container spacing={1} className={classes.list}>
+          <Grid container spacing={2} className={classes.list}>
             {$tasks.map((task) => (
               <Grid item xs={12} sm={6} md={4} key={task.id}>
                 <TaskCard
