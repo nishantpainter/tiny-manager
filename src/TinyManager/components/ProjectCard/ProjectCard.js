@@ -63,7 +63,7 @@ function ProjectCard(props) {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Typography variant="h4" color="primary">
+        <Typography variant="h4" color="primary" noWrap title={project.name}>
           {project.name}
         </Typography>
         <Box display="flex">
