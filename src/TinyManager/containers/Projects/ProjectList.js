@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Button,
-  Typography,
-  Fade,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Fade from "@material-ui/core/Fade";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 
 import Loader from "TinyManager/components/Loader";
 import ProjectCard from "TinyManager/components/ProjectCard";
@@ -39,15 +37,15 @@ function ProjectList(props) {
 
   const classes = useStyles();
 
-  const [loadingProjects, setLoadingProjects] = React.useState(true);
-  const [projects, setProjects] = React.useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+  const [projects, setProjects] = useState([]);
 
-  const [deleteConfirmationStore, setDeleteConfirmationStore] = React.useState({
+  const [deleteConfirmationStore, setDeleteConfirmationStore] = useState({
     open: false,
     project: null,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     TinyManagerAPI.fetchProjects()
       .then(async (projects) => {
         const tasks = await Promise.all(
@@ -83,20 +81,20 @@ function ProjectList(props) {
     onProjectClick(project.id);
   };
 
-  const handleNewProject = React.useCallback(() => {
+  const handleNewProject = useCallback(() => {
     onNewProject();
   }, [onNewProject]);
 
-  const handleOpenDeleteConfirmation = React.useCallback((e, project) => {
+  const handleOpenDeleteConfirmation = useCallback((e, project) => {
     e.stopPropagation();
     setDeleteConfirmationStore({ open: true, project });
   }, []);
 
-  const handleCloseDeleteConfirmation = React.useCallback(() => {
+  const handleCloseDeleteConfirmation = useCallback(() => {
     setDeleteConfirmationStore({ open: false, project: null });
   }, []);
 
-  const handleDeleteProject = React.useCallback(() => {
+  const handleDeleteProject = useCallback(() => {
     const { id: projectId } = deleteConfirmationStore.project;
     TinyManagerAPI.removeProject(projectId).then(() => {
       setProjects((projects) => projects.filter((p) => p.id !== projectId));
