@@ -4,6 +4,13 @@ function join(...strings) {
   return strings.join("");
 }
 
+function merge(...objects) {
+  return objects.reduce(
+    (accumulator, object) => ({ ...accumulator, ...object }),
+    {}
+  );
+}
+
 // eslint-disable-next-line no-unused-vars
 function withProps(Component, props) {
   // eslint-disable-next-line react/display-name
@@ -12,4 +19,4 @@ function withProps(Component, props) {
   };
 }
 
-export { join, withProps };
+export { join, merge, withProps };
