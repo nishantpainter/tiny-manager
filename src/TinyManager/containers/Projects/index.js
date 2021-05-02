@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -35,11 +35,11 @@ function Projects(props) {
     history.push(url + `/${projectId}`);
   };
 
-  const redirectToProjectList = React.useCallback(() => {
+  const redirectToProjectList = useCallback(() => {
     history.push(url);
   }, [history, url]);
 
-  const handleAddNewProject = React.useCallback(
+  const handleAddNewProject = useCallback(
     (values) => {
       TinyManagerAPI.addProject(values).then(redirectToProjectList);
     },
