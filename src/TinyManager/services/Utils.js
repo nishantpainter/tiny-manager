@@ -11,6 +11,10 @@ function merge(...objects) {
   );
 }
 
+function noop() {
+  /* No Action */
+}
+
 // eslint-disable-next-line no-unused-vars
 function withProps(Component, props) {
   // eslint-disable-next-line react/display-name
@@ -19,4 +23,4 @@ function withProps(Component, props) {
   };
 }
 
-export { join, merge, withProps };
+export { join, merge, noop, withProps };
