@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
+import { join } from "TinyManager/services/Utils";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import ProjectView from "TinyManager/containers/Projects/ProjectView";
 import ProjectList from "TinyManager/containers/Projects/ProjectList";
@@ -34,13 +35,13 @@ function Projects(props) {
     [history]
   );
 
-  const redirectToNewProject = useCallback(() => redirect(url + `/new`), [
+  const redirectToNewProject = useCallback(() => redirect(join(url, "/new")), [
     redirect,
     url,
   ]);
 
   const redirectToProjectView = useCallback(
-    (projectId) => redirect(url + `/${projectId}`),
+    (projectId) => redirect(join(url, "/", projectId)),
     [url, redirect]
   );
 
