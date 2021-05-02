@@ -27,17 +27,27 @@ function Projects(props) {
 
   const classes = useStyles();
 
-  const redirectToNewProject = () => {
-    history.push(url + `/new`);
-  };
+  const redirect = useCallback(
+    (url) => {
+      history.push(url);
+    },
+    [history]
+  );
 
-  const redirectToProjectView = (projectId) => {
-    history.push(url + `/${projectId}`);
-  };
+  const redirectToNewProject = useCallback(() => redirect(url + `/new`), [
+    redirect,
+    url,
+  ]);
 
-  const redirectToProjectList = useCallback(() => {
-    history.push(url);
-  }, [history, url]);
+  const redirectToProjectView = useCallback(
+    (projectId) => redirect(url + `/${projectId}`),
+    [url, redirect]
+  );
+
+  const redirectToProjectList = useCallback(() => redirect(url), [
+    redirect,
+    url,
+  ]);
 
   const handleAddNewProject = useCallback(
     (values) => {
