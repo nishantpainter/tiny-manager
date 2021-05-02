@@ -37,7 +37,7 @@ function ProjectList(props) {
 
   const classes = useStyles();
 
-  const [loadingProjects, setLoadingProjects] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
 
   const [deleteConfirmationStore, setDeleteConfirmationStore] = useState({
@@ -69,11 +69,11 @@ function ProjectList(props) {
           return project;
         });
 
-        setLoadingProjects(false);
+        setLoading(false);
         setProjects(projects);
       })
       .catch(() => {
-        setLoadingProjects(false);
+        setLoading(false);
       });
   }, []);
 
@@ -102,7 +102,7 @@ function ProjectList(props) {
     handleCloseDeleteConfirmation();
   }, [deleteConfirmationStore, handleCloseDeleteConfirmation]);
 
-  if (loadingProjects) {
+  if (loading) {
     return <Loader />;
   }
 
