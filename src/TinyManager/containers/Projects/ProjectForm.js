@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import ProjectForm from "TinyManager/components/ProjectForm";
 import { ProjectType } from "TinyManager/types/index";
+import { merge } from "TinyManager/services/Utils";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -22,11 +23,7 @@ function ProjectFormContainer(props) {
   const handleSubmit = useCallback((values) => onSubmit(values), [onSubmit]);
 
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      description: "",
-      ...initialValues,
-    },
+    initialValues: merge({ name: "", description: "" }, initialValues),
     validate: (values) => {
       const errors = {};
 
