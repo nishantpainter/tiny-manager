@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
@@ -40,10 +40,7 @@ export const FILTERS = {
 };
 
 function Todos() {
-  const [
-    { todos, todo, loading, saving, dialogOpen },
-    setStore,
-  ] = React.useState({
+  const [{ todos, todo, loading, saving, dialogOpen }, setStore] = useState({
     todos: [],
     todo: { title: "" },
     loading: false,
@@ -51,16 +48,15 @@ function Todos() {
     dialogOpen: false,
   });
 
-  const [
-    deleteAllTodosDialogOpen,
-    setDeleteAllTodosDialogOpen,
-  ] = React.useState(false);
+  const [deleteAllTodosDialogOpen, setDeleteAllTodosDialogOpen] = useState(
+    false
+  );
 
-  const [filter, setFilter] = React.useState("all");
+  const [filter, setFilter] = useState("all");
 
   const classes = useStyles();
 
-  const filterTodos = React.useCallback(
+  const filterTodos = useCallback(
     (todos = []) => {
       switch (filter) {
         case FILTERS.Completed:
@@ -75,7 +71,7 @@ function Todos() {
     [filter]
   );
 
-  const fetchTodos = React.useCallback(() => {
+  const fetchTodos = useCallback(() => {
     setStore((store) => ({ ...store, loading: true }));
 
     TinyManagerAPI.fetchTodos().then((todos) => {
@@ -87,11 +83,11 @@ function Todos() {
     });
   }, [filterTodos]);
 
-  const handleOpenDialog = React.useCallback((e, todo = {}) => {
+  const handleOpenDialog = useCallback((e, todo = {}) => {
     setStore((store) => ({ ...store, dialogOpen: true, todo: { ...todo } }));
   }, []);
 
-  const handleCloseDialog = React.useCallback(() => {
+  const handleCloseDialog = useCallback(() => {
     setStore((store) => ({
       ...store,
       dialogOpen: false,
@@ -100,21 +96,21 @@ function Todos() {
     }));
   }, []);
 
-  const handleAddNewTodoClick = React.useCallback(
+  const handleAddNewTodoClick = useCallback(
     (e) => {
       handleOpenDialog(e, { title: "" });
     },
     [handleOpenDialog]
   );
 
-  const handleTodoClick = React.useCallback(
+  const handleTodoClick = useCallback(
     (e, todo) => {
       handleOpenDialog(e, todo);
     },
     [handleOpenDialog]
   );
 
-  const handleAddNewTodo = React.useCallback(
+  const handleAddNewTodo = useCallback(
     (todo) => {
       TinyManagerAPI.addTodo(todo)
         .then((todo) => {
@@ -133,7 +129,7 @@ function Todos() {
     [handleCloseDialog]
   );
 
-  const handleEditTodo = React.useCallback(
+  const handleEditTodo = useCallback(
     (todo) => {
       TinyManagerAPI.updateTodo(todo)
         .then((todo) => {
@@ -154,7 +150,7 @@ function Todos() {
     [handleCloseDialog]
   );
 
-  const handleSubmit = React.useCallback(
+  const handleSubmit = useCallback(
     (todo) => {
       setStore((store) => ({ ...store, saving: true }));
       if (todo.id) {
@@ -166,7 +162,7 @@ function Todos() {
     [handleAddNewTodo, handleEditTodo]
   );
 
-  const handleTodoCheck = React.useCallback((e, todo) => {
+  const handleTodoCheck = useCallback((e, todo) => {
     if (todo && todo.id) {
       TinyManagerAPI.updateTodo(
         Object.assign({}, todo, { completed: !todo.completed })
@@ -181,7 +177,7 @@ function Todos() {
     }
   }, []);
 
-  const handleTodoDelete = React.useCallback((e, todo) => {
+  const handleTodoDelete = useCallback((e, todo) => {
     if (todo && todo.id) {
       TinyManagerAPI.removeTodo(todo).then(() => {
         setStore((store) => ({
@@ -192,15 +188,15 @@ function Todos() {
     }
   }, []);
 
-  const handleOpenDeleteAllTodosDialog = React.useCallback(() => {
+  const handleOpenDeleteAllTodosDialog = useCallback(() => {
     setDeleteAllTodosDialogOpen(true);
   }, []);
 
-  const handleCloseDeleteAllTodosDialog = React.useCallback(() => {
+  const handleCloseDeleteAllTodosDialog = useCallback(() => {
     setDeleteAllTodosDialogOpen(false);
   }, []);
 
-  const handleDeleteAllTodos = React.useCallback(() => {
+  const handleDeleteAllTodos = useCallback(() => {
     if (todos.length) {
       TinyManagerAPI.removeBulkTodos(todos.map(({ id }) => id)).then(() => {
         setStore((store) => ({ ...store, todos: [] }));
@@ -209,11 +205,11 @@ function Todos() {
     handleCloseDeleteAllTodosDialog();
   }, [todos, handleCloseDeleteAllTodosDialog]);
 
-  const handleFilterChange = React.useCallback((filter) => {
+  const handleFilterChange = useCallback((filter) => {
     setFilter(filter);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
 
