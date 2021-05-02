@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useFormik } from "formik";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,16 +18,8 @@ function ProjectFormContainer(props) {
   const { onCancel, onSubmit, initialValues } = props;
   const classes = useStyles();
 
-  const handleCancel = React.useCallback(() => {
-    onCancel();
-  }, [onCancel]);
-
-  const handleSubmit = React.useCallback(
-    (values) => {
-      onSubmit(values);
-    },
-    [onSubmit]
-  );
+  const handleCancel = useCallback(() => onCancel(), [onCancel]);
+  const handleSubmit = useCallback((values) => onSubmit(values), [onSubmit]);
 
   const formik = useFormik({
     initialValues: {
