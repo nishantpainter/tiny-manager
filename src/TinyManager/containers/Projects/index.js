@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { join } from "TinyManager/services/Utils";
+import { join, withProps } from "TinyManager/services/Utils";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import ProjectView from "TinyManager/containers/Projects/ProjectView";
 import ProjectList from "TinyManager/containers/Projects/ProjectList";
@@ -62,33 +62,24 @@ function Projects(props) {
       <div className={classes.content}>
         <Switch>
           <Route
-            path={path + "/new"}
-            render={(props) => (
-              <ProjectForm
-                {...props}
-                onCancel={redirectToProjectList}
-                onSubmit={handleAddNewProject}
-              />
-            )}
+            path={join(path, "/new")}
+            render={withProps(ProjectForm, {
+              onCancel: redirectToProjectList,
+              onSubmit: handleAddNewProject,
+            })}
           />
           <Route
-            path={path + "/:projectId"}
-            render={(props) => (
-              <ProjectView
-                {...props}
-                redirectToProjectList={redirectToProjectList}
-              />
-            )}
+            path={join(path, "/:projectId")}
+            render={withProps(ProjectView, {
+              redirectToProjectList,
+            })}
           />
           <Route
             path={path}
-            render={(props) => (
-              <ProjectList
-                {...props}
-                onProjectClick={redirectToProjectView}
-                onNewProject={redirectToNewProject}
-              />
-            )}
+            render={withProps(ProjectList, {
+              onProjectClick: redirectToProjectView,
+              onNewProject: redirectToNewProject,
+            })}
           />
         </Switch>
       </div>
