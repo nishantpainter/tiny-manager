@@ -39,11 +39,8 @@ function ProjectList(props) {
 
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
-
-  const [deleteConfirmationStore, setDeleteConfirmationStore] = useState({
-    open: false,
-    project: null,
-  });
+  const [project, setProject] = useState(null);
+  const [deleteDialog, setDeleteDialog] = useState(false);
 
   useEffect(() => {
     TinyManagerAPI.fetchProjects()
@@ -85,22 +82,26 @@ function ProjectList(props) {
     onNewProject();
   }, [onNewProject]);
 
-  const handleOpenDeleteConfirmation = useCallback((e, project) => {
+  const openDeleteDialog = useCallback((e, project) => {
     e.stopPropagation();
-    setDeleteConfirmationStore({ open: true, project });
+    setDeleteDialog(true);
+    setProject(project);
   }, []);
 
-  const handleCloseDeleteConfirmation = useCallback(() => {
-    setDeleteConfirmationStore({ open: false, project: null });
+  const closeDeleteDialog = useCallback(() => {
+    setDeleteDialog(false);
+    setProject(null);
   }, []);
 
   const handleDeleteProject = useCallback(() => {
-    const { id: projectId } = deleteConfirmationStore.project;
-    TinyManagerAPI.removeProject(projectId).then(() => {
-      setProjects((projects) => projects.filter((p) => p.id !== projectId));
+    const { id } = project;
+
+    TinyManagerAPI.removeProject(id).then(() => {
+      setProjects((projects) => projects.filter((p) => p.id !== id));
     });
-    handleCloseDeleteConfirmation();
-  }, [deleteConfirmationStore, handleCloseDeleteConfirmation]);
+
+    closeDeleteDialog();
+  }, [project, closeDeleteDialog]);
 
   if (loading) {
     return <Loader />;
@@ -127,7 +128,7 @@ function ProjectList(props) {
                     progress={project.progress}
                     className={classes.card}
                     onClick={handleProjectClick}
-                    onDelete={handleOpenDeleteConfirmation}
+                    onDelete={openDeleteDialog}
                     showDeleteButton={true}
                   />
                 </Grid>
@@ -137,16 +138,13 @@ function ProjectList(props) {
             <Typography variant="body1">No available projects.</Typography>
           )}
         </div>
-        <Dialog
-          open={deleteConfirmationStore.open}
-          onClose={handleCloseDeleteConfirmation}
-        >
+        <Dialog open={deleteDialog} onClose={closeDeleteDialog}>
           <DialogTitle>Delete Project</DialogTitle>
           <DialogContent>
-            Delete {deleteConfirmationStore.project?.name} and related tasks ?
+            Delete {project?.name} and related tasks ?
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseDeleteConfirmation}>Cancel</Button>
+            <Button onClick={closeDeleteDialog}>Cancel</Button>
             <Button
               variant="contained"
               color="primary"
