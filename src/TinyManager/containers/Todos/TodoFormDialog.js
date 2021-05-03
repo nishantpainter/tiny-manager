@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import { Dialog, DialogContent } from "@material-ui/core";
 
@@ -8,12 +8,12 @@ import { TodoType } from "TinyManager/types";
 function TodoFormDialog(props) {
   const { initialValue, open, saving, onClose, onSubmit } = props;
 
-  const [{ todo, errors }, setStore] = React.useState({
+  const [{ todo, errors }, setStore] = useState({
     todo: Object.assign({}, initialValue),
     errors: {},
   });
 
-  const handleChange = React.useCallback((e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setStore((store) => ({
       ...store,
@@ -21,7 +21,7 @@ function TodoFormDialog(props) {
     }));
   }, []);
 
-  const handleSubmit = React.useCallback(
+  const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
 
