@@ -14,6 +14,7 @@ import TodoFormDialog from "./TodoFormDialog";
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+import { Translate } from "TinyManager/providers/TranslationProvider";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -238,7 +239,7 @@ function Todos() {
                 variant="contained"
                 onClick={handleAddNewTodoClick}
               >
-                Add
+                <Translate>Add</Translate>
               </Button>
               &nbsp;&nbsp;
               <Button
@@ -247,7 +248,7 @@ function Todos() {
                 onClick={handleOpenDeleteAllTodosDialog}
                 disabled={!todos.length}
               >
-                Delete All
+                <Translate>Delete All</Translate>
               </Button>
             </Box>
           </Box>
@@ -273,16 +274,22 @@ function Todos() {
         open={deleteAllTodosDialogOpen}
         onClose={handleCloseDeleteAllTodosDialog}
       >
-        <DialogTitle>Delete All Todos</DialogTitle>
-        <DialogContent>Do you want to remove all the todos ?</DialogContent>
+        <DialogTitle>
+          <Translate>Delete All Todos</Translate>
+        </DialogTitle>
+        <DialogContent>
+          <Translate>Do you want to remove all the todos ?</Translate>
+        </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDeleteAllTodosDialog}>Cancel</Button>
+          <Button onClick={handleCloseDeleteAllTodosDialog}>
+            <Translate>Cancel</Translate>
+          </Button>
           <Button
             variant="contained"
             color="primary"
             onClick={handleDeleteAllTodos}
           >
-            Confirm
+            <Translate>Confirm</Translate>
           </Button>
         </DialogActions>
       </Dialog>
