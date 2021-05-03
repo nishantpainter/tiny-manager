@@ -9,7 +9,9 @@ function TodoFilter(props) {
   const { value, onChange, className } = props;
 
   const handleChange = (event) => {
-    onChange && onChange(event.target.value);
+    if (onChange) {
+      onChange(event.target.value);
+    }
   };
 
   return (
