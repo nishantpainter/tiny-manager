@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { TodoType } from "TinyManager/types";
-import { noop } from "../utils";
+import { identity, noop } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -23,6 +23,7 @@ function TodoForm(props) {
     values,
     errors,
     disabled,
+    translate,
     onChange,
     onSubmit,
     onCancel,
@@ -43,7 +44,7 @@ function TodoForm(props) {
             margin="dense"
             id="title"
             name="title"
-            label="Title"
+            label={translate("Title")}
             disabled={disabled}
             value={values.title}
             error={Boolean(errors.title)}
@@ -56,7 +57,7 @@ function TodoForm(props) {
         </Grid>
         <Grid item xs={12} align="right">
           <Button variant="outlined" disabled={disabled} onClick={onCancel}>
-            Cancel
+            {translate("Cancel")}
           </Button>
           &nbsp;
           <Button
@@ -65,7 +66,7 @@ function TodoForm(props) {
             type="submit"
             disabled={disabled}
           >
-            Save
+            {translate("Save")}
           </Button>
         </Grid>
       </Grid>
@@ -78,6 +79,7 @@ TodoForm.propTypes = {
   values: TodoType,
   errors: TodoType,
   disabled: PropTypes.bool,
+  translate: PropTypes.func,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
@@ -88,6 +90,7 @@ TodoForm.defaultProps = {
   values: {},
   errors: {},
   disabled: false,
+  translate: identity,
   onSubmit: (e) => e.preventDefault(),
   onChange: noop,
   onCancel: noop,
