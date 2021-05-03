@@ -1,1 +1,7 @@
-export function noop() {}
+function noop() {}
+
+function identity(value) {
+  return value;
+}
+
+export { noop, identity };
