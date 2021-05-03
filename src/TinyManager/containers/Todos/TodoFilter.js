@@ -4,6 +4,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import { FILTERS } from "./index";
+import { Translate } from "TinyManager/providers/TranslationProvider";
 function TodoFilter(props) {
   const { value, onChange, className } = props;
 
@@ -22,7 +23,7 @@ function TodoFilter(props) {
     >
       {Object.keys(FILTERS).map((key) => (
         <MenuItem key={FILTERS[key]} value={FILTERS[key]}>
-          {key}
+          <Translate>{key}</Translate>
         </MenuItem>
       ))}
     </Select>
