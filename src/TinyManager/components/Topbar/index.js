@@ -7,9 +7,10 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import IconButton from "TinyManager/components/IconButton";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { identity } from "TinyManager/components/utils";
 
 const AppBar = withStyles((theme) => ({
   root: {
@@ -25,7 +26,12 @@ const useStyles = makeStyles({
 });
 
 function Topbar(props) {
-  const { onToggleDarkMode, languages = [], onlanguageChange } = props;
+  const {
+    onToggleDarkMode,
+    languages = [],
+    onlanguageChange,
+    translate,
+  } = props;
 
   const classes = useStyles();
 
@@ -58,11 +64,11 @@ function Topbar(props) {
           &nbsp;<b>Tiny Manager</b>
         </Typography>
         <Button color="primary" size="large" component={Link} to="/">
-          Home
+          {translate("Home")}
         </Button>
         &nbsp;
         <Button color="primary" size="large" component={Link} to="/projects">
-          Projects
+          {translate("Projects")}
         </Button>
         &nbsp;
         <IconButton
@@ -100,6 +106,11 @@ Topbar.propTypes = {
   onToggleDarkMode: PropTypes.func,
   onlanguageChange: PropTypes.func,
   languages: PropTypes.array,
+  translate: PropTypes.func,
+};
+
+Topbar.defaultProps = {
+  translate: identity,
 };
 
 export default Topbar;
