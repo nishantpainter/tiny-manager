@@ -4,17 +4,18 @@ import { Dialog, DialogContent } from "@material-ui/core";
 
 import TodoForm from "TinyManager/components/TodoForm";
 import { TodoType } from "TinyManager/types";
+import { merge } from "TinyManager/services/Utils";
 
 function TodoFormDialog(props) {
   const { initialValue, open, saving, onClose, onSubmit } = props;
 
   const [{ todo, errors }, setStore] = useState({
-    todo: Object.assign({}, initialValue),
+    todo: merge({}, initialValue),
     errors: {},
   });
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
+  const handleChange = useCallback((event) => {
+    const { name, value } = event.target;
     setStore((store) => ({
       ...store,
       todo: { ...store.todo, [name]: value },
@@ -22,8 +23,8 @@ function TodoFormDialog(props) {
   }, []);
 
   const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
+    (event) => {
+      event.preventDefault();
 
       if (!todo.title) {
         setStore((store) => ({
