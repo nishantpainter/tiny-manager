@@ -15,6 +15,7 @@ import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { Translate } from "TinyManager/providers/TranslationProvider";
+import useDialog from "TinyManager/hooks/useDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -49,9 +50,11 @@ function Todos() {
     dialogOpen: false,
   });
 
-  const [deleteAllTodosDialogOpen, setDeleteAllTodosDialogOpen] = useState(
-    false
-  );
+  const [
+    deleteAllTodosDialogOpen,
+    handleOpenDeleteAllTodosDialog,
+    handleCloseDeleteAllTodosDialog,
+  ] = useDialog();
 
   const [filter, setFilter] = useState("all");
 
@@ -187,14 +190,6 @@ function Todos() {
         }));
       });
     }
-  }, []);
-
-  const handleOpenDeleteAllTodosDialog = useCallback(() => {
-    setDeleteAllTodosDialogOpen(true);
-  }, []);
-
-  const handleCloseDeleteAllTodosDialog = useCallback(() => {
-    setDeleteAllTodosDialogOpen(false);
   }, []);
 
   const handleDeleteAllTodos = useCallback(() => {
