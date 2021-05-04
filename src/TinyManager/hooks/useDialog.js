@@ -7,10 +7,12 @@ function useDialog() {
   const closeDialog = useCallback(() => setOpen(false), []);
   const toggleDialog = useCallback(() => setOpen((open) => !open), []);
 
-  const value = useMemo(
-    () => ({ open, openDialog, closeDialog, toggleDialog }),
-    [open, openDialog, closeDialog, toggleDialog]
-  );
+  const value = useMemo(() => [open, openDialog, closeDialog, toggleDialog], [
+    open,
+    openDialog,
+    closeDialog,
+    toggleDialog,
+  ]);
 
   return value;
 }
