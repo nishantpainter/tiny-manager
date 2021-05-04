@@ -236,19 +236,19 @@ function Todos() {
             <Box display="flex" justifyContent="flex-end" alignItems="center">
               <Button
                 color="primary"
-                variant="contained"
-                onClick={handleAddNewTodoClick}
-              >
-                <Translate>Add</Translate>
-              </Button>
-              &nbsp;&nbsp;
-              <Button
-                color="primary"
                 variant="outlined"
                 onClick={handleOpenDeleteAllTodosDialog}
                 disabled={!todos.length}
               >
                 <Translate>Delete All</Translate>
+              </Button>
+              &nbsp;&nbsp;
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleAddNewTodoClick}
+              >
+                <Translate>Add</Translate>
               </Button>
             </Box>
           </Box>
