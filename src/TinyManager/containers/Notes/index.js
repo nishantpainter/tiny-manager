@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import debounce from "lodash.debounce";
 import Box from "@material-ui/core/Box";
@@ -47,15 +47,15 @@ const useStyles = makeStyles((theme) => ({
 function Notes() {
   const classes = useStyles();
 
-  const [notes, setNotes] = React.useState("");
-  const [loading, setLoading] = React.useState(true);
+  const [notes, setNotes] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const handleUpdateStorage = React.useMemo(
+  const handleUpdateStorage = useMemo(
     () => debounce(TinyManagerAPI.updateNotes, 150),
     []
   );
 
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     (e) => {
       const { value } = e.target;
       setNotes(value);
@@ -64,7 +64,7 @@ function Notes() {
     [handleUpdateStorage]
   );
 
-  const handleDownloadNote = React.useCallback(() => {
+  const handleDownloadNote = useCallback(() => {
     const url = window.URL.createObjectURL(new Blob([notes]), {
       type: "text/plain",
     });
@@ -74,11 +74,11 @@ function Notes() {
     link.click();
   }, [notes]);
 
-  const handleClearNote = React.useCallback(() => {
+  const handleClearNote = useCallback(() => {
     handleChange({ target: { value: "" } });
   }, [handleChange]);
 
-  const handleKeyDown = React.useCallback(
+  const handleKeyDown = useCallback(
     (event) => {
       const isSave = event.key === "s" && event.ctrlKey === true;
       if (isSave) {
@@ -89,7 +89,7 @@ function Notes() {
     [handleDownloadNote]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const notes = TinyManagerAPI.fetchNotes();
     if (notes) {
       setNotes(notes);
