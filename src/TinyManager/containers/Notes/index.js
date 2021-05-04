@@ -11,6 +11,7 @@ import ClearIcon from "@material-ui/icons/DeleteForever";
 
 import Loader from "TinyManager/components/Loader";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -49,6 +50,7 @@ function Notes() {
 
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const handleUpdateStorage = useMemo(
     () => debounce(TinyManagerAPI.updateNotes, 150),
@@ -115,7 +117,7 @@ function Notes() {
           onClick={handleDownloadNote}
           color="primary"
           size="small"
-          title="Download Note"
+          title={t("Download Note")}
         >
           <DownloadIcon />
         </IconButton>
@@ -123,7 +125,7 @@ function Notes() {
           disabled={loading}
           onClick={handleClearNote}
           size="small"
-          title="Clear Note"
+          title={t("Clear Note")}
         >
           <ClearIcon />
         </IconButton>
@@ -144,7 +146,7 @@ function Notes() {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           value={notes}
-          placeholder="You can enter your notes here..."
+          placeholder={t("You can enter your notes here...")}
           multiline
           fullWidth
           autoFocus
@@ -155,7 +157,9 @@ function Notes() {
         color="textSecondary"
         variant="caption"
       >
-        *Notes will be stored locally on the browser and will be persisted.
+        {t(
+          "*Notes will be stored locally on the browser and will be persisted."
+        )}
       </Typography>
     </div>
   );
