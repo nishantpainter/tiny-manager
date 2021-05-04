@@ -58,8 +58,8 @@ function Notes() {
   );
 
   const handleChange = useCallback(
-    (e) => {
-      const { value } = e.target;
+    (event) => {
+      const { value } = event.target;
       setNotes(value);
       handleUpdateStorage(value);
     },
