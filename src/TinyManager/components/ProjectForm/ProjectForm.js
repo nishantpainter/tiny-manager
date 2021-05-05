@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   TextField,
   Button,
@@ -11,7 +11,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
 import { ProjectType } from "TinyManager/types";
-import { noop } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,8 +31,37 @@ function ProjectForm(props) {
   } = props;
 
   const classes = useStyles();
+
+  const handleChange = useCallback(
+    (event) => {
+      if (onChange) {
+        onChange(event);
+      }
+    },
+    [onChange]
+  );
+
+  const handleCancel = useCallback(
+    (event) => {
+      if (onCancel) {
+        onCancel(event);
+      }
+    },
+    [onCancel]
+  );
+
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (onSubmit) {
+        onSubmit(event);
+      }
+    },
+    [onSubmit]
+  );
+
   return (
-    <form onSubmit={onSubmit} noValidate>
+    <form onSubmit={handleSubmit} noValidate>
       <Paper className={classes.paper}>
         <Grid container justify="center" spacing={2}>
           <Grid item xs={12}>
@@ -53,7 +81,7 @@ function ProjectForm(props) {
               error={Boolean(errors.name)}
               helperText={errors.name}
               value={values.name}
-              onChange={onChange}
+              onChange={handleChange}
               fullWidth
               required
             />
@@ -68,13 +96,17 @@ function ProjectForm(props) {
               error={Boolean(errors.description)}
               helperText={errors.description}
               value={values.description}
-              onChange={onChange}
+              onChange={handleChange}
               fullWidth
               multiline
             />
           </Grid>
           <Grid item xs={12} align="right">
-            <Button variant="outlined" disabled={disabled} onClick={onCancel}>
+            <Button
+              variant="outlined"
+              disabled={disabled}
+              onClick={handleCancel}
+            >
               Cancel
             </Button>
             &nbsp;
@@ -129,11 +161,6 @@ ProjectForm.defaultProps = {
   errors: {},
   disabled: false,
   title: "New Project",
-  onChange: noop,
-  onSubmit: (e) => {
-    e.preventDefault();
-  },
-  onCancel: noop,
 };
 
 export default ProjectForm;
