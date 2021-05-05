@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
@@ -34,21 +34,21 @@ function ProjectCard(props) {
 
   const classes = useStyles();
 
-  const handleClick = React.useCallback(
+  const handleClick = useCallback(
     (e) => {
       onClick && onClick(e, project);
     },
     [project, onClick]
   );
 
-  const handleEdit = React.useCallback(
+  const handleEdit = useCallback(
     (e) => {
       onEdit && onEdit(e, project);
     },
     [project, onEdit]
   );
 
-  const handleDelete = React.useCallback(
+  const handleDelete = useCallback(
     (e) => {
       onDelete && onDelete(e, project);
     },
