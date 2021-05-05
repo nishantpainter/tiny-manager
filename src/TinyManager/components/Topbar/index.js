@@ -58,10 +58,10 @@ function Topbar(props) {
           component={Link}
           to="/"
         >
+          <b>Tiny Manager</b>&nbsp;
           <span role="img" aria-label="Ant" className={classes.logo}>
             🐜
           </span>
-          &nbsp;<b>Tiny Manager</b>
         </Typography>
         <Button color="primary" size="large" component={Link} to="/">
           {translate("Home")}
