@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ProjectForm from "TinyManager/components/ProjectForm";
 import { ProjectType } from "TinyManager/types/index";
 import { merge } from "TinyManager/services/Utils";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -18,6 +19,7 @@ const useStyles = makeStyles(() => ({
 function ProjectFormContainer(props) {
   const { onCancel, onSubmit, initialValues } = props;
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const handleCancel = useCallback(() => onCancel(), [onCancel]);
   const handleSubmit = useCallback((values) => onSubmit(values), [onSubmit]);
@@ -42,6 +44,7 @@ function ProjectFormContainer(props) {
   return (
     <div className={classes.container}>
       <ProjectForm
+        translate={t}
         values={formik.values}
         errors={formik.errors}
         onCancel={handleCancel}
