@@ -35,20 +35,20 @@ function Projects(props) {
     [history]
   );
 
-  const redirectToNewProject = useCallback(() => redirect(join(url, "/new")), [
-    redirect,
-    url,
-  ]);
+  const redirectToNewProject = useCallback(() => {
+    redirect(join(url, "/new"));
+  }, [redirect, url]);
 
   const redirectToProjectView = useCallback(
-    (projectId) => redirect(join(url, "/", projectId)),
+    (projectId) => {
+      redirect(join(url, "/", projectId));
+    },
     [url, redirect]
   );
 
-  const redirectToProjectList = useCallback(() => redirect(url), [
-    redirect,
-    url,
-  ]);
+  const redirectToProjectList = useCallback(() => {
+    redirect(url);
+  }, [redirect, url]);
 
   const handleAddNewProject = useCallback(
     (values) => {
