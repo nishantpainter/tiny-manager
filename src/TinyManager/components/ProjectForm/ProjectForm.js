@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
 import { ProjectType } from "TinyManager/types";
+import { identity } from "../utils";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,6 +26,7 @@ function ProjectForm(props) {
     values,
     errors,
     disabled,
+    translate,
     onSubmit,
     onChange,
     onCancel,
@@ -75,7 +77,7 @@ function ProjectForm(props) {
             <TextField
               id="name"
               name="name"
-              label="Name"
+              label={translate("Name")}
               margin="dense"
               disabled={disabled}
               error={Boolean(errors.name)}
@@ -90,7 +92,7 @@ function ProjectForm(props) {
             <TextField
               id="description"
               name="description"
-              label="Description"
+              label={translate("Description")}
               rows={4}
               disabled={disabled}
               error={Boolean(errors.description)}
@@ -107,7 +109,7 @@ function ProjectForm(props) {
               disabled={disabled}
               onClick={handleCancel}
             >
-              Cancel
+              {translate("Cancel")}
             </Button>
             &nbsp;
             <Button
@@ -116,7 +118,7 @@ function ProjectForm(props) {
               type="submit"
               disabled={disabled}
             >
-              Save
+              {translate("Save")}
             </Button>
           </Grid>
         </Grid>
@@ -143,6 +145,10 @@ ProjectForm.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Translator
+   */
+  translate: PropTypes.func,
+  /**
    * Input on change handler
    */
   onChange: PropTypes.func,
@@ -161,6 +167,7 @@ ProjectForm.defaultProps = {
   errors: {},
   disabled: false,
   title: "New Project",
+  translate: identity,
 };
 
 export default ProjectForm;
