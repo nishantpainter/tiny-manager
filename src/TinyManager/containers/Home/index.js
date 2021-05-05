@@ -11,6 +11,7 @@ import Notes from "TinyManager/containers/Notes";
 import Todos from "TinyManager/containers/Todos";
 import QuoteService from "TinyManager/services/QuoteService";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles(() => ({
 
 function Home() {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const defaultNotes = TinyManagerAPI.fetchDefaultNotes();
 
@@ -69,7 +71,7 @@ function Home() {
                   onChange={handleChangeDefaultNotes}
                 />
               }
-              label="Default Notes"
+              label={t("Default Notes")}
             />
           </div>
           <div>
@@ -79,8 +81,8 @@ function Home() {
               textColor="primary"
               onChange={handleChangeActiveTab}
             >
-              <Tab label="Todos" value={0} />
-              <Tab label="Notes" value={1} />
+              <Tab label={t("Todos")} value={0} />
+              <Tab label={t("Notes")} value={1} />
             </Tabs>
           </div>
           {activeTab === 0 && <Todos />}
