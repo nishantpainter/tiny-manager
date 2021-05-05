@@ -35,22 +35,28 @@ function ProjectCard(props) {
   const classes = useStyles();
 
   const handleClick = useCallback(
-    (e) => {
-      onClick && onClick(e, project);
+    (event) => {
+      if (onClick) {
+        onClick(event, project);
+      }
     },
     [project, onClick]
   );
 
   const handleEdit = useCallback(
-    (e) => {
-      onEdit && onEdit(e, project);
+    (event) => {
+      if (onEdit) {
+        onEdit(event, project);
+      }
     },
     [project, onEdit]
   );
 
   const handleDelete = useCallback(
-    (e) => {
-      onDelete && onDelete(e, project);
+    (event) => {
+      if (onDelete) {
+        onDelete(event, project);
+      }
     },
     [project, onDelete]
   );
