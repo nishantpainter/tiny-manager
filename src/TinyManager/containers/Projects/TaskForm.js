@@ -4,9 +4,11 @@ import { useFormik } from "formik";
 
 import TaskForm from "TinyManager/components/TaskForm";
 import { TaskType } from "TinyManager/types";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
 function TaskFormContainer(props) {
   const { onCancel, onSubmit, initialValues } = props;
+  const { t } = useTranslation();
 
   const formik = useFormik({
     initialValues: {
@@ -32,10 +34,11 @@ function TaskFormContainer(props) {
   });
 
   const isEdit = initialValues && initialValues.id;
-  const formTitle = isEdit ? "Edit Task" : "New Task";
+  const formTitle = isEdit ? t("Edit Task") : t("New Task");
 
   return (
     <TaskForm
+      translate={t}
       values={formik.values}
       errors={formik.errors}
       onCancel={onCancel}
