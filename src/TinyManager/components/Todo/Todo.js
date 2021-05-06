@@ -9,10 +9,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import IconButton from "TinyManager/components/IconButton";
 import { TodoType } from "TinyManager/types";
-import { noop } from "../utils";
 
 const useStyles = makeStyles({
-  listItemContainer: {
+  item: {
     listStyle: "none",
   },
 });
@@ -25,28 +24,34 @@ function Todo(props) {
 
   const handleCheck = useCallback(
     (event) => {
-      onCheck(event, todo);
+      if (onCheck) {
+        onCheck(event, todo);
+      }
     },
     [onCheck, todo]
   );
 
   const handleDelete = useCallback(
     (event) => {
-      onDelete(event, todo);
+      if (onDelete) {
+        onDelete(event, todo);
+      }
     },
     [onDelete, todo]
   );
 
   const handleClick = useCallback(
     (event) => {
-      onClick(event, todo);
+      if (onClick) {
+        onClick(event, todo);
+      }
     },
     [onClick, todo]
   );
 
   return (
     <ListItem
-      ContainerProps={{ className: classes.listItemContainer }}
+      ContainerProps={{ className: classes.item }}
       divider={divider}
       button
       dense
@@ -105,9 +110,6 @@ Todo.propTypes = {
 Todo.defaultProps = {
   todo: {},
   divider: true,
-  onCheck: noop,
-  onDelete: noop,
-  onClick: noop,
 };
 
 export default Todo;
