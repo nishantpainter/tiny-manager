@@ -15,31 +15,32 @@ import CircularProgressWithLabel from "../CircularProgressWithLabel";
 import { TaskType } from "TinyManager/types/index";
 import { noop } from "../utils";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    height: theme.spacing(7),
-    alignItems: "center",
-  },
-  mediumPriority: {
-    color: theme.palette.type === "dark" && theme.palette.warning.light,
-    backgroundColor:
-      theme.palette.type === "light" && theme.palette.warning.light,
-  },
-  highPriority: {
-    color: theme.palette.type === "dark" && theme.palette.error.light,
-    backgroundColor:
-      theme.palette.type === "light" && theme.palette.error.light,
-  },
-  progress: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  completedFlag: {
-    color: theme.palette.success.light,
-    marginRight: theme.spacing(0.5),
-  },
-}));
+const useStyles = makeStyles((theme) => {
+  const isDark = theme.palette.type === "dark";
+  return {
+    paper: {
+      height: theme.spacing(7),
+      alignItems: "center",
+    },
+    mediumPriority: {
+      color: isDark && theme.palette.warning.light,
+      backgroundColor: !isDark && theme.palette.warning.light,
+    },
+    highPriority: {
+      color: isDark && theme.palette.error.light,
+      backgroundColor: !isDark && theme.palette.error.light,
+    },
+    progress: {
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "center",
+    },
+    completedFlag: {
+      color: theme.palette.success.light,
+      marginRight: theme.spacing(0.5),
+    },
+  };
+});
 
 function TaskCard(props) {
   const { task, onClick, onDelete, className } = props;
