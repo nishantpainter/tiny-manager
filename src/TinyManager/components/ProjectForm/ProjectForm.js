@@ -1,13 +1,11 @@
 import React, { useCallback } from "react";
-import {
-  TextField,
-  Button,
-  Grid,
-  Typography,
-  Divider,
-} from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 import Paper from "../Paper";
 import { ProjectType } from "TinyManager/types";
