@@ -41,6 +41,12 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
+const PRIORITY = {
+  low: 0,
+  medium: 1,
+  high: 2,
+};
+
 function TaskCard(props) {
   const { task, onClick, onDelete, className } = props;
   const { priority = 0, progress, title } = task;
@@ -74,8 +80,8 @@ function TaskCard(props) {
         root: clsx(
           classes.paper,
           {
-            [classes.mediumPriority]: priority === 1,
-            [classes.highPriority]: priority === 2,
+            [classes.mediumPriority]: priority === PRIORITY.medium,
+            [classes.highPriority]: priority === PRIORITY.high,
           },
           className
         ),
@@ -86,7 +92,9 @@ function TaskCard(props) {
           <Box display="flex" alignItems="center">
             {completed ? <FlagIcon className={classes.completedFlag} /> : null}
             <Typography
-              className={clsx({ [classes.mediumPriority]: priority === 1 })}
+              className={clsx({
+                [classes.mediumPriority]: priority === PRIORITY.medium,
+              })}
             >
               {title}
             </Typography>
@@ -101,7 +109,7 @@ function TaskCard(props) {
         >
           <CircularProgressWithLabel
             color={
-              priority === 0
+              priority === PRIORITY.low
                 ? "primary"
                 : theme.palette.type === "dark"
                 ? "inherit"
