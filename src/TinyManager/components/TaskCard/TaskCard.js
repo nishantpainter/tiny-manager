@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import FlagIcon from "@material-ui/icons/Flag";
@@ -13,7 +13,6 @@ import FlagIcon from "@material-ui/icons/Flag";
 import Paper from "../Paper";
 import CircularProgressWithLabel from "../CircularProgressWithLabel";
 import { TaskType } from "TinyManager/types/index";
-import { noop } from "../utils";
 
 const useStyles = makeStyles((theme) => {
   const isDark = theme.palette.type === "dark";
@@ -44,32 +43,40 @@ const useStyles = makeStyles((theme) => {
 
 function TaskCard(props) {
   const { task, onClick, onDelete, className } = props;
-  const { priority = 0 } = task;
+  const { priority = 0, progress, title } = task;
 
   const classes = useStyles();
   const theme = useTheme();
 
-  const handleClick = React.useCallback(
-    (e) => {
-      onClick(e, task);
+  const handleClick = useCallback(
+    (event) => {
+      if (onClick) {
+        onClick(event, task);
+      }
     },
     [onClick, task]
   );
 
-  const handleDelete = React.useCallback(
-    (e) => {
-      onDelete(e, task);
+  const handleDelete = useCallback(
+    (event) => {
+      if (onDelete) {
+        onDelete(event, task);
+      }
     },
     [onDelete, task]
   );
+
+  const completed = progress === 100;
 
   return (
     <Paper
       classes={{
         root: clsx(
           classes.paper,
-          priority === 1 && classes.mediumPriority,
-          priority === 2 && classes.highPriority,
+          {
+            [classes.mediumPriority]: priority === 1,
+            [classes.highPriority]: priority === 2,
+          },
           className
         ),
       }}
@@ -77,13 +84,11 @@ function TaskCard(props) {
       <Grid container alignItems="center">
         <Grid item xs={9} onClick={handleClick}>
           <Box display="flex" alignItems="center">
-            {task.progress === 100 ? (
-              <FlagIcon className={classes.completedFlag} />
-            ) : null}
+            {completed ? <FlagIcon className={classes.completedFlag} /> : null}
             <Typography
-              className={clsx(priority === 1 && classes.mediumPriority)}
+              className={clsx({ [classes.mediumPriority]: priority === 1 })}
             >
-              {task.title}
+              {title}
             </Typography>
           </Box>
         </Grid>
@@ -102,7 +107,7 @@ function TaskCard(props) {
                 ? "inherit"
                 : "secondary"
             }
-            value={task.progress}
+            value={progress}
           />
         </Grid>
         <Grid item xs={1} align="right">
@@ -136,8 +141,6 @@ TaskCard.propTypes = {
 
 TaskCard.defaultProps = {
   task: {},
-  onClick: noop,
-  onDelete: noop,
 };
 
 export default TaskCard;
