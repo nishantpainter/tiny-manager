@@ -1,5 +1,5 @@
 import React from "react";
-import ThemeProvider from "../src/TinyManager/services/ThemeProvider";
+import ThemeProvider from "../src/TinyManager/providers/ThemeProvider";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
