@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Paper from "../Paper";
 import { TaskType } from "TinyManager/types";
-import { noop } from "../utils";
+import { identity, noop } from "../utils";
 
 const PRIORITIES = [
   {
@@ -47,6 +47,7 @@ function TaskForm(props) {
     values,
     errors,
     disabled,
+    translate,
     onSubmit,
     onChange,
     onCancel,
@@ -68,7 +69,7 @@ function TaskForm(props) {
             <TextField
               id="title"
               name="title"
-              label="Title"
+              label={translate("Title")}
               margin="dense"
               disabled={disabled}
               error={Boolean(errors.title)}
@@ -88,7 +89,7 @@ function TaskForm(props) {
             >
               <InputLabel>Priority</InputLabel>
               <Select
-                label="Priority"
+                label={translate("Priority")}
                 margin="dense"
                 name="priority"
                 defaultValue={PRIORITIES[0].value}
@@ -97,7 +98,7 @@ function TaskForm(props) {
               >
                 {PRIORITIES.map((priority) => (
                   <MenuItem key={priority.value} value={priority.value}>
-                    {priority.label}
+                    {translate(priority.label)}
                   </MenuItem>
                 ))}
               </Select>
@@ -107,7 +108,7 @@ function TaskForm(props) {
             <TextField
               id="note"
               name="note"
-              label="Note"
+              label={translate("Note")}
               rows={4}
               disabled={disabled}
               error={Boolean(errors.note)}
@@ -129,7 +130,7 @@ function TaskForm(props) {
               <InputLabel>Progress</InputLabel>
               <Select
                 name="progress"
-                label="Percentage"
+                label={translate("Percentage")}
                 margin="dense"
                 defaultValue={PERCENTAGES[0].value}
                 value={values.progress}
@@ -146,7 +147,7 @@ function TaskForm(props) {
           <Grid item xs={12} sm={6}></Grid>
           <Grid item xs={12} align="right">
             <Button variant="outlined" disabled={disabled} onClick={onCancel}>
-              Cancel
+              {translate("Cancel")}
             </Button>
             &nbsp;
             <Button
@@ -155,7 +156,7 @@ function TaskForm(props) {
               type="submit"
               disabled={disabled}
             >
-              Save
+              {translate("Save")}
             </Button>
           </Grid>
         </Grid>
@@ -169,6 +170,7 @@ TaskForm.propTypes = {
   disabled: PropTypes.bool,
   values: TaskType,
   errors: TaskType,
+  translate: PropTypes.func,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
@@ -179,6 +181,7 @@ TaskForm.defaultProps = {
   errors: {},
   disabled: false,
   title: "New Task",
+  translate: identity,
   onChange: noop,
   onSubmit: (e) => {
     e.preventDefault();
