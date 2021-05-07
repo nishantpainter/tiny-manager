@@ -13,6 +13,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Loader from "TinyManager/components/Loader";
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -36,7 +37,7 @@ function ProjectList(props) {
   const { onProjectClick, onNewProject } = props;
 
   const classes = useStyles();
-
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
   const [project, setProject] = useState(null);
@@ -112,10 +113,10 @@ function ProjectList(props) {
       <div className={classes.container}>
         <div>
           <Typography variant="h5" gutterBottom>
-            Projects
+            {t("Projects")}
           </Typography>
           <Button color="primary" variant="outlined" onClick={handleNewProject}>
-            Add New
+            {t("Add New")}
           </Button>
         </div>
         <div className={classes.list}>
@@ -135,22 +136,24 @@ function ProjectList(props) {
               ))}
             </Grid>
           ) : (
-            <Typography variant="body1">No available projects.</Typography>
+            <Typography variant="body1">
+              {t("No available projects.")}
+            </Typography>
           )}
         </div>
         <Dialog open={deleteDialog} onClose={closeDeleteDialog}>
-          <DialogTitle>Delete Project</DialogTitle>
+          <DialogTitle>{t("Delete Project")}</DialogTitle>
           <DialogContent>
-            Delete {project?.name} and related tasks ?
+            {t(`Delete ${project?.name} and related tasks ?`)}
           </DialogContent>
           <DialogActions>
-            <Button onClick={closeDeleteDialog}>Cancel</Button>
+            <Button onClick={closeDeleteDialog}>{t("Cancel")}</Button>
             <Button
               variant="contained"
               color="primary"
               onClick={handleDeleteProject}
             >
-              Confirm
+              {t("Confirm")}
             </Button>
           </DialogActions>
         </Dialog>
