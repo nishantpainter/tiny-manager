@@ -11,42 +11,36 @@ function TodoFormDialog(props) {
   const { initialValue, open, saving, onClose, onSubmit } = props;
   const { t } = useTranslation();
 
-  const [{ todo, errors }, setStore] = useState({
-    todo: merge({}, initialValue),
-    errors: {},
-  });
+  const [values, setValues] = useState(merge({}, initialValue));
+  const [errors, setErrors] = useState({});
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
-    setStore((store) => ({
-      ...store,
-      todo: { ...store.todo, [name]: value },
-    }));
+    setValues((values) => ({ ...values, [name]: value }));
   }, []);
 
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
 
-      if (!todo.title) {
-        setStore((store) => ({
-          ...store,
-          errors: { title: t("Title is required.") },
-        }));
+      if (!values.title) {
+        setErrors({
+          title: t("Title is required"),
+        });
         return;
       }
 
       if (Object.keys(errors).length) {
-        setStore((store) => ({ ...store, errors: {} }));
+        setErrors({});
       }
 
-      onSubmit(todo);
-      setStore((store) => ({ ...store, todo: { title: "" } }));
+      onSubmit(values);
+      setValues({ title: "" });
     },
-    [t, todo, errors, onSubmit]
+    [t, values, errors, onSubmit]
   );
 
-  const isEdit = todo && todo.id;
+  const isEdit = values && values.id;
   const formTitle = isEdit ? t("Edit Todo") : t("Add Todo");
 
   return (
@@ -54,7 +48,7 @@ function TodoFormDialog(props) {
       <DialogContent>
         <TodoForm
           title={formTitle}
-          values={todo}
+          values={values}
           errors={errors}
           disabled={saving}
           translate={t}
