@@ -18,10 +18,17 @@ const useStyles = makeStyles(() => ({
 
 function ProjectFormContainer(props) {
   const { onCancel, onSubmit, initialValues } = props;
+
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const formik = useFormik({
+  const {
+    values,
+    errors,
+    isSubmitting,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
     initialValues: merge({ name: "", description: "" }, initialValues),
     validate: (values) => {
       const errors = {};
@@ -38,16 +45,20 @@ function ProjectFormContainer(props) {
     },
   });
 
+  const edit = values && values.id;
+  const title = edit ? t("Edit Project") : t("New Project");
+
   return (
     <div className={classes.container}>
       <ProjectForm
+        title={title}
         translate={t}
-        values={formik.values}
-        errors={formik.errors}
+        values={values}
+        errors={errors}
         onCancel={onCancel}
-        onChange={formik.handleChange}
-        onSubmit={formik.handleSubmit}
-        disabled={formik.isSubmitting}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        disabled={isSubmitting}
       />
     </div>
   );
