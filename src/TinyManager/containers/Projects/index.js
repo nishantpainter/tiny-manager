@@ -77,8 +77,8 @@ function Projects(props) {
           <Route
             path={path}
             render={withProps(ProjectList, {
-              onProjectClick: redirectToProjectView,
-              onNewProject: redirectToNewProject,
+              onClick: redirectToProjectView,
+              onNew: redirectToNewProject,
             })}
           />
         </Switch>

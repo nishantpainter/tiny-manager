@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ProjectList(props) {
-  const { onProjectClick, onNewProject } = props;
+  const { onClick, onNew } = props;
 
   const classes = useStyles();
   const { t } = useTranslation();
@@ -76,12 +76,12 @@ function ProjectList(props) {
   }, []);
 
   const handleProjectClick = (e, project) => {
-    onProjectClick(project.id);
+    onClick(project.id);
   };
 
   const handleNewProject = useCallback(() => {
-    onNewProject();
-  }, [onNewProject]);
+    onNew();
+  }, [onNew]);
 
   const openDeleteDialog = useCallback((e, project) => {
     e.stopPropagation();
@@ -163,8 +163,8 @@ function ProjectList(props) {
 }
 
 ProjectList.propTypes = {
-  onNewProject: PropTypes.func,
-  onProjectClick: PropTypes.func,
+  onNew: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default ProjectList;
