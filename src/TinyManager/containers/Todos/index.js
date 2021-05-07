@@ -14,7 +14,10 @@ import TodoFormDialog from "./TodoFormDialog";
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
-import { Translate } from "TinyManager/providers/TranslationProvider";
+import {
+  Translate,
+  useTranslation,
+} from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +60,7 @@ function Todos() {
   ] = useDialog();
 
   const [filter, setFilter] = useState("all");
-
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const filterTodos = useCallback(
@@ -224,8 +227,9 @@ function Todos() {
             marginBottom={1}
           >
             <TodosFilter
-              className={classes.todosFilter}
               value={filter}
+              translate={t}
+              className={classes.todosFilter}
               onChange={handleFilterChange}
             />
             <Box display="flex" justifyContent="flex-end" alignItems="center">
