@@ -329,7 +329,7 @@ function ProjectView(props) {
               <InputLabel id="task-filter-by">Filter By</InputLabel>
               <Select
                 margin="dense"
-                label="Sort By"
+                label="Filter By"
                 labelId="task-filter-by"
                 variant="outlined"
                 value={filterBy}
