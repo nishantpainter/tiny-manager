@@ -20,6 +20,7 @@ import Loader from "TinyManager/components/Loader";
 import TaskFormContainer from "TinyManager/containers/Projects/TaskForm";
 import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
 import TaskCard from "TinyManager/components/TaskCard";
+import useDialog from "TinyManager/hooks/useDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -123,26 +124,19 @@ function ProjectView(props) {
     filterBy: "all",
   });
 
-  const [taskDialogOpen, setTaskDialogOpen] = useState(false);
-  const [deleteAllTaskDialogOpen, setDeleteAllTaskDialogOpen] = useState(false);
-  const [projectDialogOpen, setProjectDialogOpen] = useState(false);
+  const [taskDialog, openTaskDialog, closeTaskDialog] = useDialog();
+  const [projectDialog, openProjectDialog, closeProjectDialog] = useDialog();
 
-  const handleOpenTaskDialog = useCallback(() => {
-    setTaskDialogOpen(true);
-  }, []);
+  const [
+    deleteAllTaskDialog,
+    openDeleteAllTaskDialog,
+    closeDeleteAllTaskDialog,
+  ] = useDialog();
 
   const handleCloseTaskDialog = useCallback(() => {
-    setTaskDialogOpen(false);
+    closeTaskDialog(false);
     setStore((store) => ({ ...store, task: {} }));
-  }, []);
-
-  const handleOpenProjectDialog = useCallback(() => {
-    setProjectDialogOpen(true);
-  }, []);
-
-  const handleCloseProjectDialog = useCallback(() => {
-    setProjectDialogOpen(false);
-  }, []);
+  }, [closeTaskDialog]);
 
   const handleChangeSortBy = useCallback((event) => {
     setStore((store) => ({ ...store, sortBy: event.target.value }));
@@ -172,10 +166,10 @@ function ProjectView(props) {
           ...store,
           project,
         }));
-        handleCloseProjectDialog();
+        closeProjectDialog();
       });
     },
-    [handleCloseProjectDialog]
+    [closeProjectDialog]
   );
 
   const handleAddNewTask = useCallback(
@@ -201,9 +195,9 @@ function ProjectView(props) {
   const handleTaskClick = useCallback(
     (e, task = {}) => {
       setStore((store) => ({ ...store, task }));
-      handleOpenTaskDialog();
+      openTaskDialog();
     },
-    [handleOpenTaskDialog]
+    [openTaskDialog]
   );
 
   const handleTaskDelete = useCallback((e, task) => {
@@ -215,25 +209,17 @@ function ProjectView(props) {
   }, []);
 
   const handleProjectEditClick = useCallback(() => {
-    handleOpenProjectDialog();
-  }, [handleOpenProjectDialog]);
-
-  const handleOpenDeleteAllTaskDialog = useCallback(() => {
-    setDeleteAllTaskDialogOpen(true);
-  }, []);
-
-  const handleCloseDeleteAllTaskDialog = useCallback(() => {
-    setDeleteAllTaskDialogOpen(false);
-  }, []);
+    openProjectDialog();
+  }, [openProjectDialog]);
 
   const handleDeleteAllTask = useCallback(() => {
     if (tasks.length) {
       TinyManagerAPI.removeBulkTask(tasks.map(({ id }) => id)).then(() => {
         setStore((store) => ({ ...store, tasks: [] }));
-        handleCloseDeleteAllTaskDialog();
+        closeDeleteAllTaskDialog();
       });
     }
-  }, [handleCloseDeleteAllTaskDialog, tasks]);
+  }, [closeDeleteAllTaskDialog, tasks]);
 
   useEffect(() => {
     if (projectId) {
@@ -283,7 +269,7 @@ function ProjectView(props) {
             <Button
               color="primary"
               variant="contained"
-              onClick={handleOpenTaskDialog}
+              onClick={openTaskDialog}
             >
               Add New Task
             </Button>
@@ -292,7 +278,7 @@ function ProjectView(props) {
               disabled={!tasks.length}
               color="primary"
               variant="outlined"
-              onClick={handleOpenDeleteAllTaskDialog}
+              onClick={openDeleteAllTaskDialog}
             >
               Delete All
             </Button>
@@ -359,7 +345,7 @@ function ProjectView(props) {
             </Typography>
           </div>
         )}
-        <Dialog open={taskDialogOpen} onClose={handleCloseTaskDialog}>
+        <Dialog open={taskDialog} onClose={handleCloseTaskDialog}>
           <TaskFormContainer
             initialValues={task}
             onCancel={handleCloseTaskDialog}
@@ -367,22 +353,19 @@ function ProjectView(props) {
           />
         </Dialog>
 
-        <Dialog open={projectDialogOpen} onClose={handleCloseProjectDialog}>
+        <Dialog open={projectDialog} onClose={closeProjectDialog}>
           <ProjectFormContainer
             initialValues={project}
-            onCancel={handleCloseProjectDialog}
+            onCancel={closeProjectDialog}
             onSubmit={handleUpdateProject}
           />
         </Dialog>
 
-        <Dialog
-          open={deleteAllTaskDialogOpen}
-          onClose={handleCloseDeleteAllTaskDialog}
-        >
+        <Dialog open={deleteAllTaskDialog} onClose={closeDeleteAllTaskDialog}>
           <DialogTitle>Delete All Tasks</DialogTitle>
           <DialogContent>Do you want to remove all the tasks ?</DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseDeleteAllTaskDialog}>Cancel</Button>
+            <Button onClick={closeDeleteAllTaskDialog}>Cancel</Button>
             <Button
               variant="contained"
               color="primary"
