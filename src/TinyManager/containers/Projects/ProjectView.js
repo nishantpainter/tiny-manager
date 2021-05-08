@@ -112,18 +112,15 @@ function ProjectView(props) {
 
   const classes = useStyles();
 
-  const [
-    { loading, project, tasks, task, sortBy, filterBy },
-    setStore,
-  ] = useState({
+  const [{ loading, project, tasks, task }, setStore] = useState({
     loading: true,
     project: {},
     tasks: [],
     task: {},
-    sortBy: "createdAt",
-    filterBy: "all",
   });
 
+  const [sortBy, setSortBy] = useState("createdAt");
+  const [filterBy, setFilterBy] = useState("all");
   const [taskDialog, openTaskDialog, closeTaskDialog] = useDialog();
   const [projectDialog, openProjectDialog, closeProjectDialog] = useDialog();
 
@@ -139,11 +136,11 @@ function ProjectView(props) {
   }, [closeTaskDialog]);
 
   const handleChangeSortBy = useCallback((event) => {
-    setStore((store) => ({ ...store, sortBy: event.target.value }));
+    setSortBy(event.target.value);
   }, []);
 
   const handleChangeFilterBy = useCallback((event) => {
-    setStore((store) => ({ ...store, filterBy: event.target.value }));
+    setFilterBy(event.target.value);
   }, []);
 
   const handleUpdateTask = useCallback(
