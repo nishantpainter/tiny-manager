@@ -21,6 +21,7 @@ import TaskFormContainer from "TinyManager/containers/Projects/TaskForm";
 import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
 import TaskCard from "TinyManager/components/TaskCard";
 import useDialog from "TinyManager/hooks/useDialog";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -123,12 +124,12 @@ function ProjectView(props) {
   const [filterBy, setFilterBy] = useState("all");
   const [taskDialog, openTaskDialog, closeTaskDialog] = useDialog();
   const [projectDialog, openProjectDialog, closeProjectDialog] = useDialog();
-
   const [
     deleteAllTaskDialog,
     openDeleteAllTaskDialog,
     closeDeleteAllTaskDialog,
   ] = useDialog();
+  const { t } = useTranslation();
 
   const handleCloseTaskDialog = useCallback(() => {
     closeTaskDialog(false);
@@ -268,7 +269,7 @@ function ProjectView(props) {
               variant="contained"
               onClick={openTaskDialog}
             >
-              Add New Task
+              {t("Add New Task")}
             </Button>
             &nbsp;&nbsp;
             <Button
@@ -277,7 +278,7 @@ function ProjectView(props) {
               variant="outlined"
               onClick={openDeleteAllTaskDialog}
             >
-              Delete All
+              {t("Delete All")}
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -286,10 +287,10 @@ function ProjectView(props) {
               variant="outlined"
               className={classes.selection}
             >
-              <InputLabel id="task-sort-by">Sort By</InputLabel>
+              <InputLabel id="task-sort-by">{t("Sort By")}</InputLabel>
               <Select
                 margin="dense"
-                label="Sort By"
+                label={t("Sort By")}
                 labelId="task-sort-by"
                 variant="outlined"
                 value={sortBy}
@@ -304,10 +305,10 @@ function ProjectView(props) {
               </Select>
             </FormControl>
             <FormControl margin="dense" variant="outlined">
-              <InputLabel id="task-filter-by">Filter By</InputLabel>
+              <InputLabel id="task-filter-by">{t("Filter By")}</InputLabel>
               <Select
                 margin="dense"
-                label="Filter By"
+                label={t("Filter By")}
                 labelId="task-filter-by"
                 variant="outlined"
                 value={filterBy}
@@ -338,7 +339,7 @@ function ProjectView(props) {
         ) : (
           <div className={classes.noTasksMessageWrapper}>
             <Typography variant="body1" className={classes.noTasksMessage}>
-              No available tasks.
+              {t("No available tasks.")}
             </Typography>
           </div>
         )}
@@ -359,16 +360,18 @@ function ProjectView(props) {
         </Dialog>
 
         <Dialog open={deleteAllTaskDialog} onClose={closeDeleteAllTaskDialog}>
-          <DialogTitle>Delete All Tasks</DialogTitle>
-          <DialogContent>Do you want to remove all the tasks ?</DialogContent>
+          <DialogTitle>{t("Delete All Tasks")}</DialogTitle>
+          <DialogContent>
+            {t("Do you want to remove all the tasks ?")}
+          </DialogContent>
           <DialogActions>
-            <Button onClick={closeDeleteAllTaskDialog}>Cancel</Button>
+            <Button onClick={closeDeleteAllTaskDialog}>{t("Cancel")}</Button>
             <Button
               variant="contained"
               color="primary"
               onClick={handleDeleteAllTask}
             >
-              Confirm
+              {"Confirm"}
             </Button>
           </DialogActions>
         </Dialog>
