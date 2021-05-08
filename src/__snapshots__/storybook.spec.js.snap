@@ -185,7 +185,8 @@ exports[`Storyshots TinyManager/ProjectCard Actions 1`] = `
       className="MuiBox-root MuiBox-root-21"
     >
       <h4
-        className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary"
+        className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary MuiTypography-noWrap"
+        title="Tiny Manager"
       >
         Tiny Manager
       </h4>
@@ -303,7 +304,8 @@ exports[`Storyshots TinyManager/ProjectCard Default 1`] = `
       className="MuiBox-root MuiBox-root-11"
     >
       <h4
-        className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary"
+        className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary MuiTypography-noWrap"
+        title="Tiny Manager"
       >
         Tiny Manager
       </h4>
@@ -354,7 +356,8 @@ exports[`Storyshots TinyManager/ProjectCard Progress 1`] = `
       className="MuiBox-root MuiBox-root-16"
     >
       <h4
-        className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary"
+        className="MuiTypography-root MuiTypography-h4 MuiTypography-colorPrimary MuiTypography-noWrap"
+        title="Tiny Manager"
       >
         Tiny Manager
       </h4>
@@ -2050,7 +2053,7 @@ exports[`Storyshots TinyManager/Todo Completed 1`] = `
   }
 >
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-102"
+    className="MuiListItem-container makeStyles-item-102"
   >
     <div
       aria-disabled={false}
@@ -2172,7 +2175,7 @@ exports[`Storyshots TinyManager/Todo Default 1`] = `
   }
 >
   <li
-    className="MuiListItem-container makeStyles-listItemContainer-97"
+    className="MuiListItem-container makeStyles-item-97"
   >
     <div
       aria-disabled={false}
@@ -2867,7 +2870,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
     className="MuiList-root makeStyles-list-127 MuiList-padding"
   >
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -2978,7 +2981,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3089,7 +3092,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3200,7 +3203,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3311,7 +3314,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3422,7 +3425,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3533,7 +3536,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3644,7 +3647,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3755,7 +3758,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
@@ -3866,7 +3869,7 @@ exports[`Storyshots TinyManager/TodoList Default 1`] = `
       </div>
     </li>
     <li
-      className="MuiListItem-container makeStyles-listItemContainer-128"
+      className="MuiListItem-container makeStyles-item-128"
     >
       <div
         aria-disabled={false}
