@@ -124,9 +124,7 @@ function ProjectView(props) {
   });
 
   const [taskDialogOpen, setTaskDialogOpen] = useState(false);
-
   const [deleteAllTaskDialogOpen, setDeleteAllTaskDialogOpen] = useState(false);
-
   const [projectDialogOpen, setProjectDialogOpen] = useState(false);
 
   const handleOpenTaskDialog = useCallback(() => {
@@ -194,11 +192,8 @@ function ProjectView(props) {
 
   const handleTaskFormSubmit = useCallback(
     (task) => {
-      if (task.id) {
-        handleUpdateTask(task);
-      } else {
-        handleAddNewTask(task);
-      }
+      const handler = task.id ? handleUpdateTask : handleAddNewTask;
+      handler(task);
     },
     [handleUpdateTask, handleAddNewTask]
   );
