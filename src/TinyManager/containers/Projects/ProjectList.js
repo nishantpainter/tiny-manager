@@ -75,16 +75,12 @@ function ProjectList(props) {
       });
   }, []);
 
-  const handleProjectClick = (e, project) => {
+  const handleProjectClick = (event, project) => {
     onClick(project.id);
   };
 
-  const handleNewProject = useCallback(() => {
-    onNew();
-  }, [onNew]);
-
-  const openDeleteDialog = useCallback((e, project) => {
-    e.stopPropagation();
+  const openDeleteDialog = useCallback((event, project) => {
+    event.stopPropagation();
     setDeleteDialog(true);
     setProject(project);
   }, []);
@@ -115,7 +111,7 @@ function ProjectList(props) {
           <Typography variant="h5" gutterBottom>
             {t("Projects")}
           </Typography>
-          <Button color="primary" variant="outlined" onClick={handleNewProject}>
+          <Button color="primary" variant="outlined" onClick={onNew}>
             {t("Add New")}
           </Button>
         </div>
