@@ -12,6 +12,7 @@
     "formik": "^2.1.5",
     "i18next": "^20.2.2",
     "lodash.debounce": "^4.0.8",
+    "notistack": "^1.0.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.8.14",
