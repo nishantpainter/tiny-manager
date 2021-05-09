@@ -240,7 +240,7 @@ function Todos() {
                 onClick={handleOpenDeleteAllTodosDialog}
                 disabled={!todos.length}
               >
-                <Translate>Delete All</Translate>
+                <Translate>{t("Delete All")}</Translate>
               </Button>
               &nbsp;&nbsp;
               <Button
@@ -248,7 +248,7 @@ function Todos() {
                 variant="contained"
                 onClick={handleAddNewTodoClick}
               >
-                <Translate>Add</Translate>
+                <Translate>{t("Add")}</Translate>
               </Button>
             </Box>
           </Box>
