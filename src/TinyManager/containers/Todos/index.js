@@ -275,21 +275,21 @@ function Todos() {
         onClose={handleCloseDeleteAllTodosDialog}
       >
         <DialogTitle>
-          <Translate>Delete All Todos</Translate>
+          <Translate>{t("Delete All Todos")}</Translate>
         </DialogTitle>
         <DialogContent>
-          <Translate>Do you want to remove all the todos ?</Translate>
+          <Translate>{t("Do you want to remove all the todos ?")}</Translate>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDeleteAllTodosDialog}>
-            <Translate>Cancel</Translate>
+            <Translate>{t("Cancel")}</Translate>
           </Button>
           <Button
             variant="contained"
             color="primary"
             onClick={handleDeleteAllTodos}
           >
-            <Translate>Confirm</Translate>
+            <Translate>{t("Confirm")}</Translate>
           </Button>
         </DialogActions>
       </Dialog>
