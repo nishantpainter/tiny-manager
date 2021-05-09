@@ -7,7 +7,7 @@ import { FILTERS } from "./index";
 import { Translate } from "TinyManager/providers/TranslationProvider";
 import { FormControl, InputLabel } from "@material-ui/core";
 function TodoFilter(props) {
-  const { value, className, onChange, translate } = props;
+  const { value, className, translate, disabled, onChange } = props;
 
   const handleChange = (event) => {
     if (onChange) {
@@ -16,7 +16,7 @@ function TodoFilter(props) {
   };
 
   return (
-    <FormControl margin="dense" variant="outlined">
+    <FormControl margin="dense" variant="outlined" disabled={disabled}>
       <InputLabel id="todo-filter-by">{translate("Filter By")}</InputLabel>
       <Select
         label={translate("Filter By")}
@@ -42,8 +42,9 @@ TodoFilter.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   className: PropTypes.string,
-  onChange: PropTypes.func,
   translate: PropTypes.func,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default TodoFilter;

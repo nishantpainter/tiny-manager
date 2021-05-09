@@ -227,9 +227,10 @@ function Todos() {
             marginBottom={1}
           >
             <TodosFilter
-              value={filter}
               translate={t}
+              value={filter}
               className={classes.todosFilter}
+              disabled={!todos.length}
               onChange={handleFilterChange}
             />
             <Box display="flex" justifyContent="flex-end" alignItems="center">
