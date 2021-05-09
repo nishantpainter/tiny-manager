@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Dialog, DialogContent } from "@material-ui/core";
 
@@ -6,39 +6,29 @@ import TodoForm from "TinyManager/components/TodoForm";
 import { TodoType } from "TinyManager/types";
 import { merge } from "TinyManager/services/Utils";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
+import { useFormik } from "formik";
 
 function TodoFormDialog(props) {
-  const { initialValue, open, saving, onClose, onSubmit } = props;
+  const { initialValue = {}, open, saving, onClose, onSubmit } = props;
   const { t } = useTranslation();
 
-  const [values, setValues] = useState(merge({}, initialValue));
-  const [errors, setErrors] = useState({});
-
-  const handleChange = useCallback((event) => {
-    const { name, value } = event.target;
-    setValues((values) => ({ ...values, [name]: value }));
-  }, []);
-
-  const handleSubmit = useCallback(
-    (event) => {
-      event.preventDefault();
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: merge({ title: "" }, initialValue),
+    validate: (values) => {
+      const errors = {};
 
       if (!values.title) {
-        setErrors({
-          title: t("Title is required"),
-        });
-        return;
+        errors.title = t("Title is required");
       }
 
-      if (Object.keys(errors).length) {
-        setErrors({});
-      }
-
-      onSubmit(values);
-      setValues({ title: "" });
+      return errors;
     },
-    [t, values, errors, onSubmit]
-  );
+    onSubmit: (values, { setFieldValue }) => {
+      onSubmit(values);
+      setFieldValue("title", "");
+    },
+    enableReinitialize: true,
+  });
 
   const isEdit = values && values.id;
   const formTitle = isEdit ? t("Edit Todo") : t("Add Todo");
