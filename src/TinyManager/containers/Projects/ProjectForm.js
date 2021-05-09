@@ -34,7 +34,7 @@ function ProjectFormContainer(props) {
       const errors = {};
 
       if (!values.name) {
-        errors.name = "Name is required.";
+        errors.name = t("Name is required.");
       }
 
       return errors;
