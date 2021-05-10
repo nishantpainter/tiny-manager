@@ -157,8 +157,9 @@ function Notes() {
         color="textSecondary"
         variant="caption"
       >
+        *
         {t(
-          "*Notes will be stored locally on the browser and will be persisted."
+          "Notes will be stored locally on the browser and will be persisted."
         )}
       </Typography>
     </div>
