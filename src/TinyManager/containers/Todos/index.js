@@ -160,11 +160,8 @@ function Todos() {
   const handleSubmit = useCallback(
     (todo) => {
       setStore((store) => ({ ...store, saving: true }));
-      if (todo.id) {
-        handleEditTodo(todo);
-      } else {
-        handleAddNewTodo(todo);
-      }
+      const handle = todo.id ? handleEditTodo : handleAddNewTodo;
+      handle(todo);
     },
     [handleAddNewTodo, handleEditTodo]
   );
