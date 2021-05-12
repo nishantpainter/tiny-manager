@@ -11,6 +11,7 @@
     "dexie": "^3.0.2",
     "formik": "^2.1.5",
     "i18next": "^20.2.2",
+    "jspdf": "^2.3.1",
     "lodash.debounce": "^4.0.8",
     "notistack": "^1.0.7",
     "react": "^16.13.1",
