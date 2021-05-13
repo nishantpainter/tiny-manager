@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import jsPDF from "jspdf";
 
 import DownloadIcon from "@material-ui/icons/SaveAlt";
 import ClearIcon from "@material-ui/icons/DeleteForever";
@@ -74,6 +75,12 @@ function Notes() {
     link.href = url;
     link.setAttribute("download", "Notes.txt");
     link.click();
+  }, [notes]);
+
+  const handleDownloadNotePdf = useCallback(() => {
+    const doc = new jsPDF();
+    doc.text(notes, 10, 10);
+    doc.save("Notes.pdf");
   }, [notes]);
 
   const handleClearNote = useCallback(() => {
