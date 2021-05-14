@@ -46,7 +46,9 @@ function Topbar(props) {
   };
 
   const handleLanguageChange = (language) => (event) => {
-    onlanguageChange && onlanguageChange(event, language);
+    if (onlanguageChange) {
+      onlanguageChange(event, language);
+    }
   };
 
   return (
