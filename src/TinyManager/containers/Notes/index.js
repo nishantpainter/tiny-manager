@@ -5,6 +5,8 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import jsPDF from "jspdf";
 
 import DownloadIcon from "@material-ui/icons/SaveAlt";
@@ -52,6 +54,7 @@ function Notes() {
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
+  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
 
   const handleUpdateStorage = useMemo(
     () => debounce(TinyManagerAPI.updateNotes, 150),
@@ -67,7 +70,7 @@ function Notes() {
     [handleUpdateStorage]
   );
 
-  const handleDownloadNote = useCallback(() => {
+  const handleDownloadNoteTxt = useCallback(() => {
     const url = window.URL.createObjectURL(new Blob([notes]), {
       type: "text/plain",
     });
@@ -92,10 +95,26 @@ function Notes() {
       const isSave = event.key === "s" && event.ctrlKey === true;
       if (isSave) {
         event.preventDefault();
-        handleDownloadNote();
+        handleDownloadNoteTxt();
       }
     },
-    [handleDownloadNote]
+    [handleDownloadNoteTxt]
+  );
+
+  const handleOpenMenu = useCallback((event) => {
+    setMenuAnchorEl(event.currentTarget);
+  }, []);
+
+  const handleCloseMenu = useCallback(() => {
+    setMenuAnchorEl(null);
+  }, []);
+
+  const handleMenuAction = useCallback(
+    (cb) => (event) => {
+      handleCloseMenu();
+      cb(event);
+    },
+    [handleCloseMenu]
   );
 
   useEffect(() => {
@@ -121,7 +140,7 @@ function Notes() {
         )}
         <IconButton
           disabled={loading}
-          onClick={handleDownloadNote}
+          onClick={handleOpenMenu}
           color="primary"
           size="small"
           title={t("Download Note")}
@@ -169,6 +188,19 @@ function Notes() {
           "Notes will be stored locally on the browser and will be persisted."
         )}
       </Typography>
+      <Menu
+        anchorEl={menuAnchorEl}
+        keepMounted
+        open={Boolean(menuAnchorEl)}
+        onClose={handleCloseMenu}
+      >
+        <MenuItem onClick={handleMenuAction(handleDownloadNoteTxt)}>
+          TXT
+        </MenuItem>
+        <MenuItem onClick={handleMenuAction(handleDownloadNotePdf)}>
+          PDF
+        </MenuItem>
+      </Menu>
     </div>
   );
 }
