@@ -15,6 +15,7 @@ import ClearIcon from "@material-ui/icons/DeleteForever";
 import Loader from "TinyManager/components/Loader";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
+import { formatDate } from "TinyManager/services/Utils";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -70,21 +71,25 @@ function Notes() {
     [handleUpdateStorage]
   );
 
+  const getFileName = useCallback((extension) => {
+    return `Note-${formatDate()}.${extension}`;
+  }, []);
+
   const handleDownloadNoteTxt = useCallback(() => {
     const url = window.URL.createObjectURL(new Blob([notes]), {
       type: "text/plain",
     });
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "Notes.txt");
+    link.setAttribute("download", getFileName("txt"));
     link.click();
-  }, [notes]);
+  }, [notes, getFileName]);
 
   const handleDownloadNotePdf = useCallback(() => {
     const doc = new jsPDF();
     doc.text(notes, 10, 10);
-    doc.save("Notes.pdf");
-  }, [notes]);
+    doc.save(getFileName("pdf"));
+  }, [notes, getFileName]);
 
   const handleClearNote = useCallback(() => {
     handleChange({ target: { value: "" } });
