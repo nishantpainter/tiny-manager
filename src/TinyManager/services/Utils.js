@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 function join(...strings) {
   return strings.join("");
@@ -23,4 +24,8 @@ function withProps(Component, props) {
   };
 }
 
-export { join, merge, noop, withProps };
+function formatDate(date = new Date(), format = "DD-MM-YYYY") {
+  return date && moment(date).format(format);
+}
+
+export { join, merge, noop, withProps, formatDate };
