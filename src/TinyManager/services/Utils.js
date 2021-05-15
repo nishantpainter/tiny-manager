@@ -19,8 +19,8 @@ function noop() {
 // eslint-disable-next-line no-unused-vars
 function withProps(Component, props) {
   // eslint-disable-next-line react/display-name
-  return function ($props) {
-    return <Component {...$props} {...props} />;
+  return function (innerProps) {
+    return <Component {...innerProps} {...props} />;
   };
 }
 
