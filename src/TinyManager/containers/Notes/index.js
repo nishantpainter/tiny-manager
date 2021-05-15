@@ -195,10 +195,10 @@ function Notes() {
         onClose={handleCloseMenu}
       >
         <MenuItem onClick={handleMenuAction(handleDownloadNoteTxt)}>
-          TXT
+          {t("TXT")}
         </MenuItem>
         <MenuItem onClick={handleMenuAction(handleDownloadNotePdf)}>
-          PDF
+          {t("PDF")}
         </MenuItem>
       </Menu>
     </div>
