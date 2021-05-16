@@ -1,1 +1,16 @@
-{}
+{
+  "Name": "Name",
+  "Description": "Description",
+  "Save": "Save",
+  "Cancel": "Cancel",
+  "Title": "Title",
+  "Priority": "Priority",
+  "Note": "Note",
+  "Percentage": "Percentage",
+  "Nothing to be completed. Enjoy your day.": "Nothing to be completed. Enjoy your day.",
+  "Home": "Home",
+  "Projects": "Projects",
+  "Todos": "Todos",
+  "Notes": "Notes",
+  "Default Notes": "Default Notes"
+}
