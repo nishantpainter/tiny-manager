@@ -38,7 +38,7 @@ function Topbar(props) {
   const [languageAnchorEl, setLanguageAnchorEl] = useState(null);
 
   const openLanguageSelection = (event) => {
-    setLanguageAnchorEl(event.currentTargets);
+    setLanguageAnchorEl(event.currentTarget);
   };
 
   const closeLanguageSelection = () => {
@@ -48,6 +48,7 @@ function Topbar(props) {
   const handleLanguageChange = (language) => (event) => {
     if (onlanguageChange) {
       onlanguageChange(event, language);
+      closeLanguageSelection();
     }
   };
 
@@ -93,9 +94,9 @@ function Topbar(props) {
           open={Boolean(languageAnchorEl)}
           onClose={closeLanguageSelection}
         >
-          {languages.map((language) => (
-            <MenuItem onClick={handleLanguageChange(language)} key={language}>
-              {language}
+          {languages.map(({ value, label }) => (
+            <MenuItem onClick={handleLanguageChange(value)} key={value}>
+              {label}
             </MenuItem>
           ))}
         </Menu>
