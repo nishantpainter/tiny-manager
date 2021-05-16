@@ -252,9 +252,10 @@ function Todos() {
 
           <TodoList
             todos={todos}
-            onTodoClick={handleTodoClick}
-            onTodoCheck={handleTodoCheck}
-            onTodoDelete={handleTodoDelete}
+            translate={t}
+            onClick={handleTodoClick}
+            onCheck={handleTodoCheck}
+            onDelete={handleTodoDelete}
           />
         </div>
       )}
