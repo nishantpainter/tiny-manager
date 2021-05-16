@@ -18,5 +18,8 @@
   "You can enter your notes here...": "You can enter your notes here...",
   "Notes will be stored locally on the browser and will be persisted.": "Notes will be stored locally on the browser and will be persisted.",
   "TXT": "TXT",
-  "PDF": "PDF"
+  "PDF": "PDF",
+  "Name is required.": "Name is required.",
+  "Edit Project": "Edit Project",
+  "New Project": "New Project"
 }
