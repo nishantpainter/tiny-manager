@@ -12,5 +12,11 @@
   "Projects": "Projects",
   "Todos": "Todos",
   "Notes": "Notes",
-  "Default Notes": "Default Notes"
+  "Default Notes": "Default Notes",
+  "Download Note": "Download Note",
+  "Clear Note": "Clear Note",
+  "You can enter your notes here...": "You can enter your notes here...",
+  "Notes will be stored locally on the browser and will be persisted.": "Notes will be stored locally on the browser and will be persisted.",
+  "TXT": "TXT",
+  "PDF": "PDF"
 }
