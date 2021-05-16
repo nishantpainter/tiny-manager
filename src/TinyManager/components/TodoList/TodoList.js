@@ -16,12 +16,16 @@ const useStyles = makeStyles({
 });
 
 function TodoList(props) {
-  const { todos, onTodoClick, onTodoCheck, onTodoDelete } = props;
+  const { todos, translate, onTodoClick, onTodoCheck, onTodoDelete } = props;
 
   const classes = useStyles();
 
   if (todos.length === 0) {
-    return <Typography>Nothing to be completed. Enjoy your day.</Typography>;
+    return (
+      <Typography>
+        {translate("Nothing to be completed. Enjoy your day.")}
+      </Typography>
+    );
   }
 
   return (
@@ -44,6 +48,10 @@ TodoList.propTypes = {
    * List of todos
    */
   todos: PropTypes.arrayOf(TodoType),
+  /**
+   * Translate
+   */
+  translate: PropTypes.func,
   /**
    * Todo on click handler
    */
