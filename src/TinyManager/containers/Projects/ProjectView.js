@@ -212,7 +212,7 @@ function ProjectView(props) {
 
   const handleDeleteAllTask = useCallback(() => {
     if (tasks.length) {
-      TinyManagerAPI.removeBulkTask(tasks.map(({ id }) => id)).then(() => {
+      TinyManagerAPI.removeBulkTasks(tasks.map(({ id }) => id)).then(() => {
         setStore((store) => ({ ...store, tasks: [] }));
         closeDeleteAllTaskDialog();
       });

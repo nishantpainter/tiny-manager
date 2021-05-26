@@ -121,7 +121,7 @@ function ProjectList(props) {
       );
 
       TinyManagerAPI.removeBulkProjects(projectIds).then(async () => {
-        await TinyManagerAPI.removeBulkTask(taskIds);
+        await TinyManagerAPI.removeBulkTasks(taskIds);
         setProjects([]);
         closeDeleteAllProjectDialog();
       });
