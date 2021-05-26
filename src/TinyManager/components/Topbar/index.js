@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import MuiLink from "@material-ui/core/Link";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import IconButton from "TinyManager/components/IconButton";
@@ -100,6 +101,14 @@ function Topbar(props) {
             </MenuItem>
           ))}
         </Menu>
+        &nbsp;
+        <IconButton
+          color="inherit"
+          icon="github"
+          component={MuiLink}
+          href="https://github.com/nishantpainter/tiny-manager"
+          target="_blank"
+        />
       </Toolbar>
     </AppBar>
   );
