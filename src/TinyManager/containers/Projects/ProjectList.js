@@ -111,8 +111,8 @@ function ProjectList(props) {
           <Typography variant="h5" gutterBottom>
             {t("Projects")}
           </Typography>
-          <Button color="primary" variant="outlined" onClick={onNew}>
-            {t("Add New")}
+          <Button variant="contained" color="primary" onClick={onNew}>
+            {t("Add New Project")}
           </Button>
         </div>
         <div className={classes.list}>
