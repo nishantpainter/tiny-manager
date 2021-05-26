@@ -37,6 +37,10 @@ function removeProject(projectId) {
   return DbService.remove("projects", { id: projectId });
 }
 
+function removeBulkProjects(projectIds) {
+  return DbService.removeBulk("projects", projectIds);
+}
+
 function removeTask(taskId) {
   return DbService.remove("tasks", { id: taskId });
 }
@@ -101,6 +105,7 @@ export default {
   removeTodo,
   removeBulkTodos,
   removeProject,
+  removeBulkProjects,
   removeTask,
   removeBulkTask,
   fetchTodos,
