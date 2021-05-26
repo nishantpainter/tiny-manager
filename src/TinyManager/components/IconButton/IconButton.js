@@ -8,6 +8,7 @@ import AttachFile from "@material-ui/icons/AttachFile";
 import InvertColors from "@material-ui/icons/InvertColors";
 import Delete from "@material-ui/icons/Delete";
 import Language from "@material-ui/icons/Language";
+import GitHub from "@material-ui/icons/GitHub";
 
 const icons = {
   filter: FilterListIcon,
@@ -16,6 +17,7 @@ const icons = {
   invertColors: InvertColors,
   delete: Delete,
   language: Language,
+  github: GitHub,
 };
 
 function IconButton(props) {
