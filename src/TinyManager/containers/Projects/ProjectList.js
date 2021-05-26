@@ -14,6 +14,7 @@ import Loader from "TinyManager/components/Loader";
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
+import useDialog from "TinyManager/hooks/useDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -42,6 +43,12 @@ function ProjectList(props) {
   const [projects, setProjects] = useState([]);
   const [project, setProject] = useState(null);
   const [deleteDialog, setDeleteDialog] = useState(false);
+
+  const [
+    deleteAllProjectDialog,
+    openDeleteAllProjectDialog,
+    closeDeleteAllProjectDialog,
+  ] = useDialog();
 
   useEffect(() => {
     TinyManagerAPI.fetchProjects()
@@ -100,6 +107,27 @@ function ProjectList(props) {
     closeDeleteDialog();
   }, [project, closeDeleteDialog]);
 
+  const handleDeleteAllProject = useCallback(() => {
+    if (projects.length) {
+
+      const { projectIds, taskIds } = projects.reduce(
+        ({ projectIds, taskIds }, project) => {
+          return {
+            projectIds: [...projectIds, project.id],
+            taskIds: [...taskIds, ...project.tasks.map((t) => t.id)],
+          };
+        },
+        { projectIds: [], taskIds: [] }
+      );
+
+      TinyManagerAPI.removeBulkProjects(projectIds).then(async () => {
+        await TinyManagerAPI.removeBulkTask(taskIds);
+        setProjects([]);
+        closeDeleteAllProjectDialog();
+      });
+    }
+  }, [closeDeleteAllProjectDialog, projects]);
+
   if (loading) {
     return <Loader />;
   }
@@ -113,6 +141,15 @@ function ProjectList(props) {
           </Typography>
           <Button variant="contained" color="primary" onClick={onNew}>
             {t("Add New Project")}
+          </Button>
+          &nbsp;&nbsp;
+          <Button
+            disabled={!projects.length}
+            color="primary"
+            variant="outlined"
+            onClick={openDeleteAllProjectDialog}
+          >
+            {t("Delete All")}
           </Button>
         </div>
         <div className={classes.list}>
@@ -150,6 +187,25 @@ function ProjectList(props) {
               onClick={handleDeleteProject}
             >
               {t("Confirm")}
+            </Button>
+          </DialogActions>
+        </Dialog>
+        <Dialog
+          open={deleteAllProjectDialog}
+          onClose={closeDeleteAllProjectDialog}
+        >
+          <DialogTitle>{t("Delete All Projects")}</DialogTitle>
+          <DialogContent>
+            {t("Do you want to remove all the projects ?")}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={closeDeleteAllProjectDialog}>{t("Cancel")}</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleDeleteAllProject}
+            >
+              {"Confirm"}
             </Button>
           </DialogActions>
         </Dialog>
