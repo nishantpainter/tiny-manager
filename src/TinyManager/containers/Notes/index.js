@@ -51,11 +51,10 @@ const useStyles = makeStyles((theme) => ({
 
 function Notes() {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(true);
-  const { t } = useTranslation();
-
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleUpdateStorage = useMemo(
