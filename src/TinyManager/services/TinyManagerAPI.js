@@ -70,7 +70,7 @@ function removeBulkTodos(todoIds) {
 }
 
 function fetchNotes() {
-  return LocalStorageService.getNotes();
+  return LocalStorageService.getNotes() || "";
 }
 
 function updateNotes(notes) {
