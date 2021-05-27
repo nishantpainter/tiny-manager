@@ -13,6 +13,11 @@ import QuoteService from "TinyManager/services/QuoteService";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
 
+const TAB = {
+  Todos: 0,
+  Notes: 1,
+};
+
 const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
@@ -39,7 +44,10 @@ function Home() {
 
   const defaultNotes = TinyManagerAPI.fetchDefaultNotes();
 
-  const [activeTab, setActiveTab] = useState(defaultNotes ? 1 : 0);
+  const [activeTab, setActiveTab] = useState(
+    defaultNotes ? TAB.Notes : TAB.Todos
+  );
+
   const [checked, setChecked] = useState(defaultNotes);
   const quote = useMemo(() => QuoteService.getQuote(), []);
 
@@ -81,12 +89,12 @@ function Home() {
               textColor="primary"
               onChange={handleChangeActiveTab}
             >
-              <Tab label={t("Todos")} value={0} />
-              <Tab label={t("Notes")} value={1} />
+              <Tab label={t("Todos")} value={TAB.Todos} />
+              <Tab label={t("Notes")} value={TAB.Notes} />
             </Tabs>
           </div>
-          {activeTab === 0 && <Todos />}
-          {activeTab === 1 && <Notes />}
+          {activeTab === TAB.Todos && <Todos />}
+          {activeTab === TAB.Notes && <Notes />}
         </div>
       </div>
     </Fade>
