@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import debounce from "lodash.debounce";
@@ -13,7 +13,6 @@ import jsPDF from "jspdf";
 import DownloadIcon from "@material-ui/icons/SaveAlt";
 import ClearIcon from "@material-ui/icons/DeleteForever";
 
-import Loader from "TinyManager/components/Loader";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
 import { formatDate } from "TinyManager/services/Utils";
@@ -110,8 +109,7 @@ function Notes() {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const [notes, setNotes] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [notes, setNotes] = useState(TinyManagerAPI.fetchNotes());
 
   const handleUpdateStorage = useMemo(
     () => debounce(TinyManagerAPI.updateNotes, 150),
@@ -162,14 +160,6 @@ function Notes() {
     [handleDownloadNoteTxt]
   );
 
-  useEffect(() => {
-    const notes = TinyManagerAPI.fetchNotes();
-    if (notes) {
-      setNotes(notes);
-    }
-    setLoading(false);
-  }, []);
-
   return (
     <div className={classes.container}>
       <Box
@@ -178,19 +168,12 @@ function Notes() {
         alignItems="center"
         justifyContent="flex-end"
       >
-        {loading && (
-          <IconButton>
-            <Loader />
-          </IconButton>
-        )}
         <DownloadButton
-          disabled={loading}
           translate={t}
           onTxtDownload={handleDownloadNoteTxt}
           onPdfDownload={handleDownloadNotePdf}
         />
         <IconButton
-          disabled={loading}
           onClick={handleClearNote}
           size="small"
           title={t("Clear Note")}
