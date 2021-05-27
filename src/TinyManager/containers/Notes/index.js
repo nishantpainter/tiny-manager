@@ -78,6 +78,7 @@ function DownloadButton(props) {
         color="primary"
         size="small"
         title={t("Download Note")}
+        disabled={!notes}
       >
         <DownloadIcon />
       </IconButton>
@@ -160,6 +161,7 @@ function Notes() {
       >
         <DownloadButton notes={notes} />
         <IconButton
+          disabled={!notes}
           onClick={handleClearNote}
           size="small"
           title={t("Clear Note")}
