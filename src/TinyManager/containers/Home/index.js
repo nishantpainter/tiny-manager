@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
 import Tabs from "@material-ui/core/Tabs";
@@ -38,6 +38,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const quote = QuoteService.getQuote();
+
 function Home() {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -49,7 +51,6 @@ function Home() {
   );
 
   const [checked, setChecked] = useState(defaultNotes);
-  const quote = useMemo(() => QuoteService.getQuote(), []);
 
   const handleChangeActiveTab = useCallback((event, value) => {
     setActiveTab(value);
