@@ -46,14 +46,12 @@ function Home() {
 
   const defaultNotes = TinyManagerAPI.fetchDefaultNotes();
 
-  const [activeTab, setActiveTab] = useState(
-    defaultNotes ? TAB.Notes : TAB.Todos
-  );
+  const [tab, setTab] = useState(defaultNotes ? TAB.Notes : TAB.Todos);
 
   const [checked, setChecked] = useState(defaultNotes);
 
-  const handleChangeActiveTab = useCallback((event, value) => {
-    setActiveTab(value);
+  const handleChangeTab = useCallback((event, tab) => {
+    setTab(tab);
   }, []);
 
   const handleChangeDefaultNotes = useCallback((event) => {
@@ -85,17 +83,17 @@ function Home() {
           </div>
           <div>
             <Tabs
-              value={activeTab}
+              value={tab}
               indicatorColor="primary"
               textColor="primary"
-              onChange={handleChangeActiveTab}
+              onChange={handleChangeTab}
             >
               <Tab label={t("Todos")} value={TAB.Todos} />
               <Tab label={t("Notes")} value={TAB.Notes} />
             </Tabs>
           </div>
-          {activeTab === TAB.Todos && <Todos />}
-          {activeTab === TAB.Notes && <Notes />}
+          {tab === TAB.Todos && <Todos />}
+          {tab === TAB.Notes && <Notes />}
         </div>
       </div>
     </Fade>
