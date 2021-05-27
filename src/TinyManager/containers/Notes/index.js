@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import debounce from "lodash.debounce";
@@ -50,8 +50,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DownloadButton(props) {
-  const { disabled, translate, onTxtDownload, onPdfDownload } = props;
+  const { notes } = props;
 
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openMenu = useCallback((event) => {
@@ -73,11 +74,10 @@ function DownloadButton(props) {
   return (
     <>
       <IconButton
-        disabled={disabled}
         onClick={openMenu}
         color="primary"
         size="small"
-        title={translate("Download Note")}
+        title={t("Download Note")}
       >
         <DownloadIcon />
       </IconButton>
@@ -87,11 +87,11 @@ function DownloadButton(props) {
         open={Boolean(anchorEl)}
         onClose={closeMenu}
       >
-        <MenuItem onClick={handleMenuItemClick(onTxtDownload)}>
-          {translate("TXT")}
+        <MenuItem onClick={handleMenuItemClick(() => downloadTxt(notes))}>
+          {t("TXT")}
         </MenuItem>
-        <MenuItem onClick={handleMenuItemClick(onPdfDownload)}>
-          {translate("PDF")}
+        <MenuItem onClick={handleMenuItemClick(() => downloadPdf(notes))}>
+          {t("PDF")}
         </MenuItem>
       </Menu>
     </>
@@ -99,11 +99,29 @@ function DownloadButton(props) {
 }
 
 DownloadButton.propTypes = {
-  disabled: PropTypes.bool,
-  translate: PropTypes.func,
-  onTxtDownload: PropTypes.func,
-  onPdfDownload: PropTypes.func,
+  notes: PropTypes.string,
 };
+
+const updateStorageNotes = debounce(TinyManagerAPI.updateNotes, 150);
+
+function fileName(extension = "txt") {
+  return `Note-${formatDate()}.${extension}`;
+}
+
+function downloadTxt(string) {
+  const url = window.URL.createObjectURL(new Blob([string]), {
+    type: "text/plain",
+  });
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", fileName());
+  link.click();
+}
+
+function downloadPdf(string) {
+  new jsPDF().text(string, 10, 10).save(fileName("pdf"));
+}
 
 function Notes() {
   const classes = useStyles();
@@ -111,39 +129,11 @@ function Notes() {
 
   const [notes, setNotes] = useState(TinyManagerAPI.fetchNotes());
 
-  const handleUpdateStorage = useMemo(
-    () => debounce(TinyManagerAPI.updateNotes, 150),
-    []
-  );
-
-  const handleChange = useCallback(
-    (event) => {
-      const { value } = event.target;
-      setNotes(value);
-      handleUpdateStorage(value);
-    },
-    [handleUpdateStorage]
-  );
-
-  const getFileName = useCallback((extension) => {
-    return `Note-${formatDate()}.${extension}`;
+  const handleChange = useCallback((event) => {
+    const { value } = event.target;
+    setNotes(value);
+    updateStorageNotes(value);
   }, []);
-
-  const handleDownloadNoteTxt = useCallback(() => {
-    const url = window.URL.createObjectURL(new Blob([notes]), {
-      type: "text/plain",
-    });
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", getFileName("txt"));
-    link.click();
-  }, [notes, getFileName]);
-
-  const handleDownloadNotePdf = useCallback(() => {
-    const doc = new jsPDF();
-    doc.text(notes, 10, 10);
-    doc.save(getFileName("pdf"));
-  }, [notes, getFileName]);
 
   const handleClearNote = useCallback(() => {
     handleChange({ target: { value: "" } });
@@ -154,10 +144,10 @@ function Notes() {
       const isSave = event.key === "s" && event.ctrlKey === true;
       if (isSave) {
         event.preventDefault();
-        handleDownloadNoteTxt();
+        downloadTxt(notes);
       }
     },
-    [handleDownloadNoteTxt]
+    [notes]
   );
 
   return (
@@ -168,11 +158,7 @@ function Notes() {
         alignItems="center"
         justifyContent="flex-end"
       >
-        <DownloadButton
-          translate={t}
-          onTxtDownload={handleDownloadNoteTxt}
-          onPdfDownload={handleDownloadNotePdf}
-        />
+        <DownloadButton notes={notes} />
         <IconButton
           onClick={handleClearNote}
           size="small"
