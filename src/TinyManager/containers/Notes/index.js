@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import debounce from "lodash.debounce";
 import Box from "@material-ui/core/Box";
@@ -49,13 +50,68 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function DownloadButton(props) {
+  const { disabled, translate, onTxtDownload, onPdfDownload } = props;
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const openMenu = useCallback((event) => {
+    setAnchorEl(event.currentTarget);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setAnchorEl(null);
+  }, []);
+
+  const handleMenuItemClick = useCallback(
+    (cb) => (event) => {
+      closeMenu();
+      cb(event);
+    },
+    [closeMenu]
+  );
+
+  return (
+    <>
+      <IconButton
+        disabled={disabled}
+        onClick={openMenu}
+        color="primary"
+        size="small"
+        title={translate("Download Note")}
+      >
+        <DownloadIcon />
+      </IconButton>
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={closeMenu}
+      >
+        <MenuItem onClick={handleMenuItemClick(onTxtDownload)}>
+          {translate("TXT")}
+        </MenuItem>
+        <MenuItem onClick={handleMenuItemClick(onPdfDownload)}>
+          {translate("PDF")}
+        </MenuItem>
+      </Menu>
+    </>
+  );
+}
+
+DownloadButton.propTypes = {
+  disabled: PropTypes.bool,
+  translate: PropTypes.func,
+  onTxtDownload: PropTypes.func,
+  onPdfDownload: PropTypes.func,
+};
+
 function Notes() {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(true);
-  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleUpdateStorage = useMemo(
     () => debounce(TinyManagerAPI.updateNotes, 150),
@@ -106,22 +162,6 @@ function Notes() {
     [handleDownloadNoteTxt]
   );
 
-  const handleOpenMenu = useCallback((event) => {
-    setAnchorEl(event.currentTarget);
-  }, []);
-
-  const handleCloseMenu = useCallback(() => {
-    setAnchorEl(null);
-  }, []);
-
-  const handleMenuAction = useCallback(
-    (cb) => (event) => {
-      handleCloseMenu();
-      cb(event);
-    },
-    [handleCloseMenu]
-  );
-
   useEffect(() => {
     const notes = TinyManagerAPI.fetchNotes();
     if (notes) {
@@ -143,15 +183,12 @@ function Notes() {
             <Loader />
           </IconButton>
         )}
-        <IconButton
+        <DownloadButton
           disabled={loading}
-          onClick={handleOpenMenu}
-          color="primary"
-          size="small"
-          title={t("Download Note")}
-        >
-          <DownloadIcon />
-        </IconButton>
+          translate={t}
+          onTxtDownload={handleDownloadNoteTxt}
+          onPdfDownload={handleDownloadNotePdf}
+        />
         <IconButton
           disabled={loading}
           onClick={handleClearNote}
@@ -193,19 +230,6 @@ function Notes() {
           "Notes will be stored locally on the browser and will be persisted."
         )}
       </Typography>
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleCloseMenu}
-      >
-        <MenuItem onClick={handleMenuAction(handleDownloadNoteTxt)}>
-          {t("TXT")}
-        </MenuItem>
-        <MenuItem onClick={handleMenuAction(handleDownloadNotePdf)}>
-          {t("PDF")}
-        </MenuItem>
-      </Menu>
     </div>
   );
 }
