@@ -55,7 +55,8 @@ function Notes() {
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
-  const [menuAnchorEl, setMenuAnchorEl] = useState(null);
+
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleUpdateStorage = useMemo(
     () => debounce(TinyManagerAPI.updateNotes, 150),
@@ -107,11 +108,11 @@ function Notes() {
   );
 
   const handleOpenMenu = useCallback((event) => {
-    setMenuAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget);
   }, []);
 
   const handleCloseMenu = useCallback(() => {
-    setMenuAnchorEl(null);
+    setAnchorEl(null);
   }, []);
 
   const handleMenuAction = useCallback(
@@ -194,9 +195,9 @@ function Notes() {
         )}
       </Typography>
       <Menu
-        anchorEl={menuAnchorEl}
+        anchorEl={anchorEl}
         keepMounted
-        open={Boolean(menuAnchorEl)}
+        open={Boolean(anchorEl)}
         onClose={handleCloseMenu}
       >
         <MenuItem onClick={handleMenuAction(handleDownloadNoteTxt)}>
