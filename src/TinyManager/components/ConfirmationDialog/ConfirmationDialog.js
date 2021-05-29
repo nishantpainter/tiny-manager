@@ -36,10 +36,10 @@ function ConfirmationDialog(props) {
 }
 
 ConfirmationDialog.propTypes = {
-  title: PropTypes.element,
-  content: PropTypes.element,
+  title: PropTypes.any,
+  content: PropTypes.any,
   open: PropTypes.bool,
-  translate: PropTypes.bool,
+  translate: PropTypes.func,
   onClose: PropTypes.func,
   onConfirm: PropTypes.func,
   onCancel: PropTypes.func,
