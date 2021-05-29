@@ -5,16 +5,13 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Fade from "@material-ui/core/Fade";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
 
 import Loader from "TinyManager/components/Loader";
 import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
+import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -109,7 +106,6 @@ function ProjectList(props) {
 
   const handleDeleteAllProject = useCallback(() => {
     if (projects.length) {
-
       const { projectIds, taskIds } = projects.reduce(
         ({ projectIds, taskIds }, project) => {
           return {
@@ -174,41 +170,22 @@ function ProjectList(props) {
             </Typography>
           )}
         </div>
-        <Dialog open={deleteDialog} onClose={closeDeleteDialog}>
-          <DialogTitle>{t("Delete Project")}</DialogTitle>
-          <DialogContent>
-            {t(`Delete ${project?.name} and related tasks ?`)}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={closeDeleteDialog}>{t("Cancel")}</Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleDeleteProject}
-            >
-              {t("Confirm")}
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Dialog
+        <ConfirmationDialog
+          title={t("Delete Project")}
+          content={t(`Delete ${project?.name} and related tasks ?`)}
+          open={deleteDialog}
+          translate={t}
+          onClose={closeDeleteDialog}
+          onConfirm={handleDeleteProject}
+        />
+        <ConfirmationDialog
+          title={t("Delete All Projects")}
+          content={t("Do you want to remove all the projects ?")}
           open={deleteAllProjectDialog}
+          translate={t}
           onClose={closeDeleteAllProjectDialog}
-        >
-          <DialogTitle>{t("Delete All Projects")}</DialogTitle>
-          <DialogContent>
-            {t("Do you want to remove all the projects ?")}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={closeDeleteAllProjectDialog}>{t("Cancel")}</Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleDeleteAllProject}
-            >
-              {"Confirm"}
-            </Button>
-          </DialogActions>
-        </Dialog>
+          onConfirm={handleDeleteAllProject}
+        />
       </div>
     </Fade>
   );
