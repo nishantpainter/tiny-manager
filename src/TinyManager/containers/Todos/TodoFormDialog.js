@@ -9,7 +9,7 @@ import { useTranslation } from "TinyManager/providers/TranslationProvider";
 import { useFormik } from "formik";
 
 function TodoFormDialog(props) {
-  const { initialValue = {}, open, saving, onClose, onSubmit } = props;
+  const { initialValue = {}, open, disabled, onClose, onSubmit } = props;
   const { t } = useTranslation();
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
@@ -40,7 +40,7 @@ function TodoFormDialog(props) {
           title={formTitle}
           values={values}
           errors={errors}
-          disabled={saving}
+          disabled={disabled}
           translate={t}
           onChange={handleChange}
           onCancel={onClose}
@@ -54,7 +54,7 @@ function TodoFormDialog(props) {
 TodoFormDialog.propTypes = {
   initialValue: TodoType,
   open: PropTypes.bool,
-  saving: PropTypes.bool,
+  disabled: PropTypes.bool,
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
 };
