@@ -42,21 +42,21 @@ export const FILTERS = {
 };
 
 function Todos() {
-  const [{ todos, todo, loading, saving, dialogOpen }, setStore] = useState({
+  const [{ todos, todo, loading, saving, edit }, setStore] = useState({
     todos: [],
     todo: { title: "" },
     loading: false,
     saving: false,
-    dialogOpen: false,
+    edit: false,
   });
 
   const [
-    deleteAllTodosDialogOpen,
-    handleOpenDeleteAllTodosDialog,
-    handleCloseDeleteAllTodosDialog,
+    deleteAllDialog,
+    openDeleteAllDialog,
+    closeDeleteAllDialog,
   ] = useDialog();
 
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState(FILTERS.All);
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -87,32 +87,18 @@ function Todos() {
     });
   }, [filterTodos]);
 
-  const handleOpenDialog = useCallback((e, todo = {}) => {
-    setStore((store) => ({ ...store, dialogOpen: true, todo: { ...todo } }));
+  const handleOpenDialog = useCallback((event, todo = { title: "" }) => {
+    setStore((store) => ({ ...store, edit: true, todo: { ...todo } }));
   }, []);
 
   const handleCloseDialog = useCallback(() => {
     setStore((store) => ({
       ...store,
-      dialogOpen: false,
+      edit: false,
       todo: { title: "" },
       errors: {},
     }));
   }, []);
-
-  const handleAddNewTodoClick = useCallback(
-    (e) => {
-      handleOpenDialog(e, { title: "" });
-    },
-    [handleOpenDialog]
-  );
-
-  const handleTodoClick = useCallback(
-    (e, todo) => {
-      handleOpenDialog(e, todo);
-    },
-    [handleOpenDialog]
-  );
 
   const handleAddNewTodo = useCallback(
     (todo) => {
@@ -195,8 +181,8 @@ function Todos() {
         setStore((store) => ({ ...store, todos: [] }));
       });
     }
-    handleCloseDeleteAllTodosDialog();
-  }, [todos, handleCloseDeleteAllTodosDialog]);
+    closeDeleteAllDialog();
+  }, [todos, closeDeleteAllDialog]);
 
   const handleFilterChange = useCallback((filter) => {
     setFilter(filter);
@@ -231,7 +217,7 @@ function Todos() {
               <Button
                 color="primary"
                 variant="outlined"
-                onClick={handleOpenDeleteAllTodosDialog}
+                onClick={openDeleteAllDialog}
                 disabled={!todos.length}
               >
                 <Translate>{t("Delete All")}</Translate>
@@ -240,7 +226,7 @@ function Todos() {
               <Button
                 color="primary"
                 variant="contained"
-                onClick={handleAddNewTodoClick}
+                onClick={handleOpenDialog}
               >
                 <Translate>{t("Add")}</Translate>
               </Button>
@@ -250,17 +236,17 @@ function Todos() {
           <TodoList
             todos={todos}
             translate={t}
-            onClick={handleTodoClick}
+            onClick={handleOpenDialog}
             onCheck={handleTodoCheck}
             onDelete={handleTodoDelete}
           />
         </div>
       )}
-      {dialogOpen && (
+      {edit && (
         <TodoFormDialog
           initialValue={todo}
-          open={dialogOpen}
-          saving={saving}
+          open={edit}
+          disabled={saving}
           onSubmit={handleSubmit}
           onClose={handleCloseDialog}
         />
@@ -268,9 +254,9 @@ function Todos() {
       <ConfirmationDialog
         title={t("Delete All Todos")}
         content={t("Do you want to remove all the todos ?")}
-        open={deleteAllTodosDialogOpen}
+        open={deleteAllDialog}
         translate={t}
-        onClose={handleCloseDeleteAllTodosDialog}
+        onClose={closeDeleteAllDialog}
         onConfirm={handleDeleteAllTodos}
       />
     </div>
