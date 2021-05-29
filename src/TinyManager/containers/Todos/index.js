@@ -4,10 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
 
 import TodosFilter from "./TodoFilter";
 import TodoFormDialog from "./TodoFormDialog";
@@ -19,6 +15,7 @@ import {
   useTranslation,
 } from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
+import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -268,29 +265,14 @@ function Todos() {
           onClose={handleCloseDialog}
         />
       )}
-      <Dialog
+      <ConfirmationDialog
+        title={t("Delete All Todos")}
+        content={t("Do you want to remove all the todos ?")}
         open={deleteAllTodosDialogOpen}
+        translate={t}
         onClose={handleCloseDeleteAllTodosDialog}
-      >
-        <DialogTitle>
-          <Translate>{t("Delete All Todos")}</Translate>
-        </DialogTitle>
-        <DialogContent>
-          <Translate>{t("Do you want to remove all the todos ?")}</Translate>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDeleteAllTodosDialog}>
-            <Translate>{t("Cancel")}</Translate>
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleDeleteAllTodos}
-          >
-            <Translate>{t("Confirm")}</Translate>
-          </Button>
-        </DialogActions>
-      </Dialog>
+        onConfirm={handleDeleteAllTodos}
+      />
     </div>
   );
 }
