@@ -23,9 +23,8 @@ function TodoFormDialog(props) {
 
       return errors;
     },
-    onSubmit: (values, { setFieldValue }) => {
+    onSubmit: (values) => {
       onSubmit(values);
-      setFieldValue("title", "");
     },
     enableReinitialize: true,
   });
