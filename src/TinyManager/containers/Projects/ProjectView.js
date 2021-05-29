@@ -6,9 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogActions from "@material-ui/core/DialogActions";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -22,6 +19,7 @@ import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
 import TaskCard from "TinyManager/components/TaskCard";
 import useDialog from "TinyManager/hooks/useDialog";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
+import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -358,23 +356,13 @@ function ProjectView(props) {
             onSubmit={handleUpdateProject}
           />
         </Dialog>
-
-        <Dialog open={deleteAllTaskDialog} onClose={closeDeleteAllTaskDialog}>
-          <DialogTitle>{t("Delete All Tasks")}</DialogTitle>
-          <DialogContent>
-            {t("Do you want to remove all the tasks ?")}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={closeDeleteAllTaskDialog}>{t("Cancel")}</Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleDeleteAllTask}
-            >
-              {"Confirm"}
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <ConfirmationDialog
+          title={t("Delete All Tasks")}
+          content={t("Do you want to remove all the tasks ?")}
+          open={deleteAllTaskDialog}
+          onClose={closeDeleteAllTaskDialog}
+          onConfirm={handleDeleteAllTask}
+        />
       </div>
     </Fade>
   );
