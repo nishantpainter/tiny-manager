@@ -104,6 +104,41 @@ function filterTasksBy(tasks, filter) {
       return tasks;
   }
 }
+
+function OutlinedSelect(props) {
+  const { id, label, value, className, menu, disabled, onChange } = props;
+
+  return (
+    <FormControl margin="dense" variant="outlined" className={className}>
+      <InputLabel id={id}>{label}</InputLabel>
+      <Select
+        margin="dense"
+        label={label}
+        labelId={id}
+        variant="outlined"
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+      >
+        {menu.map((item) => (
+          <MenuItem value={item.value} key={item.value}>
+            {item.label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+}
+
+OutlinedSelect.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.any,
+  menu: PropTypes.array,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+};
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
   const { params } = match;
@@ -280,46 +315,23 @@ function ProjectView(props) {
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
-            <FormControl
-              margin="dense"
-              variant="outlined"
+            <OutlinedSelect
+              id="task-sort-by"
+              label={t("Sort By")}
               className={classes.selection}
-            >
-              <InputLabel id="task-sort-by">{t("Sort By")}</InputLabel>
-              <Select
-                margin="dense"
-                label={t("Sort By")}
-                labelId="task-sort-by"
-                variant="outlined"
-                value={sortBy}
-                onChange={handleChangeSortBy}
-                disabled={!(tasks && tasks.length)}
-              >
-                {sortByMenu.map((item) => (
-                  <MenuItem value={item.value} key={item.value}>
-                    {item.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <FormControl margin="dense" variant="outlined">
-              <InputLabel id="task-filter-by">{t("Filter By")}</InputLabel>
-              <Select
-                margin="dense"
-                label={t("Filter By")}
-                labelId="task-filter-by"
-                variant="outlined"
-                value={filterBy}
-                onChange={handleChangeFilterBy}
-                disabled={!(tasks && tasks.length)}
-              >
-                {filterByMenu.map((item) => (
-                  <MenuItem value={item.value} key={item.value}>
-                    {item.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+              menu={sortByMenu}
+              value={sortBy}
+              onChange={handleChangeSortBy}
+              disabled={!(tasks && tasks.length)}
+            />
+            <OutlinedSelect
+              id="task-filter-by"
+              label={t("Filter By")}
+              value={filterBy}
+              menu={filterByMenu}
+              disabled={!(tasks && tasks.length)}
+              onChange={handleChangeFilterBy}
+            />
           </Grid>
         </Grid>
         {$tasks && $tasks.length ? (
