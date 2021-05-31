@@ -5,7 +5,6 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 
-import TodosFilter from "./TodoFilter";
 import TodoFormDialog from "./TodoFormDialog";
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
@@ -16,6 +15,7 @@ import {
 } from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
 import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
+import OutlinedSelect from "TinyManager/components/OutlinedSelect";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -40,6 +40,11 @@ export const FILTERS = {
   Pending: "pending",
   All: "all",
 };
+
+const filterByMenu = Object.keys(FILTERS).map((key) => ({
+  label: key,
+  value: FILTERS[key],
+}));
 
 function Todos() {
   const [{ todos, todo, loading, saving, edit }, setStore] = useState({
@@ -184,8 +189,8 @@ function Todos() {
     closeDeleteAllDialog();
   }, [todos, closeDeleteAllDialog]);
 
-  const handleFilterChange = useCallback((filter) => {
-    setFilter(filter);
+  const handleFilterChange = useCallback((event) => {
+    setFilter(event.target.value);
   }, []);
 
   useEffect(() => {
@@ -206,11 +211,14 @@ function Todos() {
             marginTop={1}
             marginBottom={1}
           >
-            <TodosFilter
+            <OutlinedSelect
+              id="todo-filter-by"
+              label={t("Filter By")}
               translate={t}
               value={filter}
               className={classes.todosFilter}
               disabled={!todos.length}
+              menu={filterByMenu}
               onChange={handleFilterChange}
             />
             <Box display="flex" justifyContent="flex-end" alignItems="center">
