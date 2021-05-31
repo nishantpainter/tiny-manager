@@ -6,20 +6,17 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
 import Dialog from "@material-ui/core/Dialog";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
 
-import ProjectCard from "TinyManager/components/ProjectCard";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
-import Loader from "TinyManager/components/Loader";
-import TaskFormContainer from "TinyManager/containers/Projects/TaskForm";
-import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
-import TaskCard from "TinyManager/components/TaskCard";
 import useDialog from "TinyManager/hooks/useDialog";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
-import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
+import TaskFormContainer from "TinyManager/containers/Projects/TaskForm";
+import ProjectFormContainer from "TinyManager/containers/Projects/ProjectForm";
+import ProjectCard from "TinyManager/components/ProjectCard";
+import Loader from "TinyManager/components/Loader";
+import TaskCard from "TinyManager/components/TaskCard";
+import ConfirmationDialog from "TinyManager/components/ConfirmationDialog";
+import OutlinedSelect from "TinyManager/components/OutlinedSelect";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -105,40 +102,6 @@ function filterTasksBy(tasks, filter) {
   }
 }
 
-function OutlinedSelect(props) {
-  const { id, label, value, className, menu, disabled, onChange } = props;
-
-  return (
-    <FormControl margin="dense" variant="outlined" className={className}>
-      <InputLabel id={id}>{label}</InputLabel>
-      <Select
-        margin="dense"
-        label={label}
-        labelId={id}
-        variant="outlined"
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-      >
-        {menu.map((item) => (
-          <MenuItem value={item.value} key={item.value}>
-            {item.label}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
-}
-
-OutlinedSelect.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  value: PropTypes.any,
-  menu: PropTypes.array,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func,
-};
 function ProjectView(props) {
   const { match, redirectToProjectList } = props;
   const { params } = match;
