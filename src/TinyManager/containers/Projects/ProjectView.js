@@ -235,6 +235,8 @@ function ProjectView(props) {
     return <Loader />;
   }
 
+  const hasTasks = tasks && tasks.length;
+
   let $tasks = sortTasksBy(tasks, sortBy);
   $tasks = filterTasksBy($tasks, filterBy);
 
@@ -248,7 +250,7 @@ function ProjectView(props) {
               showEditButton={true}
               onEdit={handleProjectEditClick}
               progress={
-                tasks && tasks.length
+                hasTasks
                   ? tasks.reduce(
                       (progress, task) =>
                         progress +
@@ -285,14 +287,14 @@ function ProjectView(props) {
               menu={sortByMenu}
               value={sortBy}
               onChange={handleChangeSortBy}
-              disabled={!(tasks && tasks.length)}
+              disabled={!hasTasks}
             />
             <OutlinedSelect
               id="task-filter-by"
               label={t("Filter By")}
               value={filterBy}
               menu={filterByMenu}
-              disabled={!(tasks && tasks.length)}
+              disabled={!hasTasks}
               onChange={handleChangeFilterBy}
             />
           </Grid>
