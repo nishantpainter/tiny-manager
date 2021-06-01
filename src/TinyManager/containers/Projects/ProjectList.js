@@ -12,7 +12,25 @@ import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
 import { useTranslation } from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
 import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
+import OutlinedSelect from "TinyManager/components/OutlinedSelect";
 
+const filterByMenu = [
+  { label: "All", value: "all" },
+  { label: "Pending", value: "pending" },
+  { label: "Completed", value: "completed" },
+];
+
+function filterProjectsBy(projects, filter) {
+  switch (filter) {
+    case "pending":
+      return projects.filter((t) => t.progress !== 100);
+    case "completed":
+      return projects.filter((t) => t.progress === 100);
+    case "all":
+    default:
+      return projects;
+  }
+}
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -29,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
   card: {
     marginBottom: theme.spacing(3.5),
   },
+  action: {
+    marginTop: theme.spacing(1),
+  },
 }));
 
 function ProjectList(props) {
@@ -40,6 +61,7 @@ function ProjectList(props) {
   const [projects, setProjects] = useState([]);
   const [project, setProject] = useState(null);
   const [deleteDialog, setDeleteDialog] = useState(false);
+  const [filterBy, setFilterBy] = useState("all");
 
   const [
     deleteAllProjectDialog,
@@ -124,6 +146,14 @@ function ProjectList(props) {
     }
   }, [closeDeleteAllProjectDialog, projects]);
 
+  const handleChangeFilterBy = useCallback((event) => {
+    setFilterBy(event.target.value);
+  }, []);
+
+  const hasProjects = projects && projects.length;
+
+  let $projects = filterProjectsBy(projects, filterBy);
+
   if (loading) {
     return <Loader />;
   }
@@ -148,10 +178,20 @@ function ProjectList(props) {
             {t("Delete All")}
           </Button>
         </div>
+        <div className={classes.action}>
+          <OutlinedSelect
+            id="project-filter-by"
+            label={t("Filter By")}
+            value={filterBy}
+            menu={filterByMenu}
+            disabled={!hasProjects}
+            onChange={handleChangeFilterBy}
+          />
+        </div>
         <div className={classes.list}>
-          {projects && projects.length ? (
+          {hasProjects && $projects.length ? (
             <Grid container spacing={3}>
-              {projects.map((project) => (
+              {$projects.map((project) => (
                 <Grid item xs={12} sm={6} md={4} key={project.id}>
                   <ProjectCard
                     project={project}
