@@ -20,6 +20,29 @@ const filterByMenu = [
   { label: "Completed", value: "completed" },
 ];
 
+const sortByMenu = [
+  {
+    label: "Progress",
+    value: "progress",
+  },
+  {
+    label: "Name",
+    value: "name",
+  },
+];
+
+function sortProjectsBy(projects, filter) {
+  return projects.sort((a, b) => {
+    if (b[filter] < a[filter]) {
+      return -1;
+    }
+    if (b[filter] > a[filter]) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
 function filterProjectsBy(projects, filter) {
   switch (filter) {
     case "pending":
@@ -62,6 +85,7 @@ function ProjectList(props) {
   const [project, setProject] = useState(null);
   const [deleteDialog, setDeleteDialog] = useState(false);
   const [filterBy, setFilterBy] = useState("all");
+  const [sortBy, setSortBy] = useState("name");
 
   const [
     deleteAllProjectDialog,
@@ -150,9 +174,14 @@ function ProjectList(props) {
     setFilterBy(event.target.value);
   }, []);
 
+  const handleChangeSortBy = useCallback((event) => {
+    setSortBy(event.target.value);
+  }, []);
+
   const hasProjects = projects && projects.length;
 
-  let $projects = filterProjectsBy(projects, filterBy);
+  let $projects = sortProjectsBy(projects, sortBy);
+  $projects = filterProjectsBy(projects, filterBy);
 
   if (loading) {
     return <Loader />;
@@ -179,6 +208,16 @@ function ProjectList(props) {
           </Button>
         </div>
         <div className={classes.action}>
+          <OutlinedSelect
+            id="project-sort-by"
+            label={t("Sort By")}
+            className={classes.selection}
+            menu={sortByMenu}
+            value={sortBy}
+            onChange={handleChangeSortBy}
+            disabled={!hasProjects}
+          />
+          &nbsp;
           <OutlinedSelect
             id="project-filter-by"
             label={t("Filter By")}
