@@ -18,6 +18,8 @@ function initateDB() {
   db.projects.defineClass({
     name: String,
     description: String,
+    createdAt: Date,
+    updatedAt: Date,
   });
 
   db.todos.defineClass({
