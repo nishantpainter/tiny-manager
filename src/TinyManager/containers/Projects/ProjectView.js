@@ -279,7 +279,7 @@ function ProjectView(props) {
               {t("Delete All")}
             </Button>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12}>
             <OutlinedSelect
               id="task-sort-by"
               label={t("Sort By")}
