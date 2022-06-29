@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -13,23 +13,6 @@ import { useTranslation } from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
 import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
 import OutlinedSelect from "TinyManager/components/OutlinedSelect";
-
-const filterByMenu = [
-  { label: "All", value: "all" },
-  { label: "Pending", value: "pending" },
-  { label: "Completed", value: "completed" },
-];
-
-const sortByMenu = [
-  {
-    label: "Progress",
-    value: "progress",
-  },
-  {
-    label: "Name",
-    value: "name",
-  },
-];
 
 function sortProjectsBy(projects, filter) {
   return projects.sort((a, b) => {
@@ -92,6 +75,29 @@ function ProjectList(props) {
     openDeleteAllProjectDialog,
     closeDeleteAllProjectDialog,
   ] = useDialog();
+
+  const sortByMenu = useMemo(
+    () => [
+      {
+        label: t("Progress"),
+        value: "progress",
+      },
+      {
+        label: t("Name"),
+        value: "name",
+      },
+    ],
+    [t]
+  );
+
+  const filterByMenu = useMemo(
+    () => [
+      { label: t("All"), value: "all" },
+      { label: t("Pending"), value: "pending" },
+      { label: t("Completed"), value: "completed" },
+    ],
+    [t]
+  );
 
   useEffect(() => {
     TinyManagerAPI.fetchProjects()
@@ -251,7 +257,9 @@ function ProjectList(props) {
         </div>
         <ConfirmationDialog
           title={t("Delete Project")}
-          content={t(`Delete ${project?.name} and related tasks ?`)}
+          content={`${project?.name} ${t(
+            "Delete project and related tasks ?"
+          )}`}
           open={deleteDialog}
           translate={t}
           onClose={closeDeleteDialog}

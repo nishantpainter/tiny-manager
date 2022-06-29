@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -49,35 +49,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const sortByMenu = [
-  {
-    label: "Priority",
-    value: "priority",
-  },
-  {
-    label: "Progress",
-    value: "progress",
-  },
-  {
-    label: "Title",
-    value: "title",
-  },
-  {
-    label: "Created",
-    value: "createdAt",
-  },
-  {
-    label: "Updated",
-    value: "updatedAt",
-  },
-];
-
-const filterByMenu = [
-  { label: "All", value: "all" },
-  { label: "Pending", value: "pending" },
-  { label: "Completed", value: "completed" },
-];
-
 function sortTasksBy(tasks, filter) {
   return tasks.sort((a, b) => {
     if (b[filter] < a[filter]) {
@@ -126,6 +97,41 @@ function ProjectView(props) {
     closeDeleteAllTaskDialog,
   ] = useDialog();
   const { t } = useTranslation();
+
+  const sortByMenu = useMemo(
+    () => [
+      {
+        label: t("Priority"),
+        value: "priority",
+      },
+      {
+        label: t("Progress"),
+        value: "progress",
+      },
+      {
+        label: t("Title"),
+        value: "title",
+      },
+      {
+        label: t("Created"),
+        value: "createdAt",
+      },
+      {
+        label: t("Updated"),
+        value: "updatedAt",
+      },
+    ],
+    [t]
+  );
+
+  const filterByMenu = useMemo(
+    () => [
+      { label: t("All"), value: "all" },
+      { label: t("Pending"), value: "pending" },
+      { label: t("Completed"), value: "completed" },
+    ],
+    [t]
+  );
 
   const handleCloseTaskDialog = useCallback(() => {
     closeTaskDialog(false);

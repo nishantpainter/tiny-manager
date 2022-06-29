@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
@@ -41,11 +41,6 @@ export const FILTERS = {
   All: "all",
 };
 
-const filterByMenu = Object.keys(FILTERS).map((key) => ({
-  label: key,
-  value: FILTERS[key],
-}));
-
 function Todos() {
   const [{ todos, todo, loading, saving, edit }, setStore] = useState({
     todos: [],
@@ -64,6 +59,15 @@ function Todos() {
   const [filter, setFilter] = useState(FILTERS.All);
   const { t } = useTranslation();
   const classes = useStyles();
+
+  const filterByMenu = useMemo(
+    () =>
+      Object.keys(FILTERS).map((key) => ({
+        label: t(key),
+        value: FILTERS[key],
+      })),
+    [t]
+  );
 
   const filterTodos = useCallback(
     (todos = []) => {
