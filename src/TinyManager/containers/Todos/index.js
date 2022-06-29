@@ -217,7 +217,6 @@ function Todos() {
               translate={t}
               value={filter}
               className={classes.todosFilter}
-              disabled={!todos.length}
               menu={filterByMenu}
               onChange={handleFilterChange}
             />
