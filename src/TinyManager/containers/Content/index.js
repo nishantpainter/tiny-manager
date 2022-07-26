@@ -11,9 +11,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     height: "100%",
   },
-  topbar: {
-    height: theme.spacing(8),
-  },
   main: {
     display: "flex",
     height: `calc(100% - ${theme.spacing(8)}px)`, // $topbar height
@@ -27,7 +24,6 @@ function Content() {
   return (
     <div className={classes.root}>
       <Topbar />
-      <div className={classes.topbar} />
       <main className={classes.main}>
         <Switch>
           <Route path="/projects" component={Projects} />
