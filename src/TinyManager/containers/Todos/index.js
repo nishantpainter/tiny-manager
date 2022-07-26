@@ -9,10 +9,7 @@ import TodoFormDialog from "./TodoFormDialog";
 import Loader from "TinyManager/components/Loader";
 import TodoList from "TinyManager/components/TodoList";
 import TinyManagerAPI from "TinyManager/services/TinyManagerAPI";
-import {
-  Translate,
-  useTranslation,
-} from "TinyManager/providers/TranslationProvider";
+import { useTranslation } from "TinyManager/providers/TranslationProvider";
 import useDialog from "TinyManager/hooks/useDialog";
 import ConfirmationDialog from "TinyManager/components/ConfirmationDialog/ConfirmationDialog";
 import OutlinedSelect from "TinyManager/components/OutlinedSelect";
@@ -231,7 +228,7 @@ function Todos() {
                 onClick={openDeleteAllDialog}
                 disabled={!todos.length}
               >
-                <Translate>{t("Delete All")}</Translate>
+                {t("Delete All")}
               </Button>
               &nbsp;&nbsp;
               <Button
@@ -239,7 +236,7 @@ function Todos() {
                 variant="contained"
                 onClick={handleOpenDialog}
               >
-                <Translate>{t("Add")}</Translate>
+                {t("Add")}
               </Button>
             </Box>
           </Box>

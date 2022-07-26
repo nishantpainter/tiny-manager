@@ -120,33 +120,39 @@ function Topbar(props) {
   const classes = useStyles();
 
   return (
-    <AppBar color="default">
-      <Toolbar variant="dense">
-        <Typography
-          color="primary"
-          className={classes.title}
-          component={Link}
-          to="/"
-        >
-          <b>Tiny Manager</b>&nbsp;
-          <span role="img" aria-label="Ant" className={classes.logo}>
-            🐜
-          </span>
-        </Typography>
-        <Button color="primary" size="large" component={Link} to="/">
-          {translate("Home")}
-        </Button>
-        &nbsp;
-        <Button color="primary" size="large" component={Link} to="/projects">
-          {translate("Projects")}
-        </Button>
-        <DarkThemeButton onClick={onToggleDarkMode} />
-        &nbsp;
-        <LanguageSelection languages={languages} onChange={onlanguageChange} />
-        &nbsp;
-        <GithubIconButton />
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar color="default">
+        <Toolbar variant="dense">
+          <Typography
+            color="primary"
+            className={classes.title}
+            component={Link}
+            to="/"
+          >
+            <b>{translate("Tiny Manager")}</b>&nbsp;
+            <span role="img" aria-label="Ant" className={classes.logo}>
+              🐜
+            </span>
+          </Typography>
+          <Button color="primary" size="large" component={Link} to="/">
+            {translate("Home")}
+          </Button>
+          &nbsp;
+          <Button color="primary" size="large" component={Link} to="/projects">
+            {translate("Projects")}
+          </Button>
+          <DarkThemeButton onClick={onToggleDarkMode} />
+          &nbsp;
+          <LanguageSelection
+            languages={languages}
+            onChange={onlanguageChange}
+          />
+          &nbsp;
+          <GithubIconButton />
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </>
   );
 }
 

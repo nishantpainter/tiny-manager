@@ -22,7 +22,7 @@ function TaskFormContainer(props) {
       const errors = {};
 
       if (!values.title) {
-        errors.title = "Title is required.";
+        errors.title = t("Title is required.");
       }
 
       return errors;

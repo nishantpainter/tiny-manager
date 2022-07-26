@@ -18,7 +18,7 @@ function TodoFormDialog(props) {
       const errors = {};
 
       if (!values.title) {
-        errors.title = t("Title is required");
+        errors.title = t("Title is required.");
       }
 
       return errors;
