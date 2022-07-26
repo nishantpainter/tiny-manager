@@ -17,14 +17,14 @@ function TopbarContainer() {
 
   const languages = useMemo(
     () => [
-      {
-        label: "English",
-        value: "en",
-      },
-      {
-        label: "French",
-        value: "fr",
-      },
+      { label: "English", value: "en" },
+      { label: "Français", value: "fr" },
+      { label: "Español", value: "es" },
+      { label: "Pусский", value: "ru" },
+      { label: "Deutsch", value: "de" },
+      { label: "हिंदी", value: "in" },
+      { label: "日本語", value: "jp" },
+      { label: "中文", value: "cn" },
     ],
     []
   );
