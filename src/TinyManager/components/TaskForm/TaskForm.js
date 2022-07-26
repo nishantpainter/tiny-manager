@@ -65,7 +65,7 @@ function TaskForm(props) {
             <Divider />
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12}>
             <TextField
               id="title"
               name="title"
@@ -87,7 +87,31 @@ function TaskForm(props) {
               disabled={disabled}
               fullWidth
             >
-              <InputLabel>Priority</InputLabel>
+              <InputLabel>{translate("Percentage")}</InputLabel>
+              <Select
+                name="progress"
+                label={translate("Percentage")}
+                margin="dense"
+                defaultValue={PERCENTAGES[0].value}
+                value={values.progress}
+                onChange={onChange}
+              >
+                {PERCENTAGES.map((percentage) => (
+                  <MenuItem key={percentage.value} value={percentage.value}>
+                    {percentage.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormControl
+              variant="outlined"
+              margin="dense"
+              disabled={disabled}
+              fullWidth
+            >
+              <InputLabel>{translate("Priority")}</InputLabel>
               <Select
                 label={translate("Priority")}
                 margin="dense"
@@ -120,31 +144,6 @@ function TaskForm(props) {
             />
           </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <FormControl
-              variant="outlined"
-              margin="dense"
-              disabled={disabled}
-              fullWidth
-            >
-              <InputLabel>Progress</InputLabel>
-              <Select
-                name="progress"
-                label={translate("Percentage")}
-                margin="dense"
-                defaultValue={PERCENTAGES[0].value}
-                value={values.progress}
-                onChange={onChange}
-              >
-                {PERCENTAGES.map((percentage) => (
-                  <MenuItem key={percentage.value} value={percentage.value}>
-                    {percentage.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={6}></Grid>
           <Grid item xs={12} align="right">
             <Button variant="outlined" disabled={disabled} onClick={onCancel}>
               {translate("Cancel")}
