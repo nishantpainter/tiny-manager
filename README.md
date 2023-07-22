@@ -16,38 +16,34 @@
 
 [English](https://github.com/nishantpainter/tiny-manager/blob/master/README.md) - [Français](https://github.com/nishantpainter/tiny-manager/blob/master/README_FR.md) - [Español](https://github.com/nishantpainter/tiny-manager/blob/master/README_ES.md) - [Pусский](https://github.com/nishantpainter/tiny-manager/blob/master/README_RU.md) - [Deutsch](https://github.com/nishantpainter/tiny-manager/blob/master/README_DE.md) - [हिंदी](https://github.com/nishantpainter/tiny-manager/blob/master/README_IN.md) - [中文](https://github.com/nishantpainter/tiny-manager/blob/master/README_CN.md) - [日本語](https://github.com/nishantpainter/tiny-manager/blob/master/README_JP.md)
 
-Tiny Manager is a simple application that assists you in managing your pet projects. Along with project management it allows mundane management using todos and a simple notepad application, all at one place.
-
 # Table of Contents
 
 - **[Introduction](#introduction)**
 - **[Features](#features)**
-- **[How to Use](#how-to-use)**
-  - **[Todo](#Todo)**
 - **[Dark Mode](#dark-mode)**
 - **[Localization](#localization)**
 - **[Offline Usage](#offline-usage)**
 - **[Development](#development)**
 - **[Privacy](#privacy)**
-- **[Other References](#other-references)**
 
 ## Introduction
+
+Tiny Manager is an offline first simple application that assists you in managing your pet projects. Along with project management it allows mundane management using todos and a simple notepad application, all at one place.
 
 ## Features
 
 A few of the things you can do with Tiny Manager:
 
-- Todo
-
-## How to Use
-
-You can access the application by visiting [Website](https://nishantpainter.github.io/tiny-manager/). The application has a features set as follows :
-
-### Todo
-
-<p align="center">
-  <img width="650" src="https://nishantpainter.github.io/tiny-manager/placeholder.png" alt="Todo" style="border-radius:16px"></p>
-</p>
+* Add, Edit, Save Notes
+* Add, Edit, Delete Todos
+* Pet Project management
+* Project completion status
+* Filtering and sorting
+* Issues priority setting
+* Dark Mode
+* Localization Support
+* Offline capable
+* Offline local storage
 
 ## Dark Mode
 
@@ -101,5 +97,3 @@ To run the application locally on your machine you can follow the steps below :
 ## Privacy
 
 The application makes use of local storage for persisting your work data and does not store any Tiny Manager data on any sort of server. The application uses Google analytics to get an overview of the application usage.
-
-## Other References
