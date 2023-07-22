@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiny Manager - Offline Pet Project Management</title>
+    <meta name="theme-color" content="#795548" />
+    <meta name="author" content="Nishant Painter" />
+    <meta
+      name="description"
+      content="Bundled with essential features it allows quick and easy management of your projects."
+    />
+    <meta name="application-name" content="Tiny Manager" />
+    <meta
+      name="keywords"
+      content="manager, project, project management, issue tracking, project manager, tracking, issue management, agile, agile development, project management, workflow management, offline, pwa, desktop, mobile, android, ios, workflows, dailymanager"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+
+    <!--Facebook OG-->
+    <meta property="og:url" content="https://tinymanager.js.org/" />
+    <meta property="og:type" content="application" />
+    <meta
+      property="og:title"
+      content="Tiny Manager - Offline Pet Project Management"
+    />
+    <meta
+      property="og:description"
+      content="Tiny Manager is an offline first simple application that assists you in managing your pet projects."
+    />
+    <meta
+      property="og:image"
+      content="https://tinymanager.js.org/logo192.png"
+    />
+
+    <!-- Twitter OG-->
+    <meta name="twitter:card" content="Tiny Manager" />
+    <meta name="twitter:site" content="https://tinymanager.js.org/" />
+    <meta name="twitter:creator" content="Nishant Painter" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-R5ZBEN91F4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-R5ZBEN91F4");
+    </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        font-size: 18px;
+        background-color: #f5f5f5;
+      }
+
+      a,
+      a:focus,
+      a:visited,
+      a:active,
+      a:checked {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      hr {
+        width: 100%;
+      }
+
+      #header {
+        padding: 0 20px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #f5f5f5;
+        box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.3);
+      }
+
+      #header ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      #header li {
+        text-decoration: none;
+        position: relative;
+        white-space: nowrap;
+        padding: 12px;
+        display: list-item;
+      }
+
+      #header li a {
+        text-decoration: none;
+        transition: 0.3s;
+        font-weight: bold;
+        font-size: 1.025rem;
+      }
+
+      #content {
+        padding: 8px;
+        padding-top: 60px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #footer {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pointer {
+        cursor: pointer;
+      }
+
+      .grow {
+        flex-grow: 1;
+      }
+
+      .mt-1 {
+        margin-top: 8px;
+      }
+
+      .mb-1 {
+        margin-bottom: 8px;
+      }
+
+      .shadow {
+        box-shadow: 0 8px 40px -12px rgba(0, 0, 0, 0.3);
+      }
+
+      .primary-text {
+        color: #3f51b5;
+      }
+
+      .error-text {
+        color: red;
+      }
+
+      .white-text {
+        color: white;
+      }
+
+      a.primary-button {
+        color: white;
+      }
+
+      .primary-button {
+        padding: 8px 4px;
+        text-align: center;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        background-color: #3f51b5;
+        border: 1px solid transparent;
+        color: white;
+      }
+
+      .primary-button:hover {
+        color: #3f51b5;
+        border-color: #3f51b5;
+        background-color: white;
+      }
+
+      .readme-logo {
+        height: 120px;
+        background: url("./readme_logo_de.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      .readme-gif {
+        height: 220px;
+      }
+
+      .github-li,
+      .header-logo {
+        margin-top: 5px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        #content {
+          padding: 16px;
+          padding-top: 60px;
+        }
+
+        .readme-gif {
+          height: 190px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <a href="https://tinymanager.js.org/" target="_blank"
+        ><img
+          src="./readme_logo_de.png"
+          class="header-logo"
+          alt="Logo"
+          height="40"
+      /></a>
+      <div class="grow"></div>
+      <ul>
+        <li class="github-li">
+          <a href="https://github.com/nishantpainter/tiny-manager"
+            ><img src="./github.svg" alt="Github logo" height="20"
+          /></a>
+        </li>
+      </ul>
+    </div>
+    <div id="content">
+      <div class="readme-logo"></div>
+      <p align="center" class="primary-text">
+        <a href="./showcase.html" class="pointer primary-text">English</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_fr.html" class="pointer primary-text">Français</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_es.html" class="pointer primary-text">Español</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_ru.html" class="pointer primary-text">Pусский</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_de.html" class="pointer primary-text">Deutsch</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_in.html" class="pointer primary-text">हिंदी</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_cn.html" class="pointer primary-text">中文</a
+        >&nbsp;-&nbsp;
+        <a href="./showcase_jp.html" class="pointer primary-text">日本語</a>
+      </p>
+
+      <img src="./description.gif" class="shadow mt-1 mb-1 readme-gif" />
+      <p align="center">
+        <strong
+          >A simple offline project manager for your pet projects.
+        </strong>
+      </p>
+
+      <p>
+        <strong>
+          <span class="primary-text"
+            ><a href="https://tinymanager.js.org" target="_blank"
+              >Tiny Manager</a
+            ></span
+          ></strong
+        >
+        is an offline first simple application that assists you in managing your
+        pet projects. Along with project management it allows mundane management
+        using todos and a simple notepad application, all at one place.
+      </p>
+      <p>
+        Bundled with essential features it allows quick and easy management of
+        your projects.
+      </p>
+      <a
+        class="primary-button"
+        href="https://tinymanager.js.org/"
+        target="_blank"
+        >Start Using Now</a
+      >
+      <p>
+        <br />
+        <iframe
+          src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftinymanager.js.org%2Fshowcase.html&layout=button&size=small&width=67&height=20&appId"
+          width="67"
+          height="20"
+          style="border: none; overflow: hidden"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        ></iframe>
+        <a
+          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+          class="twitter-share-button"
+          data-text="Tiny Manager: Offline-first pet project management."
+          data-url="https://tinymanager.js.org/showcase.html"
+          data-hashtags="tinymanager,projectmanagement,agile,issuemanagement,issuetracking,productivity,timemanagement,projectmanagement,personal,offline,react,pwa"
+          data-show-count="false"
+          >Tweet</a
+        >
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+        <br />
+        <a
+          class="github-button"
+          href="https://github.com/nishantpainter/tiny-manager"
+          data-show-count="true"
+          aria-label="Star nishantpainter/tiny-manager on GitHub"
+          >Star</a
+        >
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <br />
+        <!-- <a href="https://news.ycombinator.com/vote?id=25430325&how=up&goto=show"
+          ><img src="./hn.png" height="20" alt="HN Logo"
+        /></a> -->
+        <br />
+      </p>
+      <div>
+        <h3>Features</h3>
+        <p>A few of the things you can do with Tiny Manager:</p>
+        <ul>
+          <li>Add, Edit, Save Notes</li>
+          <li>Add, Edit, Delete Todos</li>
+          <li>Pet Project management</li>
+          <li>Project completion status</li>
+          <li>Filtering and sorting</li>
+          <li>Issues priority setting</li>
+          <li>Dark Mode</li>
+          <li>Localization Support</li>
+          <li>Offline capable</li>
+          <li>Offline local storage</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Privacy and Usage</h3>
+        <p>
+          The application makes use of local storage for persisting your work
+          data and does not store any Tiny Manager data on any sort of server.
+          The application uses Google analytics to get an overview of the
+          application usage.
+        </p>
+      </div>
+      <div style="margin-bottom: 16px">
+        <h3>Feedback or Suggestion</h3>
+        <p>
+          Kindly submit your feedbacks or suggestion for any improvements, bugs
+          and fixes.
+        </p>
+        <a
+          href="https://forms.gle/TUNVHqbC6MyNJryo7"
+          class="primary-button"
+          target="_blank"
+          style="margin-right: auto; margin-left: auto"
+          >Submit Now</a
+        >
+      </div>
+    </div>
+    <div id="footer" class="shadow">
+      <p align="center">
+        Made with <span class="error-text">❤️</span> by
+        <a href="https://twitter.com/nishantpainter" target="_blank"
+          ><strong class="primary-text">Nishant Painter</strong></a
+        >
+      </p>
+    </div>
+  </body>
+</html>

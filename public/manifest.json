@@ -1,25 +1,25 @@
 {
   "short_name": "Tiny Manager",
-  "name": "Tiny Project Manager",
+  "name": "Tiny Manager",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64",
+      "sizes": "32x32",
       "type": "image/x-icon"
     },
     {
-      "src": "logo240.png",
+      "src": "logo192.png",
       "type": "image/png",
-      "sizes": "240x240"
+      "sizes": "192x192"
     },
     {
-      "src": "logo640.png",
+      "src": "logo512.png",
       "type": "image/png",
-      "sizes": "640x640"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#3f51b5",
   "background_color": "#ffffff"
 }
