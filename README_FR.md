@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://nishantpainter.github.io/tiny-manager/" rel="noopener" target="_blank"><img width="600" src="https://nishantpainter.github.io/tiny-manager/readme_logo.png" alt="Tiny Manager logo"></a></p>
+  <a href="https://nishantpainter.github.io/tiny-manager/" rel="noopener" target="_blank"><img width="600" src="https://nishantpainter.github.io/tiny-manager/readme_logo_fr.png" alt="Tiny Manager logo"></a></p>
 </p>
 
 #
