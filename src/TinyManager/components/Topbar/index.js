@@ -8,10 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MuiLink from "@material-ui/core/Link";
+import Box from "@material-ui/core/Box";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-
 import IconButton from "TinyManager/components/IconButton";
 import { identity } from "TinyManager/components/utils";
+import ListIcon from "@material-ui/icons/List";
 
 const AppBar = withStyles((theme) => ({
   root: {
@@ -19,12 +20,12 @@ const AppBar = withStyles((theme) => ({
   },
 }))(MuiAppBar);
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   title: { flexGrow: 1, cursor: "pointer" },
-  logo: {
-    fontSize: "1.25rem",
+  icon: {
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 function DarkThemeButton(props) {
   const { onClick } = props;
@@ -123,17 +124,13 @@ function Topbar(props) {
     <>
       <AppBar color="default">
         <Toolbar variant="dense">
-          <Typography
-            color="primary"
-            className={classes.title}
-            component={Link}
-            to="/"
-          >
-            <b>{translate("Tiny Manager")}</b>&nbsp;
-            <span role="img" aria-label="Ant" className={classes.logo}>
-              🐜
-            </span>
-          </Typography>
+          <Box display="flex" alignItems="center">
+            <Box component={ListIcon} mr={1} className={classes.icon} />
+            <Typography className={classes.title} component={Link} to="/">
+              <b>{translate("Tiny Manager")}</b>&nbsp;
+            </Typography>
+          </Box>
+          <Box flexGrow={1} />
           <Button color="primary" size="large" component={Link} to="/">
             {translate("Home")}
           </Button>
